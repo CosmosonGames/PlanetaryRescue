@@ -56,7 +56,6 @@
     <Analyzer Include="/Applications/Visual Studio.app/Contents/MonoBundle/Addins/MonoDevelop.Unity/Analyzers/Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets/LeaderboardManager.cs" />
     <Compile Include="Assets/LogicManagerScript.cs" />
   </ItemGroup>
   <ItemGroup>
