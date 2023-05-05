@@ -1,0 +1,12 @@
+Unity Editor version:    2021.3.23f1 (213b516bf396)
+Branch:                  2021.3/staging
+Build type:              Release
+Batch mode:              YES
+macOS version:           Version 13.3.1 (Build 22E261)
+Darwin version:          22.4.0
+Architecture:            arm64
+Running under Rosetta:   NO
+Available memory:        8192 MB
+Assertion failed on expression: 'IsFileCreated(kWorkerLicensePath)'
+Assertion failed on expression: 'ok'
+Using pre-set license
