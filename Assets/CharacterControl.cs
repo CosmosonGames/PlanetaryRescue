@@ -37,4 +37,9 @@ public class CharacterControl : MonoBehaviour
             charRigid.velocity += Vector2.left * moveStrength;
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
+    }
 }
