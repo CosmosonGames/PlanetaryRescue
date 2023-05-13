@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.3807401, b: 0.358727, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311924, g: 0.38073963, b: 0.3587269, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -206,7 +206,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 15447064}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1019012465}
+        m_TargetAssemblyTypeName: LogicManagerScript, Assembly-CSharp
+        m_MethodName: openLeaderboard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &15447064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -562,6 +574,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2749a4ea30a114595adc4b43b1d98c6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  multiplayer: 1
+  debug: 1
 --- !u!4 &1019012466
 Transform:
   m_ObjectHideFlags: 0

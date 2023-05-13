@@ -4,4 +4,8 @@ using UnityEngine;
 
 public class LeaderboardManager : MonoBehaviour
 {
+    public void getLeaderboard()
+    {
+        Debug.Log("Start!");
+    }
 }
