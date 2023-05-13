@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class LogicManagerScript : MonoBehaviour
 {
     public bool multiplayer = true;
+    public bool debug = true;
 
     //load storyline scene
     public void startGame()
