@@ -1,0 +1,16 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SendToLeaderboard : MonoBehaviour
+{
+    public GameObject username;
+    public float time;
+
+    private string Name;
+
+    public void Send()
+    {
+        Name = username.GetComponent<Input>();
+    }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "cosmosongames",
+  "private_key_id": "0c17ee530b7bc5891ce6eb90b733638522518b53",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCXC6I6VBeKzkS7\nW2U/mVSA79FL8MR+AUTiiVmnZwobkUC+DLUkNhkexKvwA3VItmUO62I6//Yd31L9\nIuJHTFM/hNns4EBgiLiQ7j0jDwwGffP0+lM8TPJaCDzip6N7YBtWeqoq6gaAa/OA\nzkSmUIkK+9aTiSBlZ0waBQgcDxsiIr5AbpEtnC7glt/CflNeTMK7Bsoh+rryOd35\nLPck6WpqREzZkWojulAmbYwTUBNHgpfM/En7wdx5jfllEurT0vnuWqJ13NGLYvvW\nhMQBnXGycOkj1FjCP/9xQHpnXxTNluH2HDT9/4/t4mXqoTSpzpmBO09jrIOevB8G\nJX2gI383AgMBAAECggEABgtOohPkX0cSxAaLvihGE+TE1MudKUemuIPzhPngEytU\nUmaSxxCtH6iSEsgopNC7qYWsyBye/iIGIaAIOv8oY6XOzKZKnTJLZG1MH/+FpSrc\nHMT5mLOhjQ3AVfeMWK8HWQYOkioMOY5YT6KxZ5BYc4qRUxUNKVGhX3ctFGZcWRjI\nCIUOHmGkw8p+jhlPHkeXR47qiBUG4EGUg0XMvX5GAOGmmZFrWvsLpJCJDnUMVYji\nmhrdxxkSTqsUB7I5WidHotgLk+hvHBUDyUy710SNjkTE4FyO0ta+42r4+/2WpJOy\nshZuxcL+bhKB7rjbVzS6dsJCYwQ7eMKOwmUK0JuhiQKBgQDUTIADL3fgv0WISFMz\n0YLeJnGrKvoNdtoDwa1uUU7rDnuoGRaKP4AVSdQ+PlGuneuV7cAovY0zBmN1sVGC\nRetgjWz/H2XFLzXT0xIuPP6gbvj1aoJI3dzvNw//jCJ+VFYgzCMqGUrTfbuhl2/1\nqapdgi+W4zbiifib5MRENB11mQKBgQC2I0RxpCmP7iQpAKYZZDVc+eO+FJMn3aFH\nOGUgvQ19iZmLmB0Sg/yrpawI3dFdCk6DdZFcWnsBCZrNnr47LKpdeoj0N8Nugx0D\neV3gZVtVKUaLNl/CWH7QLLtZbR4qyUPzBKux5Y79Dc8CSgl2DN+w2EUnapTqoteS\nEgZGGPT9TwKBgGq5cnknecpAHYJfaYRZRMLM7MOxvTbbksnkqX0V3uiHxV5CDnS9\na3RIQyxvQ7zWosIiXUGd2MfX5FQcKe+lmqhVMIAolo7EJvkv2Knp+89HOlyViJ18\n+z4+ngpHtmdvmkSumtblFBqx0Itxh9Ul0AFmGuptmv/TgGlOXeQzlsOxAoGBAKvV\n3g7w+B1IaWkdqZcvCYFsaMa+Fo93816EADTA5+dWWDxxCIydZVZzeTjsPUfwH167\nHqbo3j9+VkRDzel6HEkRAACYU5MBs+/BIyY/uclApcNVS0bJwuqYKTEXV2y6cZbn\nAy1VDHAGBRV90CtFvgzUHXowfcpYU9UFmFGt3gTVAoGBAK5A1Av9s/8y76yJ5zNA\ncVHFSpeda+/EDsYBMMniq2+4yJDBAzoQ2WcscqqqFri4HNmtMiKidOB8CDL4LNRe\ndCy9DOI4e0xDeN7cfY5i3qB3N03qtxbr62qmrGn7muRtMvgFmReRuw3jaUaektdS\nDrhmSBr6qwyufWzRSF71xqmJ\n-----END PRIVATE KEY-----\n",
+  "client_email": "planetary@cosmosongames.iam.gserviceaccount.com",
+  "client_id": "114872219287650177518",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/planetary%40cosmosongames.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
