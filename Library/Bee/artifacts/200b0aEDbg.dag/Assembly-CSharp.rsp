@@ -352,6 +352,7 @@
 "Assets/CameraScript.cs"
 "Assets/CharacterControl.cs"
 "Assets/LeaderboardManager.cs"
+"Assets/LeaderboardUI.cs"
 "Assets/LogicManagerScript.cs"
 "Assets/SendToLeaderboard.cs"
 "Assets/SheetsManager.cs"

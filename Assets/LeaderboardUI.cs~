@@ -1,0 +1,20 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class LeaderboardUI : MonoBehaviour
+{
+    // Start is called before the first frame update
+    void Start()
+    {
+        var leaderboard = PlayerPrefs.GetString("Leaderboard");
+        if (leaderboard != null)
+        {
+            Debug.Log(leaderboard);
+        }
+        else
+        {
+            Debug.Log("No leaderboard data found.");
+        }
+    }
+}

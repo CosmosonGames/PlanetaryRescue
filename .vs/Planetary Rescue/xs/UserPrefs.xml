@@ -1,16 +1,10 @@
-﻿<Properties StartupConfiguration="{3EF9C89F-5C92-8B21-C2CC-AF822D9FA1B6}|">
+﻿<Properties StartupConfiguration="{3EF9C89F-5C92-8B21-C2CC-AF822D9FA1B6}|" BuildWithMSBuildOnMono="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="2912e6be-a4fd-4d02-8391-4c2c3f8c2ac8" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/SendToLeaderboard.cs">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/SheetsManager.cs">
     <Files>
-      <File FileName="Assets/LogicManagerScript.cs" Line="8" Column="24" />
-      <File FileName="Assets/CameraScript.cs" Line="10" Column="6" />
-      <File FileName="Assets/CharacterControl.cs" Line="20" Column="6" />
-      <File FileName="Assets/SendToLeaderboard.cs" Line="12" Column="23" />
+      <File FileName="Assets/LeaderboardManager.cs" Line="8" Column="1" />
+      <File FileName="Assets/SheetsManagerScript.cs" Line="26" Column="17" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -22,5 +16,9 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="417ec542-b479-41e2-a5fd-eab128ec2db8" />
 </Properties>
