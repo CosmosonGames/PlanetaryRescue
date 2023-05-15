@@ -133,4 +133,14 @@ public class SheetsManager : MonoBehaviour
             }
         }
     }
+
+    public void AddUserToLeaderboard(string username, int time)
+    {
+        var toAdd = new List<object>() {username, time};
+        CreateEntry(toAdd, "rawLB!A:B");
+        if (logic.debug)
+        {
+            Debug.Log($"INFO: Succesfully added '{username}' with time of '{time.ToString()}' seconds to leaderboard!");
+        }
+    }
 }

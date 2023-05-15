@@ -351,6 +351,7 @@
 -r:"Library/Bee/artifacts/200b0aEDbg.dag/UnityEngine.UI.ref.dll"
 "Assets/CameraScript.cs"
 "Assets/CharacterControl.cs"
+"Assets/FinishGame.cs"
 "Assets/LeaderboardManager.cs"
 "Assets/LeaderboardUI.cs"
 "Assets/LogicManagerScript.cs"
