@@ -12,12 +12,12 @@ EditorBuildSettings:
     path: Assets/Intro.unity
     guid: 5b559b8ef404d4708bf400dce53169e7
   - enabled: 1
-    path: Assets/StartScene.unity
+    path: Assets/Scenes/StartScene.unity
     guid: 48e7e3ac5194941889e3f9dc49539ef3
   - enabled: 1
-    path: Assets/LeaderboardScene.unity
+    path: Assets/Scenes/LeaderboardScene.unity
     guid: 7804b87dc36ab4f7083d3d3f9bf34da2
   - enabled: 1
-    path: Assets/IntroScene.unity
+    path: Assets/Scenes/IntroScene.unity
     guid: f981f4183197043639f04d8e252183ec
   m_configObjects: {}

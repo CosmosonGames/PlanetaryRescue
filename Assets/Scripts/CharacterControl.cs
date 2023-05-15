@@ -5,7 +5,8 @@ using UnityEngine;
 public class CharacterControl : MonoBehaviour
 {
     public Rigidbody2D charRigid;
-    private float moveStrength = 25;
+    private float standardStrength = 75;
+    private float moveStrength;
     public float debugStrength = 3;
     public LogicManagerScript logic;
 
@@ -16,18 +17,18 @@ public class CharacterControl : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update()   
     {
         // DEBUG
         if (logic.debug)
         {
             if (Input.GetKey(KeyCode.LeftShift) | (Input.GetKey(KeyCode.RightShift)))
             {
-                moveStrength = 25 * debugStrength;
+                moveStrength = standardStrength * debugStrength;
             }
             else
             {
-                moveStrength = 25;
+                moveStrength = standardStrength;
             }
         }
 
