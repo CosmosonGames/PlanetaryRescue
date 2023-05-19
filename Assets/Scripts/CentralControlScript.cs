@@ -18,6 +18,5 @@ public class CentralControlScript : MonoBehaviour
     private void Update()
     {
         camLocation = cam.WorldToScreenPoint(Vector3.zero);
-        size = new Vector2(Screen.width * 0.2f, Screen.height * 0.2f);
     }
 }
