@@ -5,30 +5,37 @@ using UnityEngine;
 public class R1Painting : MonoBehaviour
 {
     public CentralControlScript canvasControlScript;
-    public RectTransform canvasRectTransform;
-    private Canvas canvas;
+    public GameObject sprite;
+    
+    private Transform canvasRectTransform;
+    private SpriteRenderer spriteRenderer;
+
+    public int x = 1;
+    public int y = 1;
 
     // Start is called before the first frame update
     void Start()
     {
-        canvas = GetComponentInChildren<Canvas>();
+        canvasRectTransform = sprite.GetComponent<Transform>();
+        spriteRenderer = sprite.GetComponent<SpriteRenderer>();
+        spriteRenderer.enabled = false;
     }
 
     private void OnMouseUp()
     {
         Debug.Log("Triggered mouse up");
-        if (!canvas.enabled)
+        if (!spriteRenderer.enabled)
         {
-            canvas.enabled = true;
+            spriteRenderer.enabled = true;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (canvas.enabled)
+        if (spriteRenderer.enabled && Input.GetKey(KeyCode.F))
         {
-            canvasControlScript.adjustCanvas(canvasRectTransform);
+            canvasControlScript.adjustCanvas(canvasRectTransform, spriteRenderer, x, y);
         }
     }
 }
