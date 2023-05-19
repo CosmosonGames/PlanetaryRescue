@@ -1,23 +1,30 @@
+Unity Editor version:    2021.3.23f1 (213b516bf396)
+Branch:                  2021.3/staging
+Build type:              Release
+Batch mode:              YES
+macOS version:           Version 13.3.1 (a) (Build 22E772610a)
+Darwin version:          22.4.0
+Architecture:            arm64
+Running under Rosetta:   NO
+Available memory:        8192 MB
 Using pre-set license
-Built from '2021.3/staging' branch; Version is '2021.3.23f1 (213b516bf396) revision 2177873'; Using compiler version '192829333'; Build Type 'Release'
-OS: 'Windows 11  (10.0.22621) 64bit Professional' Language: 'en' Physical Memory: 7778 MB
-BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+Pro License: YES
 
 COMMAND LINE ARGUMENTS:
-C:\Program Files\Unity\Hub\Editor\2021.3.23f1\Editor\Unity.exe
+/Applications/Unity/Hub/Editor/2021.3.23f1/Unity.app/Contents/MacOS/Unity
 -adb2
 -batchMode
 -noUpm
 -name
 AssetImportWorker0
 -projectPath
-C:/Users/astha/Downloads/IDP 15 Assets/PlanetaryRescue
+/Users/owensun/Downloads/CAMS/CSE/IDP/Planetary Rescue
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-50154
-Successfully changed project path to: C:/Users/astha/Downloads/IDP 15 Assets/PlanetaryRescue
-C:/Users/astha/Downloads/IDP 15 Assets/PlanetaryRescue
+62202
+Successfully changed project path to: /Users/owensun/Downloads/CAMS/CSE/IDP/Planetary Rescue
+/Users/owensun/Downloads/CAMS/CSE/IDP/Planetary Rescue
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
     "memorysetup-bucket-allocator-granularity=16"
     "memorysetup-bucket-allocator-bucket-count=8"
@@ -47,155 +54,131 @@ C:/Users/astha/Downloads/IDP 15 Assets/PlanetaryRescue
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [19760] Host "[IP] 192.168.1.84 [Port] 0 [Flags] 2 [Guid] 2188157695 [EditorId] 2188157695 [Version] 1048832 [Id] WindowsEditor(7,AsthaPC) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [8191155008] Host "[IP] 192.168.1.189 [Port] 0 [Flags] 2 [Guid] 3832310995 [EditorId] 3832310995 [Version] 1048832 [Id] OSXEditor(0,Owens-MacBook-Air.local) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [19760] Host "[IP] 192.168.1.84 [Port] 0 [Flags] 2 [Guid] 2188157695 [EditorId] 2188157695 [Version] 1048832 [Id] WindowsEditor(7,AsthaPC) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [8191155008] Host "[IP] 192.168.1.189 [Port] 0 [Flags] 2 [Guid] 3832310995 [EditorId] 3832310995 [Version] 1048832 [Id] OSXEditor(0,Owens-MacBook-Air.local) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
-Refreshing native plugins compatible for Editor in 182.37 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 93.40 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.3.23f1 (213b516bf396)
-[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.23f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path C:/Users/astha/Downloads/IDP 15 Assets/PlanetaryRescue/Assets
+[Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/2021.3.23f1/Unity.app/Contents/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path /Users/owensun/Downloads/CAMS/CSE/IDP/Planetary Rescue/Assets
 GfxDevice: creating device client; threaded=0; jobified=0
-Direct3D:
-    Version:  Direct3D 11.0 [level 11.1]
-    Renderer: Intel(R) UHD Graphics (ID=0x8a56)
-    Vendor:   Intel
-    VRAM:     3889 MB
-    Driver:   30.0.101.3118
+ preferred device: Apple M1 (high power)
+Metal devices available: 1
+0: Apple M1 (high power)
+Using device Apple M1 (high power)
+Initializing Metal device caps: Apple M1
 Initialize mono
-Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.23f1/Editor/Data/Managed'
-Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.23f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
-Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.23f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56176
+Mono path[0] = '/Applications/Unity/Hub/Editor/2021.3.23f1/Unity.app/Contents/Managed'
+Mono path[1] = '/Applications/Unity/Hub/Editor/2021.3.23f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit-macos'
+Mono config path = '/Applications/Unity/Hub/Editor/2021.3.23f1/Unity.app/Contents/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56278
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.23f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.016905 seconds.
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 299.46 ms, found 3 plugins.
+Register platform support module: /Applications/Unity/Hub/Editor/2021.3.23f1/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: /Applications/Unity/Hub/Editor/2021.3.23f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Register platform support module: /Applications/Unity/Hub/Editor/2021.3.23f1/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Registered in 0.002284 seconds.
+Native extension for Android target not found
+Android Extension - Scanning For ADB Devices 821 ms
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 60.04 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.031 seconds
+- Completed reload, in  1.309 seconds
 Domain Reload Profiling:
-	ReloadAssembly (2032ms)
-		BeginReloadAssembly (338ms)
+	ReloadAssembly (1309ms)
+		BeginReloadAssembly (108ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (2ms)
-		EndReloadAssembly (1440ms)
-			LoadAssemblies (326ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (267ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (1141ms)
+			LoadAssemblies (108ms)
+			RebuildTransferFunctionScriptingTraits (2ms)
+			SetupTypeCache (80ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (184ms)
-			SetupLoadedEditorAssemblies (861ms)
+			RebuildScriptCaches (19ms)
+			SetupLoadedEditorAssemblies (1011ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (27ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (300ms)
-				BeforeProcessingInitializeOnLoad (4ms)
-				ProcessInitializeOnLoadAttributes (393ms)
-				ProcessInitializeOnLoadMethodAttributes (136ms)
+				InitializePlatformSupportModulesInManaged (876ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (60ms)
+				BeforeProcessingInitializeOnLoad (2ms)
+				ProcessInitializeOnLoadAttributes (47ms)
+				ProcessInitializeOnLoadMethodAttributes (25ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.047041 seconds.
+Registered in 0.007300 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\astha\Downloads\IDP 15 Assets\PlanetaryRescue\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image C:\Users\astha\Downloads\IDP 15 Assets\PlanetaryRescue\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.86 ms, found 3 plugins.
+Symbol file LoadedFromMemory doesn't match image /Users/owensun/Downloads/CAMS/CSE/IDP/Planetary Rescue/Library/PackageCache/com.unity.visualscripting@1.8.0/Editor/VisualScripting.Core/Dependencies/YamlDotNet/Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image /Users/owensun/Downloads/CAMS/CSE/IDP/Planetary Rescue/Library/PackageCache/com.unity.visualscripting@1.8.0/Editor/VisualScripting.Core/Dependencies/DotNetZip/Unity.VisualScripting.IonicZip.dll
+Native extension for Android target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.37 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 DisplayProgressbar: Restoring NuGet Packages
 Mono: successfully reloaded assembly
-- Completed reload, in  3.036 seconds
+- Completed reload, in  0.957 seconds
 Domain Reload Profiling:
-	ReloadAssembly (3037ms)
-		BeginReloadAssembly (446ms)
+	ReloadAssembly (958ms)
+		BeginReloadAssembly (66ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (9ms)
+			DisableScriptedObjects (3ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (50ms)
-		EndReloadAssembly (2378ms)
-			LoadAssemblies (337ms)
+			CreateAndSetChildDomain (19ms)
+		EndReloadAssembly (829ms)
+			LoadAssemblies (85ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (580ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (171ms)
-			SetupLoadedEditorAssemblies (1313ms)
+			SetupTypeCache (160ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (35ms)
+			SetupLoadedEditorAssemblies (511ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (15ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (176ms)
-				ProcessInitializeOnLoadAttributes (1068ms)
-				ProcessInitializeOnLoadMethodAttributes (39ms)
-				AfterProcessingInitializeOnLoad (13ms)
+				InitializePlatformSupportModulesInManaged (10ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (52ms)
+				ProcessInitializeOnLoadAttributes (437ms)
+				ProcessInitializeOnLoadMethodAttributes (11ms)
+				AfterProcessingInitializeOnLoad (1ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (17ms)
+			AwakeInstancesAfterBackupRestoration (2ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.18 seconds
-Refreshing native plugins compatible for Editor in 0.82 ms, found 3 plugins.
+Launching external process: /Applications/Unity/Hub/Editor/2021.3.23f1/Unity.app/Contents/Tools/UnityShaderCompiler
+Launched and connected shader compiler UnityShaderCompiler after 0.27 seconds
+Refreshing native plugins compatible for Editor in 0.52 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 3389 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 31 unused Assets / (150.1 KB). Loaded Objects now: 3860.
-Memory consumption went from 135.0 MB to 134.9 MB.
-Total: 9.349700 ms (FindLiveObjects: 0.394500 ms CreateObjectMapping: 0.232700 ms MarkObjects: 8.486400 ms  DeleteObjects: 0.233500 ms)
+Unloading 31 unused Assets / (322.5 KB). Loaded Objects now: 3862.
+Memory consumption went from 131.2 MB to 130.9 MB.
+Total: 4.061875 ms (FindLiveObjects: 0.199208 ms CreateObjectMapping: 0.047292 ms MarkObjects: 3.633958 ms  DeleteObjects: 0.179042 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
   custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
   custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
   custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 555491.305453 seconds.
-  path: Assets/Room #1/Painting Puzzle Puzzle Room #1.png
-  artifactKey: Guid(0926ecba54b5f4c11b69a9361319f943) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Room #1/Painting Puzzle Puzzle Room #1.png using Guid(0926ecba54b5f4c11b69a9361319f943) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '529efa81c1110cea774304c4063eed2e') in 0.497899 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000084 seconds.
-  path: Assets/Room #1/Drying Rack Asset Puzzle Room#1.png
-  artifactKey: Guid(f8c40b59e3af447aeb88be0958fd80b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Room #1/Drying Rack Asset Puzzle Room#1.png using Guid(f8c40b59e3af447aeb88be0958fd80b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b025dea15b539be9075a3d78e7b740ff') in 0.083733 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000103 seconds.
-  path: Assets/Room #1/Paint Shelf Puzzle Room #1.png
-  artifactKey: Guid(18a9d8e8d8fd34b94bf0edd79fd1fe30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Room #1/Paint Shelf Puzzle Room #1.png using Guid(18a9d8e8d8fd34b94bf0edd79fd1fe30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b02861de314bd05fada92de0f6b8ee8c') in 0.093718 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000032 seconds.
-  path: Assets/Room #1/Easel.png
-  artifactKey: Guid(11a9db61f5ee349b18cb07e1aff62262) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Room #1/Easel.png using Guid(11a9db61f5ee349b18cb07e1aff62262) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c9504c8fd05853365962be62df5074dd') in 0.197884 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000055 seconds.
-  path: Assets/Room #1/PuxxleRoom1Puxxle.png
-  artifactKey: Guid(3003b09a09dd14ed092af443387c9ed3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Room #1/PuxxleRoom1Puxxle.png using Guid(3003b09a09dd14ed092af443387c9ed3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '50eae91bfdd5e74dfbaad85b32b51d16') in 0.310571 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000076 seconds.
-  path: Assets/Room #1/Paintings.png
-  artifactKey: Guid(6f9595ee9e9da49fcb66edde005dd18c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Room #1/Paintings.png using Guid(6f9595ee9e9da49fcb66edde005dd18c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5242f661c2e388ad5113f2a230bd0dd5') in 0.267130 seconds 
+  Time since last request: 155990.769711 seconds.
+  path: Assets/Room #2
+  artifactKey: Guid(f5c686fc30f5e4e2a9401a1822f15247) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Room #2 using Guid(f5c686fc30f5e4e2a9401a1822f15247) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '42f1505a70825b1e5932c0db85948aef') in 0.008032 seconds 

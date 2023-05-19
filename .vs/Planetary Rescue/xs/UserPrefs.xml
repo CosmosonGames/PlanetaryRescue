@@ -1,29 +1,28 @@
-﻿<Properties StartupConfiguration="{3EF9C89F-5C92-8B21-C2CC-AF822D9FA1B6}|" BuildWithMSBuildOnMono="True">
+﻿<Properties BuildWithMSBuildOnMono="True" StartupConfiguration="{3EF9C89F-5C92-8B21-C2CC-AF822D9FA1B6}|">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="5b26ccaa-c24d-4850-a4ed-37ed60f438c5" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="ae0b7198-4be8-4d81-b16d-54cb9c44241f" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/FinishGame.cs">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/R1Table.cs">
     <Files>
-      <File FileName="Assets/LeaderboardManager.cs" Line="8" Column="2" />
-      <File FileName="Assets/LogicManagerScript.cs" Line="6" Column="23" />
-      <File FileName="Assets/SheetsManager.cs" Line="103" Column="14" />
-      <File FileName="Assets/LeaderboardUI.cs" Line="13" Column="17" />
-      <File FileName="Assets/IntroScene.unity" Line="1" Column="1" />
-      <File FileName="Assets/LeaderboardManager.cs~" Line="1" Column="1" />
-      <File FileName="Assets/FinishGame.cs" Line="31" Column="1" />
+      <File FileName="Assets/LeaderboardManager.cs~" />
+      <File FileName="Assets/Scripts/LeaderboardUI.cs" />
+      <File FileName="Assets/R1Table.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Planetary Rescue" expanded="True">
-            <Node name="Assets" expanded="True" />
+            <Node name="Assets" expanded="True">
+              <Node name="Scripts" expanded="True" />
+              <Node name="R1Table.cs" selected="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>
