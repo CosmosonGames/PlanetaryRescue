@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class R1Painting : MonoBehaviour
 {
-    public CentralControlScript canvasControlScript;
     public GameObject sprite;
     
     private Transform canvasRectTransform;
     private SpriteRenderer spriteRenderer;
-
-    public int x = 1;
-    public int y = 1;
 
     // Start is called before the first frame update
     void Start()
