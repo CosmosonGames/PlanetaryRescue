@@ -1,0 +1,95 @@
+using UnityEngine;
+using System;
+using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+
+public class R1TablePuzzleScript : MonoBehaviour
+{
+    GameObject selectedObject;
+    Vector3 offset;
+
+    public GameObject BSGreen;
+    public GameObject BSOrange;
+    public GameObject BSYellow;
+    public GameObject BSBlack;
+
+    public GameObject SPurple;
+    public GameObject SRed;
+    public GameObject SPink;
+    public GameObject SBlue;
+
+    private Collider bsGreenCollider;
+    private Collider bsOrangeCollider;
+    private Collider bsYellowCollider;
+    private Collider bsBlackCollider;
+
+    private Collider sPurpleCollider;
+    private Collider sRedCollider;
+    private Collider sPinkCollider;
+    private Collider sBlueCollider;
+
+    List<float> floatList = new List<float> {-0.35f, -0.11f, 0.13f, 0.36f};
+    List<GameObject> BS;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        BS.Add(BSGreen);
+        BS.Add(BSOrange);
+        BS.Add(BSYellow);
+        BS.Add(BSBlack);
+
+        foreach (GameObject gameobject in BS)
+        {
+            float randomFloat = floatList[new System.Random().Next(floatList.Count)];
+            Debug.Log(randomFloat);
+            floatList.Remove(randomFloat);
+            Vector3 newPosition = gameobject.transform.position;
+            newPosition.x = randomFloat;
+            gameobject.transform.position = newPosition;
+
+        }
+
+        bsGreenCollider = BSGreen.GetComponent<Collider>();
+        bsOrangeCollider = BSOrange.GetComponent<Collider>();
+        bsYellowCollider = BSYellow.GetComponent<Collider>();
+        bsBlackCollider = BSBlack.GetComponent<Collider>();
+
+        sPurpleCollider = SPurple.GetComponent<Collider>();
+        sRedCollider = SRed.GetComponent<Collider>();
+        sPinkCollider = SPink.GetComponent<Collider>();
+        sBlueCollider = SBlue.GetComponent<Collider>();
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (Input.GetMouseButtonDown(0))
+        {
+            Collider2D targetObject = Physics2D.OverlapPoint(mousePosition);
+            if (targetObject)
+            {
+                selectedObject = targetObject.transform.gameObject;
+                offset = selectedObject.transform.position - mousePosition;
+            }
+        }
+        if (selectedObject)
+        {
+            selectedObject.transform.position = mousePosition + offset;
+        }
+        if (Input.GetMouseButtonUp(0) && selectedObject)
+        {
+            selectedObject = null;
+        }
+
+        if (bsGreenCollider.bounds.Intersects(sRedCollider.bounds) || bsYellowCollider.bounds.Intersects(sPurpleCollider.bounds) || bsOrangeCollider.bounds.Intersects(sBlueCollider.bounds) || bsBlackCollider.bounds.Intersects(sPinkCollider.bounds))
+        {
+            Debug.Log("SUCCESS!");
+            SceneManager.LoadScene("MainScene");
+            // Handle collision here
+        }
+
+    }
+}
