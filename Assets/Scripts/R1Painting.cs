@@ -4,16 +4,13 @@ using UnityEngine;
 
 public class R1Painting : MonoBehaviour
 {
-    public GameObject sprite;
-    
-    private Transform canvasRectTransform;
+    public GameObject puzzle;
     private SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
-        canvasRectTransform = sprite.GetComponent<Transform>();
-        spriteRenderer = sprite.GetComponent<SpriteRenderer>();
+        spriteRenderer = puzzle.GetComponent<SpriteRenderer>();
         spriteRenderer.enabled = false;
     }
 
@@ -29,9 +26,6 @@ public class R1Painting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (spriteRenderer.enabled && Input.GetKey(KeyCode.F))
-        {
-            //canvasControlScript.adjustCanvas(canvasRectTransform, spriteRenderer, x, y);
-        }
+       
     }
 }
