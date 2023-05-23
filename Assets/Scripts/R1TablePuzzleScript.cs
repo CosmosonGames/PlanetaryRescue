@@ -49,6 +49,9 @@ public class R1TablePuzzleScript : MonoBehaviour
 
     private CharacterControl characterControl;
 
+    public GameObject logicObject;
+    private LogicManagerScript logic;
+
     private IEnumerator CheckVisibility()
     {
         while (true)
@@ -82,9 +85,6 @@ public class R1TablePuzzleScript : MonoBehaviour
         }
 
         AdjustLocation();
-        Debug.Log(parentSprite.localBounds.size.x);
-
-        Debug.Log("SpriteRenderer enabled");
     }
 
     private void OnSpriteRendererDisabled()
@@ -94,12 +94,13 @@ public class R1TablePuzzleScript : MonoBehaviour
             child.enabled = false;
         }
         characterControl.puzzleEnabled = false;
-        Debug.Log("SpriteRenderer disabled");
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        logic = logicObject.GetComponent<LogicManagerScript>();
+
         BS = new List<GameObject> { BSGreen, BSOrange, BSYellow, BSBlack};
         S = new List<GameObject> { SPurple, SRed, SPink, SBlue};
 
@@ -244,6 +245,8 @@ public class R1TablePuzzleScript : MonoBehaviour
 
 
             LeavePuzzle();
+            Debug.Log("Win detected");
+
 
 
 
@@ -274,7 +277,6 @@ public class R1TablePuzzleScript : MonoBehaviour
     void LeavePuzzle()
     {
         parentSprite.enabled = false;
-        Debug.Log("Background not detected... Exited.");
 
     }
 }

@@ -7,25 +7,22 @@ public class R1Painting : MonoBehaviour
     public GameObject puzzle;
     private SpriteRenderer spriteRenderer;
 
+    public GameObject player;
+    private CharacterControl characterControl;
+
     // Start is called before the first frame update
     void Start()
     {
+        characterControl = player.GetComponent<CharacterControl>();
         spriteRenderer = puzzle.GetComponent<SpriteRenderer>();
         spriteRenderer.enabled = false;
     }
 
     private void OnMouseUp()
     {
-        Debug.Log("Triggered mouse up");
-        if (!spriteRenderer.enabled)
+        if (!spriteRenderer.enabled && !characterControl.puzzleEnabled)
         {
             spriteRenderer.enabled = true;
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-       
     }
 }
