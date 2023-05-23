@@ -39,7 +39,7 @@ public class R1TablePuzzleScript : MonoBehaviour
 
     private SpriteRenderer parentSprite;
 
-    private float scaleFactor = 0.05f;
+    //private float scaleFactor = 0.05f;
 
     List<GameObject> BS;
     List<GameObject> S;
@@ -242,6 +242,8 @@ public class R1TablePuzzleScript : MonoBehaviour
         {
             //CHECK MARK
 
+
+            LeavePuzzle();
 
 
 

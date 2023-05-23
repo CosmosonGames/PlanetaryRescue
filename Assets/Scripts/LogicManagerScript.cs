@@ -25,4 +25,9 @@ public class LogicManagerScript : MonoBehaviour
         //get leaderboard here...
         SceneManager.LoadScene("LeaderboardScene");
     }
+
+    private void Update()
+    {
+        
+    }
 }
