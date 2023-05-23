@@ -1,20 +1,15 @@
 ﻿<Properties StartupConfiguration="{3EF9C89F-5C92-8B21-C2CC-AF822D9FA1B6}|" BuildWithMSBuildOnMono="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint enabled="false" file="/Users/owensun/Downloads/CAMS/CSE/IDP/Planetary Rescue/Assets/Scripts/R1TablePuzzleScript.cs" relfile="Assets/Scripts/R1TablePuzzleScript.cs" line="87" column="9" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="b65772f5-8b2f-4085-b7b3-0953440fcd5a" />
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/R1TablePuzzleScript.cs">
     <Files>
-      <File FileName="Assets/LeaderboardManager.cs~" />
-      <File FileName="Assets/Scripts/LeaderboardUI.cs" />
-      <File FileName="Assets/Scripts/CharacterControl.cs" />
-      <File FileName="Assets/Scripts/FinishGame.cs" />
-      <File FileName="Assets/Scripts/R1Table.cs" />
-      <File FileName="Assets/Scripts/CentralControlScript.cs" />
-      <File FileName="Assets/Scripts/R1Painting.cs" />
-      <File FileName="Assets/Scripts/R1TablePuzzleScript.cs" Line="155" Column="37" />
+      <File FileName="Assets/Scripts/R1TablePuzzleScript.cs" Line="175" Column="52" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -28,6 +23,9 @@
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State />
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__" />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>

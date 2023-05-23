@@ -169,27 +169,15 @@ public class R1TablePuzzleScript : MonoBehaviour
         }
         float spaceBetweenBS = (totalSpace - (2 * edges) - totalBSSize)/BS.Count + totalBSSize/(BS.Count);
 
-        float totalSSize = 0f;
-        foreach (GameObject gameObject in S)
-        {
-            SpriteRenderer sprite = gameObject.GetComponent<SpriteRenderer>();
-            totalSSize += sprite.localBounds.size.x;
-        }
-        float spaceBetweenS = (totalSpace - (2 * edges) - totalSSize) / S.Count + totalSSize / (S.Count);
-
         // Add a half of a square to push it
-        float BSLeftEdge = -1 * (edges + BS[0].gameObject.GetComponent<SpriteRenderer>().localBounds.size.x / 2);
-        float SLeftEdge = -1 * (edges + S[0].gameObject.GetComponent<SpriteRenderer>().localBounds.size.x / 2);
+        float BSLeftEdge =leftEdge + (edges + BS[0].gameObject.GetComponent<SpriteRenderer>().localBounds.size.x/2);
 
         // Set the position of each sprite based on its index in the shuffled list
         for (int i = 0; i < BS.Count; i++)
         {
             BS[i].transform.localPosition = new Vector3(BSLeftEdge + (i * spaceBetweenBS), 1.1219f, 0f);
-            S[i].transform.localPosition = new Vector3(SLeftEdge + (i * spaceBetweenS), -1.2781f, 0f);
+            S[i].transform.localPosition = new Vector3(BSLeftEdge + (i * spaceBetweenBS), -1.2781f, 0f);
         }
-
-        Debug.Log(totalSpace);
-        Debug.Log("Finish resizing");
     }
 
     void HandleMouse(){
