@@ -47,7 +47,7 @@ public class R1TablePuzzleScript : MonoBehaviour
     public float checkInterval = 0.1f;
     private bool isVisible = true;
 
-    public CharacterControl characterControl;
+    private CharacterControl characterControl;
 
     private IEnumerator CheckVisibility()
     {
@@ -185,14 +185,25 @@ public class R1TablePuzzleScript : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Collider2D[] colliders = Physics2D.OverlapPointAll(mousePosition);
-            foreach (Collider2D collider in colliders)
+
+            Collider2D backgroundCollider = gameObject.GetComponent<Collider2D>();
+            if (colliders.Contains(backgroundCollider))
             {
-                GameObject targetObject = collider.gameObject;
-                if (S.Contains(targetObject)){
-                    selectedObject = targetObject.transform.gameObject;
-                    offset = selectedObject.transform.position - mousePosition;
-                    break;
+                foreach (Collider2D collider in colliders)
+                {
+                    GameObject targetObject = collider.gameObject;
+                    if (S.Contains(targetObject))
+                    {
+                        selectedObject = targetObject.transform.gameObject;
+                        offset = selectedObject.transform.position - mousePosition;
+                        break;
+                    }
                 }
+
+            } else
+            {
+                LeavePuzzle();
+
             }
         }
         if (selectedObject)
@@ -229,6 +240,11 @@ public class R1TablePuzzleScript : MonoBehaviour
         // Check if the sprites are in the correct positions & mouse is not dragging a sprite --> if so, load the next scene
         if (bsGreenCollider.bounds.Intersects(sRedCollider.bounds) && bsYellowCollider.bounds.Intersects(sPurpleCollider.bounds) && bsOrangeCollider.bounds.Intersects(sBlueCollider.bounds) && bsBlackCollider.bounds.Intersects(sPinkCollider.bounds) && selectedObject == null)
         {
+            //CHECK MARK
+
+
+
+
             //SceneManager.LoadScene("MainScene");
             // Handle collision here
         }
@@ -251,5 +267,12 @@ public class R1TablePuzzleScript : MonoBehaviour
     void AdjustLocation()
     {
         parentObject.transform.position = player.transform.position;
+    }
+
+    void LeavePuzzle()
+    {
+        parentSprite.enabled = false;
+        Debug.Log("Background not detected... Exited.");
+
     }
 }
