@@ -33,9 +33,10 @@ public class CharacterControl : MonoBehaviour
             }
         }
 
+        charRigid.velocity = Vector2.zero;
+
         if (!puzzleEnabled)
         {
-            charRigid.velocity = Vector2.zero;
             if (Input.GetKey(KeyCode.W) | (Input.GetKey(KeyCode.UpArrow)))
             {
                 charRigid.velocity += Vector2.up * moveStrength;

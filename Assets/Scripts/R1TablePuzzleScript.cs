@@ -81,8 +81,9 @@ public class R1TablePuzzleScript : MonoBehaviour
             child.enabled = true;
         }
 
-        AdjustScale();
         AdjustLocation();
+        Debug.Log(parentSprite.localBounds.size.x);
+
         Debug.Log("SpriteRenderer enabled");
     }
 
@@ -155,17 +156,40 @@ public class R1TablePuzzleScript : MonoBehaviour
             S[j] = temp;
         }
 
+        // Get size data
+        float leftEdge = parentSprite.localBounds.min.x;
+        float totalSpace = parentSprite.localBounds.size.x;
+        float edges = totalSpace / 16;
+
+        float totalBSSize = 0f;
+        foreach (GameObject gameObject in BS)
+        {
+            SpriteRenderer sprite = gameObject.GetComponent<SpriteRenderer>();
+            totalBSSize += sprite.localBounds.size.x;
+        }
+        float spaceBetweenBS = (totalSpace - (2 * edges) - totalBSSize)/BS.Count + totalBSSize/(BS.Count);
+
+        float totalSSize = 0f;
+        foreach (GameObject gameObject in S)
+        {
+            SpriteRenderer sprite = gameObject.GetComponent<SpriteRenderer>();
+            totalSSize += sprite.localBounds.size.x;
+        }
+        float spaceBetweenS = (totalSpace - (2 * edges) - totalSSize) / S.Count + totalSSize / (S.Count);
+
+        // Add a half of a square to push it
+        float BSLeftEdge = -1 * (edges + BS[0].gameObject.GetComponent<SpriteRenderer>().localBounds.size.x / 2);
+        float SLeftEdge = -1 * (edges + S[0].gameObject.GetComponent<SpriteRenderer>().localBounds.size.x / 2);
+
         // Set the position of each sprite based on its index in the shuffled list
         for (int i = 0; i < BS.Count; i++)
         {
-            Vector3 newPosition = parentPosition;
-            newPosition += parentRotation * new Vector3(-4.06f + (i * 2.723f), 1.1219f, 0f);
-            BS[i].transform.position = newPosition;
-
-            Vector3 newPosition2 = parentPosition;
-            newPosition2 += parentRotation * new Vector3(-4.06f + (i * 2.723f), -1.2781f, 0f);
-            S[i].transform.position = newPosition2;
+            BS[i].transform.localPosition = new Vector3(BSLeftEdge + (i * spaceBetweenBS), 1.1219f, 0f);
+            S[i].transform.localPosition = new Vector3(SLeftEdge + (i * spaceBetweenS), -1.2781f, 0f);
         }
+
+        Debug.Log(totalSpace);
+        Debug.Log("Finish resizing");
     }
 
     void HandleMouse(){
@@ -225,14 +249,14 @@ public class R1TablePuzzleScript : MonoBehaviour
 
     void AdjustScale()
     {
-        float cameraSize = Camera.main.orthographicSize;
-        float spriteSize = parentSprite.bounds.size.y;
+        //float cameraSize = Camera.main.orthographicSize;
+        //float spriteSize = parentSprite.bounds.size.y;
 
-        Debug.Log(cameraSize);
-        Debug.Log(spriteSize);
+        //Debug.Log(cameraSize);
+        //Debug.Log(spriteSize);
 
-        float scale = (cameraSize * 2f) / spriteSize * scaleFactor;
-        parentSprite.transform.localScale = new Vector3(scale, scale, 1f);
+        //float scale = (cameraSize * 2f) / spriteSize * scaleFactor;
+        parentSprite.transform.localScale = new Vector3(1.75f, 1.5f, 1f);
 
     }
 
