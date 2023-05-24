@@ -34,12 +34,7 @@ public class R1TablePuzzleScript : MonoBehaviour
     private BoxCollider2D sPinkCollider;
     private BoxCollider2D sBlueCollider;
 
-    private Vector3 parentPosition;
-    private Quaternion parentRotation;
-
     private SpriteRenderer parentSprite;
-
-    //private float scaleFactor = 0.05f;
 
     List<GameObject> BS;
     List<GameObject> S;
@@ -51,6 +46,12 @@ public class R1TablePuzzleScript : MonoBehaviour
 
     public GameObject logicObject;
     private LogicManagerScript logic;
+
+    public GameObject inventory;
+    private InventoryItemData referenceItem;
+    public InventorySystem inventorySystem;
+
+    private bool debug;
 
     private IEnumerator CheckVisibility()
     {
@@ -100,6 +101,9 @@ public class R1TablePuzzleScript : MonoBehaviour
     void Start()
     {
         logic = logicObject.GetComponent<LogicManagerScript>();
+        inventorySystem = inventory.GetComponent<InventorySystem>();
+
+        debug = logic.debug;
 
         BS = new List<GameObject> { BSGreen, BSOrange, BSYellow, BSBlack};
         S = new List<GameObject> { SPurple, SRed, SPink, SBlue};
@@ -113,9 +117,6 @@ public class R1TablePuzzleScript : MonoBehaviour
         sRedCollider = SRed.GetComponent<BoxCollider2D>();
         sPinkCollider = SPink.GetComponent<BoxCollider2D>();
         sBlueCollider = SBlue.GetComponent<BoxCollider2D>();
-
-        parentPosition = parentObject.transform.position;
-        parentRotation = parentObject.transform.rotation;
 
         parentSprite = parentObject.GetComponent<SpriteRenderer>();
 
@@ -243,14 +244,13 @@ public class R1TablePuzzleScript : MonoBehaviour
         {
             //CHECK MARK
 
-
             LeavePuzzle();
-            Debug.Log("Win detected");
 
+            if (debug)
+            {
+                Debug.Log("User successfully completed Table Puzzle in Room #1.");
+            }
 
-
-
-            //SceneManager.LoadScene("MainScene");
             // Handle collision here
         }
 
@@ -258,13 +258,6 @@ public class R1TablePuzzleScript : MonoBehaviour
 
     void AdjustScale()
     {
-        //float cameraSize = Camera.main.orthographicSize;
-        //float spriteSize = parentSprite.bounds.size.y;
-
-        //Debug.Log(cameraSize);
-        //Debug.Log(spriteSize);
-
-        //float scale = (cameraSize * 2f) / spriteSize * scaleFactor;
         parentSprite.transform.localScale = new Vector3(1.75f, 1.5f, 1f);
 
     }
@@ -277,6 +270,11 @@ public class R1TablePuzzleScript : MonoBehaviour
     void LeavePuzzle()
     {
         parentSprite.enabled = false;
+
+    }
+
+    private void AddToInventory()
+    {
 
     }
 }
