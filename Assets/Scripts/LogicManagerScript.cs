@@ -1,6 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,9 +7,15 @@ public class LogicManagerScript : MonoBehaviour
 {
     public bool multiplayer = true;
     public bool debug = true;
-    public long startTime;
 
-    public long currentTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+    [Header("Timer Settings")]
+    public TextMeshProUGUI timerText;
+    public bool countDown;
+    public float currentTime;
+
+    [Header("Timer Limits")]
+    public bool hasLimit;
+    public float timerLimit;
 
     //load storyline scene
     public void startGame()
@@ -28,6 +33,25 @@ public class LogicManagerScript : MonoBehaviour
 
     private void Update()
     {
-        
+        currentTime = countDown ? currentTime -= Time.deltaTime : currentTime += Time.deltaTime;
+
+        if(hasLimit && ((countDown && currentTime <= timerLimit) || (!countDown && currentTime >= timerLimit))){
+            currentTime = timerLimit;
+            SetTimerText();
+            timerText.color = Color.red;
+            enabled = false;
+
+        }
+        SetTimerText();
+
     }
+
+    private void SetTimerText()
+    {
+        double minutes = Math.Floor(currentTime/60);
+        double seconds = currentTime % 60;
+        string time = $"{minutes.ToString("00")}:{seconds.ToString("00")}";
+
+        timerText.text = time;
+    } 
 }

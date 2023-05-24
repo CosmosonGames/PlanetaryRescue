@@ -7,9 +7,10 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="b65772f5-8b2f-4085-b7b3-0953440fcd5a" />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/R1TablePuzzleScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/LogicManagerScript.cs">
     <Files>
-      <File FileName="Assets/Scripts/R1TablePuzzleScript.cs" Line="175" Column="52" />
+      <File FileName="Assets/Scripts/R1TablePuzzleScript.cs" Line="175" Column="1" />
+      <File FileName="Assets/Scripts/LogicManagerScript.cs" Line="18" Column="28" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
