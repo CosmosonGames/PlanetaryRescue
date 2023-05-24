@@ -347,93 +347,12 @@
 {"msg":"enqueueNode","enqueuedNodeAnnotation":"WriteText Library/Bee/artifacts/200b0aE.dag/Assembly-CSharp.AdditionalFile.txt","enqueuedNodeIndex":272,"enqueueingNodeAnnotation":"Csc Library/Bee/artifacts/200b0aE.dag/Assembly-CSharp.dll (+2 others)","enqueueingNodeIndex":274}
 {"msg":"enqueueNode","enqueuedNodeAnnotation":"WriteText Library/Bee/artifacts/200b0aE.dag/Assembly-CSharp.rsp","enqueuedNodeIndex":273,"enqueueingNodeAnnotation":"Csc Library/Bee/artifacts/200b0aE.dag/Assembly-CSharp.dll (+2 others)","enqueueingNodeIndex":274}
 {"msg":"enqueueNode","enqueuedNodeAnnotation":"CopyFiles Library/ScriptAssemblies/Assembly-CSharp.pdb","enqueuedNodeIndex":348,"enqueueingNodeAnnotation":"ScriptAssemblies","enqueueingNodeIndex":5}
-{"msg":"newNode","annotation":"WriteText Library/Bee/artifacts/200b0aE.dag/UnityEngine.TestRunner.AdditionalFile.txt","index":1}
-{"msg":"newNode","annotation":"WriteText Library/Bee/artifacts/200b0aE.dag/UnityEngine.UI.AdditionalFile.txt","index":94}
-{"msg":"newNode","annotation":"WriteText Library/Bee/artifacts/200b0aE.dag/UnityEngine.TestRunner.rsp","index":2}
-{"msg":"runNodeAction","annotation":"WriteText Library/Bee/artifacts/200b0aE.dag/UnityEngine.TestRunner.AdditionalFile.txt","index":1}
-{"msg":"runNodeAction","annotation":"WriteText Library/Bee/artifacts/200b0aE.dag/UnityEngine.TestRunner.rsp","index":2}
-{"msg":"runNodeAction","annotation":"WriteText Library/Bee/artifacts/200b0aE.dag/UnityEngine.UI.AdditionalFile.txt","index":94}
-{"msg":"newNode","annotation":"WriteText Library/Bee/artifacts/200b0aE.dag/UnityEngine.UI.rsp","index":95}
-{"msg":"runNodeAction","annotation":"WriteText Library/Bee/artifacts/200b0aE.dag/UnityEngine.UI.rsp","index":95}
-{"msg":"noderesult","processed_node_count":0,"number_of_nodes_ever_queued":348,"annotation":"WriteText Library/Bee/artifacts/200b0aE.dag/UnityEngine.UI.AdditionalFile.txt","index":94,"exitcode":0,"outputfile":"Library/Bee/artifacts/200b0aE.dag/UnityEngine.UI.AdditionalFile.txt"}
-{"msg":"noderesult","processed_node_count":0,"number_of_nodes_ever_queued":348,"annotation":"WriteText Library/Bee/artifacts/200b0aE.dag/UnityEngine.TestRunner.rsp","index":2,"exitcode":0,"outputfile":"Library/Bee/artifacts/200b0aE.dag/UnityEngine.TestRunner.rsp"}
-{"msg":"noderesult","processed_node_count":0,"number_of_nodes_ever_queued":348,"annotation":"WriteText Library/Bee/artifacts/200b0aE.dag/UnityEngine.TestRunner.AdditionalFile.txt","index":1,"exitcode":0,"outputfile":"Library/Bee/artifacts/200b0aE.dag/UnityEngine.TestRunner.AdditionalFile.txt"}
-{"msg":"newNode","annotation":"WriteText Library/Bee/artifacts/200b0aE.dag/UnityEditor.TestRunner.AdditionalFile.txt","index":105}
-{"msg":"runNodeAction","annotation":"WriteText Library/Bee/artifacts/200b0aE.dag/UnityEditor.TestRunner.AdditionalFile.txt","index":105}
-{"msg":"newNode","annotation":"WriteText Library/Bee/artifacts/200b0aE.dag/UnityEditor.TestRunner.rsp","index":106}
-{"msg":"runNodeAction","annotation":"WriteText Library/Bee/artifacts/200b0aE.dag/UnityEditor.TestRunner.rsp","index":106}
-{"msg":"noderesult","processed_node_count":3,"number_of_nodes_ever_queued":348,"annotation":"WriteText Library/Bee/artifacts/200b0aE.dag/UnityEditor.TestRunner.AdditionalFile.txt","index":105,"exitcode":0,"outputfile":"Library/Bee/artifacts/200b0aE.dag/UnityEditor.TestRunner.AdditionalFile.txt"}
-{"msg":"newNode","annotation":"WriteText Library/Bee/artifacts/200b0aE.dag/UnityEditor.UI.AdditionalFile.txt","index":112}
-{"msg":"runNodeAction","annotation":"WriteText Library/Bee/artifacts/200b0aE.dag/UnityEditor.UI.AdditionalFile.txt","index":112}
-{"msg":"noderesult","processed_node_count":4,"number_of_nodes_ever_queued":348,"annotation":"WriteText Library/Bee/artifacts/200b0aE.dag/UnityEngine.UI.rsp","index":95,"exitcode":0,"outputfile":"Library/Bee/artifacts/200b0aE.dag/UnityEngine.UI.rsp"}
-{"msg":"noderesult","processed_node_count":5,"number_of_nodes_ever_queued":348,"annotation":"WriteText Library/Bee/artifacts/200b0aE.dag/UnityEditor.TestRunner.rsp","index":106,"exitcode":0,"outputfile":"Library/Bee/artifacts/200b0aE.dag/UnityEditor.TestRunner.rsp"}
-{"msg":"newNode","annotation":"WriteText Library/Bee/artifacts/200b0aE.dag/UnityEditor.UI.rsp","index":113}
-{"msg":"runNodeAction","annotation":"WriteText Library/Bee/artifacts/200b0aE.dag/UnityEditor.UI.rsp","index":113}
-{"msg":"noderesult","processed_node_count":6,"number_of_nodes_ever_queued":348,"annotation":"WriteText Library/Bee/artifacts/200b0aE.dag/UnityEditor.UI.AdditionalFile.txt","index":112,"exitcode":0,"outputfile":"Library/Bee/artifacts/200b0aE.dag/UnityEditor.UI.AdditionalFile.txt"}
-{"msg":"newNode","annotation":"WriteText Library/Bee/artifacts/200b0aE.dag/Unity.VisualScripting.Core.AdditionalFile.txt","index":180}
-{"msg":"runNodeAction","annotation":"WriteText Library/Bee/artifacts/200b0aE.dag/Unity.VisualScripting.Core.AdditionalFile.txt","index":180}
-{"msg":"noderesult","processed_node_count":7,"number_of_nodes_ever_queued":348,"annotation":"WriteText Library/Bee/artifacts/200b0aE.dag/Unity.VisualScripting.Core.AdditionalFile.txt","index":180,"exitcode":0,"outputfile":"Library/Bee/artifacts/200b0aE.dag/Unity.VisualScripting.Core.AdditionalFile.txt"}
-{"msg":"noderesult","processed_node_count":8,"number_of_nodes_ever_queued":348,"annotation":"WriteText Library/Bee/artifacts/200b0aE.dag/UnityEditor.UI.rsp","index":113,"exitcode":0,"outputfile":"Library/Bee/artifacts/200b0aE.dag/UnityEditor.UI.rsp"}
-{"msg":"newNode","annotation":"WriteText Library/Bee/artifacts/200b0aE.dag/Unity.VisualScripting.Core.rsp","index":181}
-{"msg":"runNodeAction","annotation":"WriteText Library/Bee/artifacts/200b0aE.dag/Unity.VisualScripting.Core.rsp","index":181}
-{"msg":"noderesult","processed_node_count":9,"number_of_nodes_ever_queued":348,"annotation":"WriteText Library/Bee/artifacts/200b0aE.dag/Unity.VisualScripting.Core.rsp","index":181,"exitcode":0,"outputfile":"Library/Bee/artifacts/200b0aE.dag/Unity.VisualScripting.Core.rsp"}
-{"msg":"newNode","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEditor.TextCoreFontEngineModule.dll_4F4AE129136BB731.mvfrm","index":17}
-{"msg":"runNodeAction","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEditor.TextCoreFontEngineModule.dll_4F4AE129136BB731.mvfrm","index":17}
-{"msg":"newNode","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEditor.TextCoreTextEngineModule.dll_9733179AA2EF704F.mvfrm","index":18}
-{"msg":"runNodeAction","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEditor.TextCoreTextEngineModule.dll_9733179AA2EF704F.mvfrm","index":18}
-{"msg":"noderesult","processed_node_count":10,"number_of_nodes_ever_queued":348,"annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEditor.TextCoreFontEngineModule.dll_4F4AE129136BB731.mvfrm","index":17,"exitcode":0,"outputfile":"Library/Bee/artifacts/mvdfrm/UnityEditor.TextCoreFontEngineModule.dll_4F4AE129136BB731.mvfrm"}
-{"msg":"newNode","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEditor.UIBuilderModule.dll_C4A07CA36B703A77.mvfrm","index":19}
-{"msg":"runNodeAction","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEditor.UIBuilderModule.dll_C4A07CA36B703A77.mvfrm","index":19}
-{"msg":"noderesult","processed_node_count":11,"number_of_nodes_ever_queued":348,"annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEditor.TextCoreTextEngineModule.dll_9733179AA2EF704F.mvfrm","index":18,"exitcode":0,"outputfile":"Library/Bee/artifacts/mvdfrm/UnityEditor.TextCoreTextEngineModule.dll_9733179AA2EF704F.mvfrm"}
-{"msg":"newNode","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEditor.UIElementsModule.dll_D704671623B29B6F.mvfrm","index":20}
-{"msg":"runNodeAction","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEditor.UIElementsModule.dll_D704671623B29B6F.mvfrm","index":20}
-{"msg":"newNode","annotation":"Csc Library/Bee/artifacts/200b0aE.dag/UnityEngine.TestRunner.dll (+2 others)","index":3}
-{"msg":"runNodeAction","annotation":"Csc Library/Bee/artifacts/200b0aE.dag/UnityEngine.TestRunner.dll (+2 others)","index":3}
-{"msg":"newNode","annotation":"Csc Library/Bee/artifacts/200b0aE.dag/UnityEngine.UI.dll (+2 others)","index":96}
-{"msg":"runNodeAction","annotation":"Csc Library/Bee/artifacts/200b0aE.dag/UnityEngine.UI.dll (+2 others)","index":96}
-{"msg":"noderesult","processed_node_count":12,"number_of_nodes_ever_queued":348,"annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEditor.UIBuilderModule.dll_C4A07CA36B703A77.mvfrm","index":19,"exitcode":0,"outputfile":"Library/Bee/artifacts/mvdfrm/UnityEditor.UIBuilderModule.dll_C4A07CA36B703A77.mvfrm"}
-{"msg":"newNode","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEditor.UIElementsSamplesModule.dll_F7BC2F255BAF31EE.mvfrm","index":21}
-{"msg":"runNodeAction","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEditor.UIElementsSamplesModule.dll_F7BC2F255BAF31EE.mvfrm","index":21}
-{"msg":"noderesult","processed_node_count":13,"number_of_nodes_ever_queued":348,"annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEditor.UIElementsModule.dll_D704671623B29B6F.mvfrm","index":20,"exitcode":0,"outputfile":"Library/Bee/artifacts/mvdfrm/UnityEditor.UIElementsModule.dll_D704671623B29B6F.mvfrm"}
-{"msg":"newNode","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEditor.UIServiceModule.dll_FD928E0654A78A91.mvfrm","index":22}
-{"msg":"runNodeAction","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEditor.UIServiceModule.dll_FD928E0654A78A91.mvfrm","index":22}
-{"msg":"noderesult","processed_node_count":14,"number_of_nodes_ever_queued":348,"annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEditor.UIElementsSamplesModule.dll_F7BC2F255BAF31EE.mvfrm","index":21,"exitcode":0,"outputfile":"Library/Bee/artifacts/mvdfrm/UnityEditor.UIElementsSamplesModule.dll_F7BC2F255BAF31EE.mvfrm"}
-{"msg":"newNode","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEditor.UnityConnectModule.dll_9D6B2BFCFD27CF49.mvfrm","index":23}
-{"msg":"runNodeAction","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEditor.UnityConnectModule.dll_9D6B2BFCFD27CF49.mvfrm","index":23}
-{"msg":"noderesult","processed_node_count":15,"number_of_nodes_ever_queued":348,"annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEditor.UIServiceModule.dll_FD928E0654A78A91.mvfrm","index":22,"exitcode":0,"outputfile":"Library/Bee/artifacts/mvdfrm/UnityEditor.UIServiceModule.dll_FD928E0654A78A91.mvfrm"}
-{"msg":"newNode","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.AccessibilityModule.dll_2FAA8FEA4123F003.mvfrm","index":24}
-{"msg":"runNodeAction","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.AccessibilityModule.dll_2FAA8FEA4123F003.mvfrm","index":24}
-{"msg":"noderesult","processed_node_count":16,"number_of_nodes_ever_queued":348,"annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEditor.UnityConnectModule.dll_9D6B2BFCFD27CF49.mvfrm","index":23,"exitcode":0,"outputfile":"Library/Bee/artifacts/mvdfrm/UnityEditor.UnityConnectModule.dll_9D6B2BFCFD27CF49.mvfrm"}
-{"msg":"newNode","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.AIModule.dll_9657D3DA2DC1C107.mvfrm","index":25}
-{"msg":"runNodeAction","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.AIModule.dll_9657D3DA2DC1C107.mvfrm","index":25}
-{"msg":"noderesult","processed_node_count":17,"number_of_nodes_ever_queued":348,"annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.AccessibilityModule.dll_2FAA8FEA4123F003.mvfrm","index":24,"exitcode":0,"outputfile":"Library/Bee/artifacts/mvdfrm/UnityEngine.AccessibilityModule.dll_2FAA8FEA4123F003.mvfrm"}
-{"msg":"newNode","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.AndroidJNIModule.dll_554D4FE96CD20A45.mvfrm","index":26}
-{"msg":"runNodeAction","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.AndroidJNIModule.dll_554D4FE96CD20A45.mvfrm","index":26}
-{"msg":"noderesult","processed_node_count":18,"number_of_nodes_ever_queued":348,"annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.AndroidJNIModule.dll_554D4FE96CD20A45.mvfrm","index":26,"exitcode":0,"outputfile":"Library/Bee/artifacts/mvdfrm/UnityEngine.AndroidJNIModule.dll_554D4FE96CD20A45.mvfrm"}
-{"msg":"newNode","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.AnimationModule.dll_3E9D4BAFD31495E9.mvfrm","index":27}
-{"msg":"runNodeAction","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.AnimationModule.dll_3E9D4BAFD31495E9.mvfrm","index":27}
-{"msg":"noderesult","processed_node_count":19,"number_of_nodes_ever_queued":348,"annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.AIModule.dll_9657D3DA2DC1C107.mvfrm","index":25,"exitcode":0,"outputfile":"Library/Bee/artifacts/mvdfrm/UnityEngine.AIModule.dll_9657D3DA2DC1C107.mvfrm"}
-{"msg":"newNode","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.ARModule.dll_4FCA98DD8ADF1FD0.mvfrm","index":28}
-{"msg":"runNodeAction","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.ARModule.dll_4FCA98DD8ADF1FD0.mvfrm","index":28}
-{"msg":"noderesult","processed_node_count":20,"number_of_nodes_ever_queued":348,"annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.ARModule.dll_4FCA98DD8ADF1FD0.mvfrm","index":28,"exitcode":0,"outputfile":"Library/Bee/artifacts/mvdfrm/UnityEngine.ARModule.dll_4FCA98DD8ADF1FD0.mvfrm"}
-{"msg":"newNode","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.AssetBundleModule.dll_D7B7D36F7A077437.mvfrm","index":29}
-{"msg":"runNodeAction","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.AssetBundleModule.dll_D7B7D36F7A077437.mvfrm","index":29}
-{"msg":"noderesult","processed_node_count":21,"number_of_nodes_ever_queued":348,"annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.AnimationModule.dll_3E9D4BAFD31495E9.mvfrm","index":27,"exitcode":0,"outputfile":"Library/Bee/artifacts/mvdfrm/UnityEngine.AnimationModule.dll_3E9D4BAFD31495E9.mvfrm"}
-{"msg":"newNode","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.AudioModule.dll_DD742F461FBCD49B.mvfrm","index":30}
-{"msg":"runNodeAction","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.AudioModule.dll_DD742F461FBCD49B.mvfrm","index":30}
-{"msg":"noderesult","processed_node_count":22,"number_of_nodes_ever_queued":348,"annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.AssetBundleModule.dll_D7B7D36F7A077437.mvfrm","index":29,"exitcode":0,"outputfile":"Library/Bee/artifacts/mvdfrm/UnityEngine.AssetBundleModule.dll_D7B7D36F7A077437.mvfrm"}
-{"msg":"newNode","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.ClothModule.dll_445C8C40F9D9B37F.mvfrm","index":31}
-{"msg":"runNodeAction","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.ClothModule.dll_445C8C40F9D9B37F.mvfrm","index":31}
-{"msg":"noderesult","processed_node_count":23,"number_of_nodes_ever_queued":348,"annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.AudioModule.dll_DD742F461FBCD49B.mvfrm","index":30,"exitcode":0,"outputfile":"Library/Bee/artifacts/mvdfrm/UnityEngine.AudioModule.dll_DD742F461FBCD49B.mvfrm"}
-{"msg":"newNode","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.ClusterInputModule.dll_1D07A112AEAFA20F.mvfrm","index":32}
-{"msg":"runNodeAction","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.ClusterInputModule.dll_1D07A112AEAFA20F.mvfrm","index":32}
-{"msg":"noderesult","processed_node_count":24,"number_of_nodes_ever_queued":348,"annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.ClothModule.dll_445C8C40F9D9B37F.mvfrm","index":31,"exitcode":0,"outputfile":"Library/Bee/artifacts/mvdfrm/UnityEngine.ClothModule.dll_445C8C40F9D9B37F.mvfrm"}
-{"msg":"newNode","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.ClusterRendererModule.dll_EA35EC093F78D5A2.mvfrm","index":33}
-{"msg":"runNodeAction","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.ClusterRendererModule.dll_EA35EC093F78D5A2.mvfrm","index":33}
-{"msg":"noderesult","processed_node_count":25,"number_of_nodes_ever_queued":348,"annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.ClusterInputModule.dll_1D07A112AEAFA20F.mvfrm","index":32,"exitcode":0,"outputfile":"Library/Bee/artifacts/mvdfrm/UnityEngine.ClusterInputModule.dll_1D07A112AEAFA20F.mvfrm"}
-{"msg":"newNode","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.CoreModule.dll_448CB169B478023E.mvfrm","index":34}
-{"msg":"runNodeAction","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.CoreModule.dll_448CB169B478023E.mvfrm","index":34}
-{"msg":"noderesult","processed_node_count":26,"number_of_nodes_ever_queued":348,"annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.ClusterRendererModule.dll_EA35EC093F78D5A2.mvfrm","index":33,"exitcode":0,"outputfile":"Library/Bee/artifacts/mvdfrm/UnityEngine.ClusterRendererModule.dll_EA35EC093F78D5A2.mvfrm"}
-{"msg":"newNode","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.CrashReportingModule.dll_ECEFBEC7526F6896.mvfrm","index":35}
-{"msg":"runNodeAction","annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.CrashReportingModule.dll_ECEFBEC7526F6896.mvfrm","index":35}
-{"msg":"noderesult","processed_node_count":27,"number_of_nodes_ever_queued":348,"annotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.CoreModule.dll_448CB169B478023E.mvfrm","index":34,"exitcode":
+{"msg":"nodeRetryBuild","annotation":"Csc Library/Bee/artifacts/200b0aE.dag/Assembly-CSharp.dll (+2 others)","index":274}
+{"msg":"runNodeAction","annotation":"Csc Library/Bee/artifacts/200b0aE.dag/Assembly-CSharp.dll (+2 others)","index":274}
+{"msg":"noderesult","processed_node_count":344,"number_of_nodes_ever_queued":348,"annotation":"Csc Library/Bee/artifacts/200b0aE.dag/Assembly-CSharp.dll (+2 others)","index":274,"exitcode":0,"outputfile":"Library/Bee/artifacts/200b0aE.dag/Assembly-CSharp.dll"}
+{"msg":"inputSignatureChanged","annotation":"CopyFiles Library/ScriptAssemblies/Assembly-CSharp.pdb","index":348,"changes":[{"key":"InputFileList","value":["Library/Bee/artifacts/200b0aE.dag/Assembly-CSharp.pdb"],"oldvalue":[],"dependency":"explicit"}]}
+{"msg":"runNodeAction","annotation":"CopyFiles Library/ScriptAssemblies/Assembly-CSharp.pdb","index":348}
+{"msg":"inputSignatureChanged","annotation":"CopyFiles Library/ScriptAssemblies/Assembly-CSharp.dll","index":347,"changes":[{"key":"InputFileList","value":["Library/Bee/artifacts/200b0aE.dag/Assembly-CSharp.dll"],"oldvalue":[],"dependency":"explicit"}]}
+{"msg":"runNodeAction","annotation":"CopyFiles Library/ScriptAssemblies/Assembly-CSharp.dll","index":347}
+{"msg":"noderesult","processed_node_count":345,"number_of_nodes_ever_queued":348,"annotation":"CopyFiles Library/ScriptAssemblies/Assembly-CSharp.pdb","index":348,"exitcode":0,"outputfile":"Library/ScriptAssemblies/Assembly-CSharp.pdb"}
+{"msg":"noderesult","processed_node_count":346,"number_of_nodes_ever_queued":348,"annotation":"CopyFiles Library/ScriptAssemblies/Assembly-CSharp.dll","index":347,"exitcode":0,"outputfile":"Library/ScriptAssemblies/Assembly-CSharp.dll"}

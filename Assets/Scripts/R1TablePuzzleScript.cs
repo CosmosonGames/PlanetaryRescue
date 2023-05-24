@@ -49,7 +49,7 @@ public class R1TablePuzzleScript : MonoBehaviour
 
     public GameObject inventory;
     public InventoryItemData referenceItem;
-    private InventorySystem current;
+    private InventorySystem InventorySystem;
 
     private bool debug;
 
@@ -101,12 +101,12 @@ public class R1TablePuzzleScript : MonoBehaviour
     void Start()
     {
         logic = logicObject.GetComponent<LogicManagerScript>();
-        current = inventory.GetComponent<InventorySystem>();
+        InventorySystem = inventory.GetComponent<InventorySystem>();
 
         debug = logic.debug;
 
-        BS = new List<GameObject> { BSGreen, BSOrange, BSYellow, BSBlack};
-        S = new List<GameObject> { SPurple, SRed, SPink, SBlue};
+        BS = new List<GameObject> { BSGreen, BSOrange, BSYellow, BSBlack };
+        S = new List<GameObject> { SPurple, SRed, SPink, SBlue };
 
         bsGreenCollider = BSGreen.GetComponent<BoxCollider2D>();
         bsOrangeCollider = BSOrange.GetComponent<BoxCollider2D>();
@@ -137,7 +137,8 @@ public class R1TablePuzzleScript : MonoBehaviour
         }
     }
 
-    void PositionObjects(){
+    void PositionObjects()
+    {
 
         System.Random random = new System.Random();
 
@@ -169,10 +170,10 @@ public class R1TablePuzzleScript : MonoBehaviour
             SpriteRenderer sprite = gameObject.GetComponent<SpriteRenderer>();
             totalBSSize += sprite.localBounds.size.x;
         }
-        float spaceBetweenBS = (totalSpace - (2 * edges) - totalBSSize)/BS.Count + totalBSSize/(BS.Count);
+        float spaceBetweenBS = (totalSpace - (2 * edges) - totalBSSize) / BS.Count + totalBSSize / (BS.Count);
 
         // Add a half of a square to push it
-        float BSLeftEdge =leftEdge + (edges + BS[0].gameObject.GetComponent<SpriteRenderer>().localBounds.size.x/2);
+        float BSLeftEdge = leftEdge + (edges + BS[0].gameObject.GetComponent<SpriteRenderer>().localBounds.size.x / 2);
 
         // Set the position of each sprite based on its index in the shuffled list
         for (int i = 0; i < BS.Count; i++)
@@ -182,7 +183,8 @@ public class R1TablePuzzleScript : MonoBehaviour
         }
     }
 
-    void HandleMouse(){
+    void HandleMouse()
+    {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (Input.GetMouseButtonDown(0))
         {
@@ -202,7 +204,8 @@ public class R1TablePuzzleScript : MonoBehaviour
                     }
                 }
 
-            } else
+            }
+            else
             {
                 LeavePuzzle();
 
@@ -238,7 +241,8 @@ public class R1TablePuzzleScript : MonoBehaviour
 
     }
 
-    void CheckIfCorrect(){
+    void CheckIfCorrect()
+    {
         // Check if the sprites are in the correct positions & mouse is not dragging a sprite --> if so, load the next scene
         if (bsGreenCollider.bounds.Intersects(sRedCollider.bounds) && bsYellowCollider.bounds.Intersects(sPurpleCollider.bounds) && bsOrangeCollider.bounds.Intersects(sBlueCollider.bounds) && bsBlackCollider.bounds.Intersects(sPinkCollider.bounds) && selectedObject == null)
         {
@@ -276,11 +280,11 @@ public class R1TablePuzzleScript : MonoBehaviour
 
     private void AddToInventory()
     {
-        if (current != null && referenceItem != null)
+        if (InventorySystem.current != null && referenceItem != null)
         {
-            current.Add(referenceItem);
+            InventorySystem.current.Add(referenceItem);
             Debug.Log("Added to inventory...");
-            Debug.Log(current.Get(referenceItem));
+            Debug.Log(InventorySystem.current.Get(referenceItem));
 
         }
         else

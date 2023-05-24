@@ -7,11 +7,36 @@ public class InventorySystem : MonoBehaviour
 {
     private Dictionary<InventoryItemData, InventoryItem> m_itemDictionary;
     public List<InventoryItem> inventory { get; private set; }
+    public InventorySystem current;
 
     private void Awake()
     {
         inventory = new List<InventoryItem>();
         m_itemDictionary = new Dictionary<InventoryItemData, InventoryItem>();
+
+    }
+
+    public void Start()
+    {
+
+    }
+
+    private void OnUpdateInventory()
+    {
+
+    }
+
+    public void DrawInventory()
+    {
+        foreach (InventoryItem item in current.inventory)
+        {
+            AddInventorySlot(item);
+        }
+    }
+
+    public void AddInventorySlot(InventoryItem item)
+    {
+        //GameObject obj = Instantiate(m_slotPrefab);
 
     }
 
