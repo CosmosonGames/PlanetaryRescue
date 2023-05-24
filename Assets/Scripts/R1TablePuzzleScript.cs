@@ -48,8 +48,8 @@ public class R1TablePuzzleScript : MonoBehaviour
     private LogicManagerScript logic;
 
     public GameObject inventory;
-    private InventoryItemData referenceItem;
-    public InventorySystem inventorySystem;
+    public InventoryItemData referenceItem;
+    private InventorySystem current;
 
     private bool debug;
 
@@ -101,7 +101,7 @@ public class R1TablePuzzleScript : MonoBehaviour
     void Start()
     {
         logic = logicObject.GetComponent<LogicManagerScript>();
-        inventorySystem = inventory.GetComponent<InventorySystem>();
+        current = inventory.GetComponent<InventorySystem>();
 
         debug = logic.debug;
 
@@ -244,6 +244,7 @@ public class R1TablePuzzleScript : MonoBehaviour
         {
             //CHECK MARK
 
+            AddToInventory();
             LeavePuzzle();
 
             if (debug)
@@ -275,6 +276,14 @@ public class R1TablePuzzleScript : MonoBehaviour
 
     private void AddToInventory()
     {
-
+        if (current != null && referenceItem != null)
+        {
+            current.Add(referenceItem);
+            Debug.Log("Added to inventory...");
+        }
+        else
+        {
+            Debug.Log("Reference item is null...");
+        }
     }
 }

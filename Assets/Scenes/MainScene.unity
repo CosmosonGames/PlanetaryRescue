@@ -4067,6 +4067,8 @@ MonoBehaviour:
   SBlue: {fileID: 1550577638}
   checkInterval: 0.1
   logicObject: {fileID: 907094062}
+  inventory: {fileID: 1808315384}
+  referenceItem: {fileID: 11400000, guid: a5e4a3cf3df01491e8003ed3a9968dd4, type: 2}
 --- !u!1 &2128932130
 GameObject:
   m_ObjectHideFlags: 0
