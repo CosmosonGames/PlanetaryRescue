@@ -280,6 +280,8 @@ public class R1TablePuzzleScript : MonoBehaviour
         {
             current.Add(referenceItem);
             Debug.Log("Added to inventory...");
+            Debug.Log(current.Get(referenceItem));
+
         }
         else
         {

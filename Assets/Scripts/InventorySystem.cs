@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class InventorySystem : MonoBehaviour
 {
     private Dictionary<InventoryItemData, InventoryItem> m_itemDictionary;
@@ -20,9 +19,13 @@ public class InventorySystem : MonoBehaviour
     {
         if (m_itemDictionary.TryGetValue(referenceData, out InventoryItem value))
         {
+            int number = value.stackSize;
+            Debug.Log(number);
             return value;
+        }else
+        {
+            return null;
         }
-        return null;
     }
 
     public void Add(InventoryItemData referenceData)
