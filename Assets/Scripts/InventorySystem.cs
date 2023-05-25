@@ -9,7 +9,6 @@ public class InventorySystem : MonoBehaviour
 {
     private Dictionary<InventoryItemData, InventoryItem> m_itemDictionary;
 
-    [SerializeField]
     public List<InventoryItem> inventory { get; private set; }
 
     public static InventorySystem current;
@@ -143,17 +142,10 @@ public class InventorySystem : MonoBehaviour
             StackSize--;
         }
     }
-
-    [SerializeField]
+        
     private Image m_icon;
-
-    [SerializeField]
     private TextMeshProUGUI m_label;
-
-    [SerializeField]
     private GameObject m_stackObj;
-
-    [SerializeField]
     private TextMeshProUGUI m_stackLabel;
 
     public void Set(InventoryItem item)
