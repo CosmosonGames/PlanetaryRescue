@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
+[SerializeField]
 public class InventoryItem
 {
     public InventoryItemData data { get; private set; }
