@@ -20,6 +20,9 @@ public class R1Table : MonoBehaviour
 
     private void OnMouseUp()
     {
+        Debug.Log("logged mouse up");
+        Debug.Log(characterControl.puzzleEnabled);
+        Debug.Log(spriteRenderer.enabled);
         if (!spriteRenderer.enabled && !characterControl.puzzleEnabled)
         {
             spriteRenderer.enabled = true;

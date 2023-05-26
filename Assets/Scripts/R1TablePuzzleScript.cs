@@ -40,7 +40,7 @@ public class R1TablePuzzleScript : MonoBehaviour
     List<GameObject> S;
 
     public float checkInterval = 0.1f;
-    private bool isVisible = true;
+    private bool isVisible = false;
 
     private CharacterControl characterControl;
 
@@ -53,14 +53,17 @@ public class R1TablePuzzleScript : MonoBehaviour
 
     private bool debug;
 
+    private bool puzzleComplete = false;
+
     private IEnumerator CheckVisibility()
     {
-        while (true)
+        while (true && !puzzleComplete)
         {
-            bool currentVisibility = parentSprite.isVisible;
+            bool currentVisibility = parentSprite.enabled ;
 
             if (currentVisibility != isVisible)
             {
+
                 isVisible = currentVisibility;
 
                 if (isVisible)
@@ -72,6 +75,7 @@ public class R1TablePuzzleScript : MonoBehaviour
                 {
                     OnSpriteRendererDisabled();
                 }
+
             }
 
             yield return new WaitForSeconds(checkInterval);
@@ -83,6 +87,12 @@ public class R1TablePuzzleScript : MonoBehaviour
         foreach (SpriteRenderer child in parentSprite.GetComponentsInChildren<SpriteRenderer>())
         {
             child.enabled = true;
+            Debug.Log($"{child.name}: {child.enabled}");
+        }
+
+        if (debug)
+        {
+            Debug.Log("R1TablePuzzle sprite enabled");
         }
 
         AdjustLocation();
@@ -94,6 +104,12 @@ public class R1TablePuzzleScript : MonoBehaviour
         {
             child.enabled = false;
         }
+
+        if (debug)
+        {
+            Debug.Log("R1TablePuzzle sprite disabled");
+        }
+
         characterControl.puzzleEnabled = false;
     }
 
@@ -250,6 +266,7 @@ public class R1TablePuzzleScript : MonoBehaviour
 
             AddToInventory();
             LeavePuzzle();
+            puzzleComplete = true;
 
             if (debug)
             {

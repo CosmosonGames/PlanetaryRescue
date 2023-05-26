@@ -3,40 +3,40 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class R1PhotoDevelopingScript : MonoBehaviour
+public class R1Anagrams : MonoBehaviour
 {
-    public GameObject parentObject;
-    private SpriteRenderer parentSprite;
+    public GameObject letterA;
+    public GameObject letterK;
+    public GameObject letterP1;
+    public GameObject letterP2;
+    public GameObject letterQ;
+    public GameObject letterS;
+    public GameObject letterV;
+    public GameObject letterX;
+
+    List<Transform> transforms = new List<Transform>();
+    List<GameObject> letters;
+
+    GameObject selectedObject;
+    Vector3 offset;
 
     public GameObject player;
+
+    public GameObject parentObject;
+    private SpriteRenderer parentSprite;
     private CharacterControl characterControl;
 
     public float checkInterval = 0.1f;
     private bool isVisible = true;
 
-    GameObject selectedObject;
-    Vector3 offset;
-
     [SerializeField]
-    List<GameObject> DoNotMove;
-
-    [SerializeField]
-    List<GameObject> moveableObjects;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        parentSprite = parentObject.GetComponent<SpriteRenderer>();
-        characterControl = player.GetComponent<CharacterControl>();
-        StartCoroutine(CheckVisibility());
-
-    }
+    public List<GameObject> DoNotMove;
 
     private IEnumerator CheckVisibility()
     {
         while (true)
         {
-            bool currentVisibility = parentSprite.isVisible;
+            bool currentVisibility = parentSprite.enabled;
 
             if (currentVisibility != isVisible)
             {
@@ -63,8 +63,8 @@ public class R1PhotoDevelopingScript : MonoBehaviour
         {
             child.enabled = true;
         }
-
         AdjustLocation();
+        Debug.Log("sprite enabled");
     }
 
     private void OnSpriteRendererDisabled()
@@ -73,12 +73,29 @@ public class R1PhotoDevelopingScript : MonoBehaviour
         {
             child.enabled = false;
         }
+        parentSprite.enabled = false;
         characterControl.puzzleEnabled = false;
+        Debug.Log("sprite disabled");
     }
 
-    void AdjustLocation()
+    // Start is called before the first frame update
+    void Start()
     {
-        parentObject.transform.position = player.transform.position;
+        letters = new List<GameObject> { letterA, letterK, letterP1, letterP2, letterQ, letterS, letterV, letterX };
+
+        parentSprite = parentObject.GetComponent<SpriteRenderer>();
+        parentSprite.enabled = false;
+
+        foreach (GameObject letter in letters)
+        {
+            transforms.Add(letter.GetComponent<Transform>());
+        }
+
+        characterControl = player.GetComponent<CharacterControl>();
+
+        PositionObjects();
+
+        StartCoroutine(CheckVisibility());
     }
 
     // Update is called once per frame
@@ -89,6 +106,33 @@ public class R1PhotoDevelopingScript : MonoBehaviour
             HandleMouse();
         }
     }
+
+    void PositionObjects()
+    {
+        System.Random random = new System.Random();
+
+        // Shuffle the list using the Fisher-Yates shuffle algorithm
+        for (int i = letters.Count - 1; i > 0; i--)
+        {
+            int j = random.Next(0, i + 1);
+            GameObject temp = letters[i];
+            letters[i] = letters[j];
+            letters[j] = temp;
+        }
+
+        int count = 0;
+        foreach (GameObject obj in letters)
+        {
+            obj.transform.position = transforms[count].position;
+            obj.transform.rotation = transforms[count].rotation;
+            obj.transform.localScale = transforms[count].localScale;
+            count++;
+        }
+
+        parentObject.transform.localScale = new Vector3(0.8f, 0.8f, 1f); 
+
+    }
+
 
     void HandleMouse()
     {
@@ -103,7 +147,7 @@ public class R1PhotoDevelopingScript : MonoBehaviour
                 foreach (Collider2D collider in colliders)
                 {
                     GameObject targetObject = collider.gameObject;
-                    if (!DoNotMove.Contains(targetObject) && moveableObjects.Contains(targetObject))
+                    if (!DoNotMove.Contains(targetObject) && letters.Contains(targetObject))
                     {
                         selectedObject = targetObject.transform.gameObject;
                         offset = selectedObject.transform.position - mousePosition;
@@ -120,6 +164,7 @@ public class R1PhotoDevelopingScript : MonoBehaviour
         }
         if (selectedObject)
         {
+            selectedObject.transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
             // Check if the mouse position is over a collider
             Collider2D[] colliders = Physics2D.OverlapCircleAll(mousePosition, 0.1f);
             foreach (Collider2D collider in colliders)
@@ -145,13 +190,15 @@ public class R1PhotoDevelopingScript : MonoBehaviour
         {
             selectedObject = null;
         }
-
     }
 
-    void LeavePuzzle()
+    private void LeavePuzzle()
     {
-        parentSprite.enabled = false;
-
+        OnSpriteRendererDisabled();
     }
 
+    private void AdjustLocation()
+    {
+        parentObject.transform.position = player.transform.position;
+    }
 }

@@ -1,23 +1,30 @@
-﻿<Properties StartupConfiguration="{3EF9C89F-5C92-8B21-C2CC-AF822D9FA1B6}|" BuildWithMSBuildOnMono="True">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint enabled="false" file="/Users/owensun/Downloads/CAMS/CSE/IDP/Planetary Rescue/Assets/Scripts/R1TablePuzzleScript.cs" relfile="Assets/Scripts/R1TablePuzzleScript.cs" line="87" column="9" />
-    </BreakpointStore>
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="b65772f5-8b2f-4085-b7b3-0953440fcd5a" />
+﻿<Properties BuildWithMSBuildOnMono="True" StartupConfiguration="{3EF9C89F-5C92-8B21-C2CC-AF822D9FA1B6}|">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="09776650-3cfe-44e7-b5bc-693a45504897" />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/LogicManagerScript.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/R1PhotoDevelopingScript.cs">
     <Files>
-      <File FileName="Assets/Scripts/R1TablePuzzleScript.cs" Line="175" Column="1" />
-      <File FileName="Assets/Scripts/LogicManagerScript.cs" Line="18" Column="28" />
+      <File FileName="Assets/Scripts/R1TablePuzzleScript.cs" />
+      <File FileName="Assets/Scripts/LogicManagerScript.cs" />
+      <File FileName="Assets/Scripts/InventorySystem.cs" />
+      <File FileName="Assets/Scripts/InventoryItemData.cs" />
+      <File FileName="Assets/Scripts/InventoryItem.cs" Line="6" Column="1" />
+      <File FileName="Assets/Scripts/R1Table.cs" />
+      <File FileName="Assets/Scripts/R1PaintingPopUp.cs" />
+      <File FileName="Assets/Scripts/R1Painting.cs" Line="15" Column="6" />
+      <File FileName="Assets/Scripts/R1Anagrams.cs" />
+      <File FileName="Assets/Scripts/R1PhotoDevelopingScript.cs" Line="107" Column="1" />
+      <File FileName="Assets/Scripts/R1WordBox.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Planetary Rescue" expanded="True">
             <Node name="Assets" expanded="True">
-              <Node name="Scripts" expanded="True" />
+              <Node name="Scripts" expanded="True">
+                <Node name="R1PhotoDevelopingScript.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>
@@ -30,5 +37,7 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
 </Properties>

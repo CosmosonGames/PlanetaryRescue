@@ -23,6 +23,6 @@ public class R1DevRoom : MonoBehaviour
         if (!spriteRenderer.enabled && !characterControl.puzzleEnabled)
         {
             spriteRenderer.enabled = true;
-        }
+        } 
     }
 }
