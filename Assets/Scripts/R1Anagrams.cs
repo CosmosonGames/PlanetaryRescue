@@ -32,6 +32,12 @@ public class R1Anagrams : MonoBehaviour
     [SerializeField]
     public List<GameObject> DoNotMove;
 
+    private float startTime = 0f;
+    public float timeTaken = 0f;
+
+    public GameObject logicObject;
+    private LogicManagerScript logic;
+
     private IEnumerator CheckVisibility()
     {
         while (true)
@@ -63,8 +69,13 @@ public class R1Anagrams : MonoBehaviour
         {
             child.enabled = true;
         }
+        
         AdjustLocation();
         Debug.Log("sprite enabled");
+
+        if (startTime == 0){
+            startTime = logic.currentTime;
+        }
     }
 
     private void OnSpriteRendererDisabled()
@@ -83,6 +94,7 @@ public class R1Anagrams : MonoBehaviour
     {
         letters = new List<GameObject> { letterA, letterK, letterP1, letterP2, letterQ, letterS, letterV, letterX };
 
+        logic = logicObject.GetComponent<LogicManagerScript>();
         parentSprite = parentObject.GetComponent<SpriteRenderer>();
         parentSprite.enabled = false;
 
@@ -200,5 +212,15 @@ public class R1Anagrams : MonoBehaviour
     private void AdjustLocation()
     {
         parentObject.transform.position = player.transform.position;
+    }
+
+    private void CheckCompletion(){
+        //FORM SPAR
+        if (false){
+            timeTaken = logic.currentTime - startTime;
+            if (logic.debug){
+                Debug.Log($"Time Taken: {timeTaken}");
+            }
+        }
     }
 }

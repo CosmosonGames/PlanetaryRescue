@@ -20,6 +20,8 @@ public class R1DevRoom : MonoBehaviour
 
     private void OnMouseUp()
     {
+        Debug.Log($"Sprite Enabled: {spriteRenderer.enabled}");
+        Debug.Log($"Character Control Puzzle Enabled: {characterControl.puzzleEnabled}");
         if (!spriteRenderer.enabled && !characterControl.puzzleEnabled)
         {
             spriteRenderer.enabled = true;

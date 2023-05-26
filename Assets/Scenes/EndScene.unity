@@ -366,7 +366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c8900f42fe664ab4997b89d13262f4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  logic: {fileID: 0}
+  logic: {fileID: 1404487554}
 --- !u!4 &710618599
 Transform:
   m_ObjectHideFlags: 0
@@ -845,6 +845,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   multiplayer: 1
   debug: 1
+  timerText: {fileID: 0}
+  countDown: 0
+  currentTime: 0
+  hasLimit: 0
+  timerLimit: 0
 --- !u!4 &1404487555
 Transform:
   m_ObjectHideFlags: 0
@@ -1186,6 +1191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   username: {fileID: 1472938406}
   sheets: {fileID: 710618598}
+  logic: {fileID: 0}
 --- !u!4 &2031384624
 Transform:
   m_ObjectHideFlags: 0

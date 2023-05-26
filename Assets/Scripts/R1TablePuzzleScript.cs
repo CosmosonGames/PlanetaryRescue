@@ -54,6 +54,8 @@ public class R1TablePuzzleScript : MonoBehaviour
     private bool debug;
 
     private bool puzzleComplete = false;
+    private long startTime;
+    public long timeTaken;
 
     private IEnumerator CheckVisibility()
     {
@@ -271,7 +273,9 @@ public class R1TablePuzzleScript : MonoBehaviour
             if (debug)
             {
                 Debug.Log("User successfully completed Table Puzzle in Room #1.");
+                Debug.Log($"Time Taken: {timeTaken}");
             }
+        
 
             // Handle collision here
         }

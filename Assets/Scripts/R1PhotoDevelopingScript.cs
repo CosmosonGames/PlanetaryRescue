@@ -69,7 +69,8 @@ public class R1PhotoDevelopingScript : MonoBehaviour
 
     private bool debug;
 
-
+    private float startTime = 0f;
+    public float timeTaken = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -134,6 +135,10 @@ public class R1PhotoDevelopingScript : MonoBehaviour
         }
 
         AdjustLocation();
+
+        if (startTime == 0){
+            startTime = logic.currentTime;
+        }
     }
 
     private void OnSpriteRendererDisabled()
@@ -234,23 +239,14 @@ public class R1PhotoDevelopingScript : MonoBehaviour
             LeavePuzzle();
             puzzleComplete = true;
 
-            if (debug)
-            {
-                Debug.Log("User successfully completed Table Puzzle in Room #2.");
-            }
-        }
-        {
-            //CHECK MARK
-
-            LeavePuzzle();
-            puzzleComplete = true;
+            timeTaken = startTime - logic.currentTime;
 
             if (debug)
             {
                 Debug.Log("User successfully completed Table Puzzle in Room #2.");
+                Debug.Log($"Time Taken: {timeTaken.ToString()}");
             }
         }
-
     }
 
 }
