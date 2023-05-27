@@ -105,12 +105,12 @@ public class R1PhotoDevelopingScript : MonoBehaviour
         debug = logic.debug;
 
         StartCoroutine(CheckVisibility());
-
+        Debug.Log("Visibility check started");
     }
 
     private IEnumerator CheckVisibility()
     {
-        while (true && !puzzleComplete)
+        while (!puzzleComplete)
         {
             bool currentVisibility = parentSprite.enabled;
 
@@ -139,6 +139,11 @@ public class R1PhotoDevelopingScript : MonoBehaviour
         {
             child.enabled = true;
         }
+        parentSprite.enabled = true;
+        numOpen ++;
+        if (logic.debug){
+            Debug.Log("Photo Developing Puzzle Enabled");
+        }
 
         AdjustLocation();
 
@@ -153,6 +158,8 @@ public class R1PhotoDevelopingScript : MonoBehaviour
         {
             child.enabled = false;
         }
+        parentSprite.enabled = false;
+
         characterControl.puzzleEnabled = false;
     }
 
@@ -231,7 +238,7 @@ public class R1PhotoDevelopingScript : MonoBehaviour
 
     void LeavePuzzle()
     {
-        parentSprite.enabled = false;
+        OnSpriteRendererDisabled();
 
     }
 

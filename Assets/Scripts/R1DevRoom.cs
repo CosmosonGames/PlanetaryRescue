@@ -18,8 +18,9 @@ public class R1DevRoom : MonoBehaviour
         characterControl = player.GetComponent<CharacterControl>();
         spriteRenderer = puzzle.GetComponent<SpriteRenderer>();
         photoDeveloping = puzzle.GetComponent<R1PhotoDevelopingScript>();
-        
+
         spriteRenderer.enabled = false;
+        Debug.Log($"Sprite Enabled: {spriteRenderer.enabled}");
     }
 
     private void OnMouseUp()
