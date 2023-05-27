@@ -10,11 +10,15 @@ public class R1DevRoom : MonoBehaviour
     public GameObject player;
     private CharacterControl characterControl;
 
+    private R1PhotoDevelopingScript photoDeveloping;
+
     // Start is called before the first frame update
     void Start()
     {
         characterControl = player.GetComponent<CharacterControl>();
         spriteRenderer = puzzle.GetComponent<SpriteRenderer>();
+        photoDeveloping = puzzle.GetComponent<R1PhotoDevelopingScript>();
+        
         spriteRenderer.enabled = false;
     }
 
@@ -22,7 +26,7 @@ public class R1DevRoom : MonoBehaviour
     {
         Debug.Log($"Sprite Enabled: {spriteRenderer.enabled}");
         Debug.Log($"Character Control Puzzle Enabled: {characterControl.puzzleEnabled}");
-        if (!spriteRenderer.enabled && !characterControl.puzzleEnabled)
+        if (!spriteRenderer.enabled && !characterControl.puzzleEnabled && !photoDeveloping.puzzleComplete)
         {
             spriteRenderer.enabled = true;
         } 

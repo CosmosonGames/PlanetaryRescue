@@ -12,7 +12,7 @@ public class R1PhotoDevelopingScript : MonoBehaviour
     private CharacterControl characterControl;
 
     public float checkInterval = 0.1f;
-    private bool isVisible = true;
+    private bool isVisible = false;
 
     GameObject selectedObject;
     Vector3 offset;
@@ -23,7 +23,7 @@ public class R1PhotoDevelopingScript : MonoBehaviour
     [SerializeField]
     List<GameObject> moveableObjects;
 
-    private bool puzzleComplete = false;
+    public bool puzzleComplete = false;
 
     public GameObject logicObject;
     private LogicManagerScript logic;
@@ -72,12 +72,18 @@ public class R1PhotoDevelopingScript : MonoBehaviour
     private float startTime = 0f;
     public float timeTaken = 0f;
 
+    public int numOpen;
+
+    public GameObject sheetsObject;
+    private SheetsManager sheets;
+
     // Start is called before the first frame update
     void Start()
     {
         parentSprite = parentObject.GetComponent<SpriteRenderer>();
         characterControl = player.GetComponent<CharacterControl>();
         logic = logicObject.GetComponent<LogicManagerScript>();
+        sheets = sheetsObject.GetComponent<SheetsManager>();
 
         camera1Collider = camera1.GetComponent<BoxCollider2D>();
         camera2Collider = camera2.GetComponent<BoxCollider2D>();
@@ -234,18 +240,19 @@ public class R1PhotoDevelopingScript : MonoBehaviour
         // Check if the sprites are in the correct positions & mouse is not dragging a sprite --> if so, load the next scene
         if ((camera1Collider.bounds.Intersects(topShelfCollider.bounds) || camera1Collider.bounds.Intersects(bottomShelfCollider.bounds)) && (camera2Collider.bounds.Intersects(topShelfCollider.bounds) || camera2Collider.bounds.Intersects(bottomShelfCollider.bounds)) && filmCanisterCollider.bounds.Intersects(counterTopCollider.bounds) && cameraFilm1Collider.bounds.Intersects(counterTopCollider.bounds) && cameraFilm2Collider.bounds.Intersects(counterTopCollider.bounds) && (blankPolaroid1Collider.bounds.Intersects(toplineCollider.bounds) || blankPolaroid1Collider.bounds.Intersects(bottomLineCollider.bounds)) && (blankPolaroid2Collider.bounds.Intersects(toplineCollider.bounds) || blankPolaroid2Collider.bounds.Intersects(bottomLineCollider.bounds)))
         {
-            //CHECK MARK
-
+            timeTaken = Time.time - startTime;
             LeavePuzzle();
+            sheets.addRoomData(1, 1, (int)timeTaken, numOpen);
+            OnSpriteRendererDisabled();
             puzzleComplete = true;
-
-            timeTaken = startTime - logic.currentTime;
 
             if (debug)
             {
-                Debug.Log("User successfully completed Table Puzzle in Room #2.");
-                Debug.Log($"Time Taken: {timeTaken.ToString()}");
+                Debug.Log("User successfully completed Photo Dev in Room #1.");
+                Debug.Log($"Time Taken: {timeTaken}");
+                Debug.Log($"Number of Attempts: {numOpen}");
             }
+
         }
     }
 

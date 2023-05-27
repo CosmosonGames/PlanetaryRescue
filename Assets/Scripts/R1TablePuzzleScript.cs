@@ -51,11 +51,16 @@ public class R1TablePuzzleScript : MonoBehaviour
     public InventoryItemData referenceItem;
     private InventorySystem InventorySystem;
 
+    public GameObject sheetsObject;
+    private SheetsManager sheets;
+
     private bool debug;
 
-    private bool puzzleComplete = false;
-    private long startTime;
-    public long timeTaken;
+    public bool puzzleComplete = false;
+    private float startTime;
+    public float timeTaken;
+    
+    private int numOpen;
 
     private IEnumerator CheckVisibility()
     {
@@ -91,6 +96,9 @@ public class R1TablePuzzleScript : MonoBehaviour
             child.enabled = true;
             Debug.Log($"{child.name}: {child.enabled}");
         }
+        parentSprite.enabled = true;
+
+        numOpen ++;
 
         if (debug)
         {
@@ -106,6 +114,7 @@ public class R1TablePuzzleScript : MonoBehaviour
         {
             child.enabled = false;
         }
+        parentSprite.enabled = false;
 
         if (debug)
         {
@@ -120,6 +129,7 @@ public class R1TablePuzzleScript : MonoBehaviour
     {
         logic = logicObject.GetComponent<LogicManagerScript>();
         InventorySystem = inventory.GetComponent<InventorySystem>();
+        sheets = sheetsObject.GetComponent<SheetsManager>();
 
         debug = logic.debug;
 
@@ -266,17 +276,20 @@ public class R1TablePuzzleScript : MonoBehaviour
         {
             //CHECK MARK
 
+            timeTaken = Time.time - startTime;
             AddToInventory();
             LeavePuzzle();
+            sheets.addRoomData(1, 1, (int)timeTaken, numOpen);
+            OnSpriteRendererDisabled();
             puzzleComplete = true;
 
             if (debug)
             {
                 Debug.Log("User successfully completed Table Puzzle in Room #1.");
                 Debug.Log($"Time Taken: {timeTaken}");
+                Debug.Log($"Number of Attempts: {numOpen}");
             }
         
-
             // Handle collision here
         }
 

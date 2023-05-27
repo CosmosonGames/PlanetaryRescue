@@ -4240,6 +4240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   puzzle: {fileID: 2075545012}
   player: {fileID: 1597506473}
+  logicManager: {fileID: 907094062}
 --- !u!1 &1171457897
 GameObject:
   m_ObjectHideFlags: 0
@@ -8074,6 +8075,9 @@ MonoBehaviour:
   - {fileID: 1837430912}
   timeTaken: 0
   logicObject: {fileID: 907094062}
+  puzzleComplete: 0
+  timeToComplete: 0
+  sheetsObject: {fileID: 2118046152}
 --- !u!212 &1837430915
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8615,6 +8619,7 @@ MonoBehaviour:
   - {fileID: 1171457897}
   - {fileID: 1259731018}
   - {fileID: 957425111}
+  puzzleComplete: 0
   logicObject: {fileID: 907094062}
   camera1: {fileID: 1355978206}
   camera2: {fileID: 1171457897}
@@ -8632,6 +8637,8 @@ MonoBehaviour:
   bottomShelf: {fileID: 1097288073}
   counterTop: {fileID: 1956244482}
   timeTaken: 0
+  numOpen: 0
+  sheetsObject: {fileID: 2118046152}
 --- !u!61 &1896809482
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9823,6 +9830,8 @@ MonoBehaviour:
   logicObject: {fileID: 907094062}
   inventory: {fileID: 1808315384}
   referenceItem: {fileID: 11400000, guid: a5e4a3cf3df01491e8003ed3a9968dd4, type: 2}
+  sheetsObject: {fileID: 2118046152}
+  puzzleComplete: 0
   timeTaken: 0
 --- !u!1 &2118046152
 GameObject:

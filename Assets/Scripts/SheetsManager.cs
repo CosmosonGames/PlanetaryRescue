@@ -10,7 +10,6 @@ using Google.Apis.Sheets.v4;
 using Google.Apis.Sheets.v4.Data;
 
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class SheetsManager : MonoBehaviour
 {
@@ -141,6 +140,18 @@ public class SheetsManager : MonoBehaviour
         if (logic.debug)
         {
             Debug.Log($"INFO: Succesfully added '{username}' with time of '{time.ToString()}' seconds to leaderboard!");
+        }
+    }
+
+    public void addRoomData(int roomNum, int puzzleNum, int timeTaken, int numOpened = -1)
+    {
+        string range = $"r{roomNum.ToString()}p{puzzleNum.ToString()}!A:B";
+        var toAdd = new List<object>() {DateTime.Now.ToString(), timeTaken.ToString(), numOpened.ToString()};
+        CreateEntry(toAdd, range);
+
+        if (logic.debug)
+        {
+            Debug.Log($"INFO: Succesfully added time data for room {roomNum.ToString()} puzzle {puzzleNum.ToString()} with time of '{timeTaken.ToString()}'");
         }
     }
 }

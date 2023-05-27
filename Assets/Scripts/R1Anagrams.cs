@@ -38,13 +38,20 @@ public class R1Anagrams : MonoBehaviour
     public GameObject logicObject;
     private LogicManagerScript logic;
 
+    public bool puzzleComplete = false;
+    private int numOpen;
+    public float timeToComplete = 0f;
+
+    public GameObject sheetsObject;
+    private SheetsManager sheets;
+
     private IEnumerator CheckVisibility()
     {
         while (true)
         {
             bool currentVisibility = parentSprite.enabled;
 
-            if (currentVisibility != isVisible)
+            if (currentVisibility != isVisible && !puzzleComplete)
             {
                 isVisible = currentVisibility;
 
@@ -69,7 +76,9 @@ public class R1Anagrams : MonoBehaviour
         {
             child.enabled = true;
         }
-        
+        parentSprite.enabled = true;
+
+        numOpen++;
         AdjustLocation();
         Debug.Log("sprite enabled");
 
@@ -93,6 +102,7 @@ public class R1Anagrams : MonoBehaviour
     void Start()
     {
         letters = new List<GameObject> { letterA, letterK, letterP1, letterP2, letterQ, letterS, letterV, letterX };
+        sheets = sheetsObject.GetComponent<SheetsManager>();
 
         logic = logicObject.GetComponent<LogicManagerScript>();
         parentSprite = parentObject.GetComponent<SpriteRenderer>();
@@ -217,9 +227,17 @@ public class R1Anagrams : MonoBehaviour
     private void CheckCompletion(){
         //FORM SPAR
         if (false){
-            timeTaken = logic.currentTime - startTime;
-            if (logic.debug){
+            timeTaken = Time.time - startTime;
+            sheets.addRoomData(1, 1, (int)timeTaken, numOpen);
+
+            LeavePuzzle();
+            puzzleComplete = true;
+
+            if (logic.debug)
+            {
+                Debug.Log("User successfully completed Photo Dev in Room #1.");
                 Debug.Log($"Time Taken: {timeTaken}");
+                Debug.Log($"Number of Attempts: {numOpen}");
             }
         }
     }
