@@ -136,7 +136,7 @@ public class R1PhotoDevelopingScript : MonoBehaviour
 
         AdjustLocation();
 
-        if (startTime == 0){
+        if (startTime == 0f){
             startTime = logic.currentTime;
         }
     }

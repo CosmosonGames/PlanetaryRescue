@@ -7874,6 +7874,8 @@ MonoBehaviour:
   checkInterval: 0.1
   DoNotMove:
   - {fileID: 1837430912}
+  timeTaken: 0
+  logicObject: {fileID: 907094062}
 --- !u!212 &1837430915
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8431,6 +8433,7 @@ MonoBehaviour:
   topShelf: {fileID: 2022406704}
   bottomShelf: {fileID: 1097288073}
   counterTop: {fileID: 1956244482}
+  timeTaken: 0
 --- !u!61 &1896809482
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9622,6 +9625,7 @@ MonoBehaviour:
   logicObject: {fileID: 907094062}
   inventory: {fileID: 1808315384}
   referenceItem: {fileID: 11400000, guid: a5e4a3cf3df01491e8003ed3a9968dd4, type: 2}
+  timeTaken: 0
 --- !u!1 &2118046152
 GameObject:
   m_ObjectHideFlags: 0
