@@ -17,6 +17,14 @@ public class LogicManagerScript : MonoBehaviour
     public bool hasLimit;
     public float timerLimit;
 
+    public bool roomOneComplete = false;
+    public bool roomTwoComplete = false;
+    public bool roomThreeComplete = false;
+
+    public bool p1r1 = false;
+    public bool p1r2 = false;
+    public bool p1r3 = false;
+
     //load storyline scene
     public void startGame()
     {
