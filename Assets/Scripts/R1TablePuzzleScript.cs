@@ -34,7 +34,7 @@ public class R1TablePuzzleScript : MonoBehaviour
     private BoxCollider2D sPinkCollider;
     private BoxCollider2D sBlueCollider;
 
-    private SpriteRenderer parentSprite;
+    private SpriteRenderer lockSprite;
 
     List<GameObject> BS;
     List<GameObject> S;
@@ -48,7 +48,6 @@ public class R1TablePuzzleScript : MonoBehaviour
     private LogicManagerScript logic;
 
     public GameObject inventory;
-    public InventoryItemData referenceItem;
     private InventorySystem InventorySystem;
 
     public GameObject sheetsObject;
@@ -62,11 +61,34 @@ public class R1TablePuzzleScript : MonoBehaviour
     
     private int numOpen;
 
+    private bool unlockComplete = false;
+
+    [Header("Part 2")]
+    public GameObject unlockObject;
+    private SpriteRenderer unlockSprite;
+
+    public GameObject card;
+    private BoxCollider2D cardCollider;
+
+    public GameObject key;
+    private BoxCollider2D keyCollider;
+
+    private List<GameObject> CK;
+
+    public InventoryItemData keyItem;
+    public InventoryItemData cardItem;
+
     private IEnumerator CheckVisibility()
     {
-        while (true && !puzzleComplete)
+        while (!puzzleComplete)
         {
-            bool currentVisibility = parentSprite.enabled ;
+            bool currentVisibility;
+
+            if (!unlockComplete){ 
+                currentVisibility = lockSprite.enabled;
+            } else {
+                currentVisibility = unlockSprite.enabled;
+            }
 
             if (currentVisibility != isVisible)
             {
@@ -91,34 +113,62 @@ public class R1TablePuzzleScript : MonoBehaviour
 
     private void OnSpriteRendererEnabled()
     {
-        foreach (SpriteRenderer child in parentSprite.GetComponentsInChildren<SpriteRenderer>())
-        {
-            child.enabled = true;
-            Debug.Log($"{child.name}: {child.enabled}");
-        }
-        parentSprite.enabled = true;
+        characterControl.puzzleEnabled = true;
+        if (!unlockComplete) {
+            LockPuzzleVisibility(true);
+            UnlockPuzzleVisibility(false);
 
-        numOpen ++;
+            numOpen ++;
 
-        if (debug)
-        {
-            Debug.Log("R1TablePuzzle sprite enabled");
+            if (debug)
+            {
+                Debug.Log("R1TablePuzzle LOCK sprite enabled");
+            }
+
+        } else {
+            LockPuzzleVisibility(false);
+            UnlockPuzzleVisibility(true);
+
+            if (debug) {
+                Debug.Log("Unlock sprite enabled");
+            }
         }
+
 
         AdjustLocation();
     }
 
+    private void LockPuzzleVisibility(bool enable = false){ 
+        foreach (SpriteRenderer child in lockSprite.GetComponentsInChildren<SpriteRenderer>())
+        {
+            child.enabled = enable;
+            if (debug){ 
+                Debug.Log($"{child.name}: {child.enabled}");
+            }
+        }
+        lockSprite.enabled = enable;
+    }
+
+    private void UnlockPuzzleVisibility(bool enable = false) {
+        foreach (SpriteRenderer child in unlockSprite.GetComponentsInChildren<SpriteRenderer>())
+        {
+            child.enabled = enable;
+            if (debug){ 
+                Debug.Log($"{child.name}: {child.enabled}");
+            }
+        }
+        unlockSprite.enabled = enable;
+    }
+ 
     private void OnSpriteRendererDisabled()
     {
-        foreach (SpriteRenderer child in parentSprite.GetComponentsInChildren<SpriteRenderer>())
-        {
-            child.enabled = false;
-        }
-        parentSprite.enabled = false;
+        LockPuzzleVisibility();
+
+        UnlockPuzzleVisibility();
 
         if (debug)
         {
-            Debug.Log("R1TablePuzzle sprite disabled");
+            Debug.Log("R1TablePuzzle sprites disabled");
         }
 
         characterControl.puzzleEnabled = false;
@@ -135,6 +185,7 @@ public class R1TablePuzzleScript : MonoBehaviour
 
         BS = new List<GameObject> { BSGreen, BSOrange, BSYellow, BSBlack };
         S = new List<GameObject> { SPurple, SRed, SPink, SBlue };
+        CK = new List<GameObject> { card, key};
 
         bsGreenCollider = BSGreen.GetComponent<BoxCollider2D>();
         bsOrangeCollider = BSOrange.GetComponent<BoxCollider2D>();
@@ -146,7 +197,8 @@ public class R1TablePuzzleScript : MonoBehaviour
         sPinkCollider = SPink.GetComponent<BoxCollider2D>();
         sBlueCollider = SBlue.GetComponent<BoxCollider2D>();
 
-        parentSprite = parentObject.GetComponent<SpriteRenderer>();
+        lockSprite = parentObject.GetComponent<SpriteRenderer>();
+        unlockSprite = unlockObject.GetComponent<SpriteRenderer>();
 
         characterControl = player.GetComponent<CharacterControl>();
 
@@ -158,7 +210,7 @@ public class R1TablePuzzleScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (parentSprite.enabled)
+        if ((lockSprite.enabled || unlockSprite.enabled) && !puzzleComplete)
         {
             HandleMouse();
             CheckIfCorrect();
@@ -188,8 +240,8 @@ public class R1TablePuzzleScript : MonoBehaviour
         }
 
         // Get size data
-        float leftEdge = parentSprite.localBounds.min.x;
-        float totalSpace = parentSprite.localBounds.size.x;
+        float leftEdge = lockSprite.localBounds.min.x;
+        float totalSpace = lockSprite.localBounds.size.x;
         float edges = totalSpace / 16;
 
         float totalBSSize = 0f;
@@ -224,11 +276,13 @@ public class R1TablePuzzleScript : MonoBehaviour
                 foreach (Collider2D collider in colliders)
                 {
                     GameObject targetObject = collider.gameObject;
-                    if (S.Contains(targetObject))
+                    if (!unlockComplete && S.Contains(targetObject))
                     {
                         selectedObject = targetObject.transform.gameObject;
                         offset = selectedObject.transform.position - mousePosition;
                         break;
+                    } else if (unlockComplete && CK.Contains(targetObject)){
+                        AddToInventory(targetObject.name);
                     }
                 }
 
@@ -239,7 +293,7 @@ public class R1TablePuzzleScript : MonoBehaviour
 
             }
         }
-        if (selectedObject)
+        if (selectedObject && !unlockComplete)
         {
             // Check if the mouse position is over a collider
             Collider2D[] colliders = Physics2D.OverlapCircleAll(mousePosition, 0.1f);
@@ -272,57 +326,83 @@ public class R1TablePuzzleScript : MonoBehaviour
     void CheckIfCorrect()
     {
         // Check if the sprites are in the correct positions & mouse is not dragging a sprite --> if so, load the next scene
-        if (bsGreenCollider.bounds.Intersects(sRedCollider.bounds) && bsYellowCollider.bounds.Intersects(sPurpleCollider.bounds) && bsOrangeCollider.bounds.Intersects(sBlueCollider.bounds) && bsBlackCollider.bounds.Intersects(sPinkCollider.bounds) && selectedObject == null)
+        if (!unlockComplete && bsGreenCollider.bounds.Intersects(sRedCollider.bounds) && bsYellowCollider.bounds.Intersects(sPurpleCollider.bounds) && bsOrangeCollider.bounds.Intersects(sBlueCollider.bounds) && bsBlackCollider.bounds.Intersects(sPinkCollider.bounds) && selectedObject == null)
         {
             //CHECK MARK
 
             timeTaken = Time.time - startTime;
-            AddToInventory();
-            LeavePuzzle();
             sheets.addRoomData(1, 1, (int)timeTaken, numOpen);
-            OnSpriteRendererDisabled();
-            puzzleComplete = true;
+            LockPuzzleVisibility(false);
+            unlockComplete = true;
+            OnSpriteRendererEnabled();
 
             if (debug)
             {
-                Debug.Log("User successfully completed Table Puzzle in Room #1.");
+                Debug.Log("User successfully unlocked PART ONE OF Puzzle #1 in Room #1.");
                 Debug.Log($"Time Taken: {timeTaken}");
                 Debug.Log($"Number of Attempts: {numOpen}");
             }
         
             // Handle collision here
+        } else if (unlockComplete && InventorySystem.current.Get(keyItem) != null && InventorySystem.current.Get(cardItem) != null){
+            puzzleComplete = true;
+            LeavePuzzle();
+
+            if (debug) {
+                Debug.Log("User successfully completed Puzzle #1 in Room #1.");
+            }
+
         }
 
     }
 
     void AdjustScale()
     {
-        parentSprite.transform.localScale = new Vector3(1.75f, 1.5f, 1f);
-
+        lockSprite.transform.localScale = new Vector3(1.75f, 1.5f, 1f);
     }
 
     void AdjustLocation()
     {
-        parentObject.transform.position = player.transform.position;
+        if (unlockComplete){
+            unlockObject.transform.position = player.transform.position;
+        } else{
+            parentObject.transform.position = player.transform.position;
+        }
     }
 
     void LeavePuzzle()
     {
-        parentSprite.enabled = false;
-
+        OnSpriteRendererDisabled();
     }
 
-    private void AddToInventory()
+    private void AddToInventory(string Object)
     {
-        if (InventorySystem.current != null && referenceItem != null)
-        {
-            InventorySystem.current.Add(referenceItem);
-            Debug.Log("Added to inventory...");
-            Debug.Log(InventorySystem.current.Get(referenceItem));
+        InventoryItemData referenceItem;
+        if (InventorySystem.current != null){
+            if (Object == key.name)
+            {
+                referenceItem = keyItem;
+            }
+            else if (Object == card.name)
+            {
+                referenceItem = cardItem;
+            }
+            else
+            {
+                Debug.LogWarning("Reference Item Object not found in AddToInventory for R1P1...");
+                return;
+            }
 
-        }
-        else
-        {
+            if (InventorySystem.current.Get(referenceItem) == null){
+                InventorySystem.current.Add(referenceItem);
+                Debug.Log($"Added {referenceItem.name} to inventory...");
+            } else {
+                if (debug){
+                    Debug.Log($"{referenceItem.name} already in inventory...");
+                }
+            }
+        
+        } else {
             Debug.Log("Reference item is null...");
         }
     }

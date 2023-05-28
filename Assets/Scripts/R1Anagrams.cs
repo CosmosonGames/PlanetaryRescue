@@ -108,9 +108,10 @@ public class R1Anagrams : MonoBehaviour
         parentSprite = parentObject.GetComponent<SpriteRenderer>();
         parentSprite.enabled = false;
 
-        foreach (GameObject letter in letters)
+        for (int i = letters.Count -1 ; i>=0; i--)
         {
-            transforms.Add(letter.GetComponent<Transform>());
+            transforms.Add(letters[i].GetComponent<Transform>());
+            Debug.Log(letters[i].name);
         }
 
         characterControl = player.GetComponent<CharacterControl>();
@@ -131,27 +132,27 @@ public class R1Anagrams : MonoBehaviour
 
     void PositionObjects()
     {
-        System.Random random = new System.Random();
+        // Broken randomization that's really annoying
+        /* System.Random random = new System.Random();
 
         // Shuffle the list using the Fisher-Yates shuffle algorithm
-        for (int i = letters.Count - 1; i > 0; i--)
+        for (int i = transforms.Count -1; i > 0; i--)
         {
             int j = random.Next(0, i + 1);
-            GameObject temp = letters[i];
-            letters[i] = letters[j];
-            letters[j] = temp;
-        }
+            Transform temp = transforms[i];
+            transforms[i] = transforms[j];
+            transforms[j] = temp;
+        } 
 
-        int count = 0;
-        foreach (GameObject obj in letters)
+        // Set the new positions of the game objects based on the shuffled transforms
+        for (int i = letters.Count - 1; i>=0; i--)
         {
-            obj.transform.position = transforms[count].position;
-            obj.transform.rotation = transforms[count].rotation;
-            obj.transform.localScale = transforms[count].localScale;
-            count++;
-        }
+            GameObject obj = letters[i];
+            obj.transform.position = transforms[i].position;
+            Debug.Log(obj.name + " " + obj.transform.position);
+        } */
 
-        parentObject.transform.localScale = new Vector3(0.8f, 0.8f, 1f); 
+        parentObject.transform.localScale = new Vector3(2.05f, 2.05f, 1f); 
 
     }
 

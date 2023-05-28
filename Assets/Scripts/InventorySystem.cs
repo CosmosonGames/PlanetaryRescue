@@ -20,6 +20,8 @@ public class InventorySystem : MonoBehaviour
     [Header("Misc")]
     public Sprite StackBoxBackground;
 
+    private List<InventoryItem> drawnInventory;
+
     private void Awake()
     {
         inventory = new List<InventoryItem>();
@@ -31,6 +33,7 @@ public class InventorySystem : MonoBehaviour
     {
         current = this;
         current.onInventoryChangedEvent += OnUpdateInventory;
+        drawnInventory = new List<InventoryItem>();
     }
 
     private void OnUpdateInventory()
@@ -42,7 +45,9 @@ public class InventorySystem : MonoBehaviour
     {
         foreach (InventoryItem item in current.inventory)
         {
-            AddInventorySlot(item);
+            if (!drawnInventory.Contains(item)) {
+                AddInventorySlot(item);
+            }
         }
     }
 
@@ -75,6 +80,7 @@ public class InventorySystem : MonoBehaviour
         numberText.text = item.StackSize.ToString();
 
         obj.transform.SetParent(inventoryDock.transform, true);
+        drawnInventory.Add(item);
     }
 
     public InventoryItem Get(InventoryItemData referenceData)

@@ -21,9 +21,9 @@ public class LogicManagerScript : MonoBehaviour
     public bool roomTwoComplete = false;
     public bool roomThreeComplete = false;
 
-    public bool p1r1 = false;
-    public bool p1r2 = false;
-    public bool p1r3 = false;
+    public bool roomOneDone = false;
+    public bool roomTwoDone = false;
+    public bool roomThreeDone = false;
 
     //load storyline scene
     public void startGame()
