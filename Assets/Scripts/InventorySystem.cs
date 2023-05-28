@@ -16,11 +16,21 @@ public class InventorySystem : MonoBehaviour
     public event Action onInventoryChangedEvent;
 
     public GameObject inventoryDock;
+    private HorizontalLayoutGroup inventoryDockLayoutGroup;
 
     [Header("Misc")]
     public Sprite StackBoxBackground;
 
     private List<InventoryItem> drawnInventory;
+
+    public InventoryItemData testItem;
+
+    private void Update(){
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            Add(testItem);
+        }
+    }
 
     private void Awake()
     {
@@ -34,6 +44,8 @@ public class InventorySystem : MonoBehaviour
         current = this;
         current.onInventoryChangedEvent += OnUpdateInventory;
         drawnInventory = new List<InventoryItem>();
+        inventoryDockLayoutGroup = inventoryDock.GetComponent<HorizontalLayoutGroup>();
+        inventoryDockLayoutGroup.enabled = false;
     }
 
     private void OnUpdateInventory()
@@ -43,6 +55,7 @@ public class InventorySystem : MonoBehaviour
 
     public void DrawInventory()
     {
+        inventoryDockLayoutGroup.enabled = true;
         foreach (InventoryItem item in current.inventory)
         {
             if (!drawnInventory.Contains(item)) {
@@ -56,6 +69,7 @@ public class InventorySystem : MonoBehaviour
         GameObject obj = Instantiate(m_slotPrefab);
         obj.transform.SetParent(transform, false);
         obj.transform.localScale = new Vector3(1f, 1f, 1f);
+        obj.SetActive(true);
 
         Vector3 objPosition = obj.transform.position;
         objPosition.z = 0f;
@@ -87,8 +101,6 @@ public class InventorySystem : MonoBehaviour
     {
         if (m_itemDictionary.TryGetValue(referenceData, out InventoryItem value))
         {
-            int number = value.StackSize;
-            Debug.Log(number);
             return value;
         }else
         {
