@@ -2,17 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using TMPro;
 
 public class R1Anagrams : MonoBehaviour
 {
     public GameObject letterA;
-    public GameObject letterK;
-    public GameObject letterP1;
-    public GameObject letterP2;
-    public GameObject letterQ;
+    private BoxCollider2D letterACollider;
+    public GameObject letterB;
+    private BoxCollider2D letterBCollider;
+
     public GameObject letterS;
-    public GameObject letterV;
-    public GameObject letterX;
+    private BoxCollider2D letterSCollider;
+
+    public GameObject letterG;
+    private BoxCollider2D letterGCollider;
+
+    public GameObject letterH;
+    private BoxCollider2D letterHCollider;
+
+    public GameObject letterI;
+    private BoxCollider2D letterICollider;
+
+    public GameObject letterN;
+    private BoxCollider2D letterNCollider;
+
+    public GameObject letterO;
+    private BoxCollider2D letterOCollider;
 
     List<Transform> transforms = new List<Transform>();
     List<GameObject> letters;
@@ -45,13 +60,49 @@ public class R1Anagrams : MonoBehaviour
     public GameObject sheetsObject;
     private SheetsManager sheets;
 
+    [Header("Slots")]
+    public GameObject slot1;
+    private BoxCollider2D slot1Collider;
+    public GameObject slot2;
+    private BoxCollider2D slot2Collider;
+
+    public GameObject slot3;
+    private BoxCollider2D slot3Collider;
+    public GameObject slot4;
+    private BoxCollider2D slot4Collider;
+
+    [Header("Loading Bar")]
+    public GameObject ComputerLoading;
+    public GameObject antiLoadingBar;
+    private RectTransform antiLoadingBarTransform;
+
+    public TextMeshPro percentageText;
+    public float loadingBarSpeed = 0.1f;
+
+    private bool loadingBarAnimation = false;
+    private bool partOneComplete = false; 
+    private bool partTwoComplete = false;
+
+    [Header("Inventory")]
+    public GameObject inventory;
+    private InventorySystem InventorySystem;
+
+    public InventoryItemData UncodedKeycard;
+
+    public InventoryItemData Keycard;
+
     private IEnumerator CheckVisibility()
     {
         while (true)
         {
-            bool currentVisibility = parentSprite.enabled;
+            bool currentVisibility;
+            if (!partOneComplete){ 
+                currentVisibility = parentSprite.enabled;
+            } else {
+                currentVisibility = ComputerLoading.activeInHierarchy;
+            }
 
-            if (currentVisibility != isVisible && !puzzleComplete)
+            if (currentVisibility != isVisible && (!puzzleComplete || !partTwoComplete))
             {
                 isVisible = currentVisibility;
 
@@ -70,39 +121,117 @@ public class R1Anagrams : MonoBehaviour
         }
     }
 
+    private IEnumerator LoadingAnimation() {
+        loadingBarAnimation = true;
+        float xPos = 0f;
+        float scale = 0.25f;
+        float max = 1.6f;
+        float percentage = 0f;
+        //float unitScale = scale / max;
+
+        System.Random rnd = new System.Random();
+        while (xPos < max){
+            float addition = (float)rnd.NextDouble() * (0.32f-0.16f) + 0.16f;
+            if (xPos + addition > 1.6f){
+                xPos = 1.6f;
+            } else {
+                xPos += addition;
+            }
+
+            percentage = xPos / max;
+
+            Vector3 pos = antiLoadingBarTransform.localPosition;
+            Vector3 currentScale = antiLoadingBarTransform.localScale;
+            antiLoadingBarTransform.localPosition = new Vector3(xPos, pos.y, pos.z);
+            antiLoadingBarTransform.localScale = new Vector3(scale * (1-percentage), currentScale.y, currentScale.z);
+
+            percentageText.text = (int)(percentage * 100) + "%";
+            yield return new WaitForSeconds(loadingBarSpeed);
+        }
+        if (logic.debug) {
+            Debug.Log("completed loading animation");
+        }
+        loadingBarAnimation = false;
+    }
+
     private void OnSpriteRendererEnabled()
     {
+        if (!partOneComplete){ 
+            VisibilityAnagaram(true);
+            numOpen++;
+
+            if (startTime == 0){
+                startTime = logic.currentTime;
+            }
+        } else {
+            VisibilityComputerLoading(true);
+        }
+
+        Debug.Log("sprite enabled");
+    }
+
+    private void VisibilityAnagaram(bool visibility){
         foreach (SpriteRenderer child in parentSprite.GetComponentsInChildren<SpriteRenderer>())
         {
-            child.enabled = true;
+            child.enabled = visibility;
         }
-        parentSprite.enabled = true;
+        parentSprite.enabled = visibility;
 
-        numOpen++;
-        AdjustLocation();
-        Debug.Log("sprite enabled");
+        if (visibility){
+            parentObject.transform.position = player.transform.position;
+        }
 
-        if (startTime == 0){
-            startTime = logic.currentTime;
+    }
+
+    private void VisibilityComputerLoading(bool visibility) {
+        int childCount = ComputerLoading.transform.childCount;
+        for (int i = 0; i < childCount; i++)
+        {
+            Transform child = ComputerLoading.transform.GetChild(i);
+            child.gameObject.SetActive(visibility);
+        }
+        ComputerLoading.SetActive(visibility);
+
+        if (visibility){ 
+            ComputerLoading.transform.position = player.transform.position;
         }
     }
 
     private void OnSpriteRendererDisabled()
     {
-        foreach (SpriteRenderer child in parentSprite.GetComponentsInChildren<SpriteRenderer>())
-        {
-            child.enabled = false;
+        if (!partOneComplete){ 
+            VisibilityAnagaram(false);
+        } else {
+            VisibilityComputerLoading(false);
         }
-        parentSprite.enabled = false;
         characterControl.puzzleEnabled = false;
+
+        if (partOneComplete && puzzleComplete && !loadingBarAnimation){
+            partTwoComplete = true;
+        }
         Debug.Log("sprite disabled");
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        letters = new List<GameObject> { letterA, letterK, letterP1, letterP2, letterQ, letterS, letterV, letterX };
+        letters = new List<GameObject> { letterA, letterB, letterS, letterG, letterH, letterI, letterN, letterO };
+        letterACollider = letterA.GetComponent<BoxCollider2D>();
+        letterBCollider = letterB.GetComponent<BoxCollider2D>();
+        letterSCollider = letterS.GetComponent<BoxCollider2D>();
+        letterGCollider = letterG.GetComponent<BoxCollider2D>();
+        letterHCollider = letterH.GetComponent<BoxCollider2D>();
+        letterICollider = letterI.GetComponent<BoxCollider2D>();
+        letterNCollider = letterN.GetComponent<BoxCollider2D>();
+        letterOCollider = letterO.GetComponent<BoxCollider2D>();
+
         sheets = sheetsObject.GetComponent<SheetsManager>();
+        slot1Collider = slot1.GetComponent<BoxCollider2D>();
+        slot2Collider = slot2.GetComponent<BoxCollider2D>();
+        slot3Collider = slot3.GetComponent<BoxCollider2D>();
+        slot4Collider = slot4.GetComponent<BoxCollider2D>();
+
+        antiLoadingBarTransform = antiLoadingBar.GetComponent<RectTransform>();
 
         logic = logicObject.GetComponent<LogicManagerScript>();
         parentSprite = parentObject.GetComponent<SpriteRenderer>();
@@ -126,6 +255,9 @@ public class R1Anagrams : MonoBehaviour
     {
         if (parentSprite.enabled)
         {
+            HandleMouse();
+            CheckCompletion();
+        } else if (partOneComplete && !loadingBarAnimation && ComputerLoading.activeInHierarchy){
             HandleMouse();
         }
     }
@@ -165,6 +297,7 @@ public class R1Anagrams : MonoBehaviour
             Collider2D[] colliders = Physics2D.OverlapPointAll(mousePosition);
 
             Collider2D backgroundCollider = gameObject.GetComponent<Collider2D>();
+            Collider2D computerLoadingCollider = ComputerLoading.GetComponent<Collider2D>();
             if (colliders.Contains(backgroundCollider))
             {
                 foreach (Collider2D collider in colliders)
@@ -178,6 +311,8 @@ public class R1Anagrams : MonoBehaviour
                     }
                 }
 
+            } else if (ComputerLoading.activeInHierarchy && colliders.Contains(computerLoadingCollider))
+            {
             }
             else
             {
@@ -226,20 +361,31 @@ public class R1Anagrams : MonoBehaviour
     }
 
     private void CheckCompletion(){
-        //FORM SPAR
-        if (false){
+        if (slot1Collider.bounds.Intersects(letterGCollider.bounds) && slot2Collider.bounds.Intersects(letterICollider.bounds) && slot3Collider.bounds.Intersects(letterOCollider.bounds) && slot4Collider.bounds.Intersects(letterNCollider.bounds) && selectedObject == null){
             timeTaken = Time.time - startTime;
-            sheets.addRoomData(1, 1, (int)timeTaken, numOpen);
+            sheets.addRoomData(1, 3, (int)timeTaken, numOpen);
 
-            LeavePuzzle();
+            VisibilityAnagaram(false);
             puzzleComplete = true;
 
             if (logic.debug)
             {
-                Debug.Log("User successfully completed Photo Dev in Room #1.");
+                Debug.Log("User successfully completed Anagram in Room #1.");
                 Debug.Log($"Time Taken: {timeTaken}");
                 Debug.Log($"Number of Attempts: {numOpen}");
             }
+
+            PartTwo();
+            partOneComplete = true;
         }
+    }
+
+    private void PartTwo() {
+        VisibilityAnagaram(false);
+        VisibilityComputerLoading(true);
+
+        ComputerLoading.transform.position = player.transform.position;
+
+        StartCoroutine(LoadingAnimation());
     }
 }

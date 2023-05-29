@@ -29,43 +29,30 @@ public class R1PhotoDevelopingScript : MonoBehaviour
     private LogicManagerScript logic;
 
     [Header("Movable Objects")]
-    public GameObject camera1;
-    public GameObject camera2;
-    public GameObject filmCanister;
-    public GameObject cameraFilm1;
-    public GameObject cameraFilm2;
-    public GameObject blankPolaroid1;
-    public GameObject blankPolaroid2;
+    public GameObject keycard;
+    private SpriteRenderer keycardSprite;
+    public GameObject chip;
+    private SpriteRenderer chipSprite;
 
-    private BoxCollider2D camera1Collider;
-    private BoxCollider2D camera2Collider;
-    private BoxCollider2D filmCanisterCollider;
-    private BoxCollider2D cameraFilm1Collider;
-    private BoxCollider2D cameraFilm2Collider;
-    private BoxCollider2D blankPolaroid1Collider;
-    private BoxCollider2D blankPolaroid2Collider;
+    [Header("Unmovable Objects")]
+    public GameObject newCard;
+    private SpriteRenderer newCardSprite;
+
+    private BoxCollider2D newCardCollider;
+    private BoxCollider2D chipCollider;
+    private BoxCollider2D keycardCollider;
 
     [Header("Collider Game Objects")]
-    public GameObject topline;
-    public GameObject bottomLine;
+    public GameObject keycardSlot;
+    public GameObject chipSlot;
 
-    public GameObject exPolaroid1;
-    public GameObject exPolaroid2;
-    public GameObject exPolaroid3;
+    public GameObject newCardSlot;
 
-    public GameObject topShelf;
-    public GameObject bottomShelf;
+    private BoxCollider2D keycardSlotCollider;
+    private BoxCollider2D chipSlotCollider;
+    private BoxCollider2D newCardSlotCollider;
 
-    public GameObject counterTop;
-
-    private PolygonCollider2D toplineCollider;
-    private PolygonCollider2D bottomLineCollider;
-    private BoxCollider2D exPolaroid1Collider;
-    private BoxCollider2D exPolaroid2Collider;
-    private BoxCollider2D exPolaroid3Collider;
-    private PolygonCollider2D topShelfCollider;
-    private PolygonCollider2D bottomShelfCollider;
-    private PolygonCollider2D counterTopCollider;
+    [Header("Logic")]
 
     private bool debug;
 
@@ -77,6 +64,16 @@ public class R1PhotoDevelopingScript : MonoBehaviour
     public GameObject sheetsObject;
     private SheetsManager sheets;
 
+    [Header("Inventory")]
+    public GameObject inventory;
+    private InventorySystem inventorySystem;
+
+    public InventoryItemData uncodedKeycard;
+    public InventoryItemData cardItem;
+    public InventoryItemData chipItem;
+    private bool itemAdded = false;
+    private bool pulledOut = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -84,23 +81,21 @@ public class R1PhotoDevelopingScript : MonoBehaviour
         characterControl = player.GetComponent<CharacterControl>();
         logic = logicObject.GetComponent<LogicManagerScript>();
         sheets = sheetsObject.GetComponent<SheetsManager>();
+        inventorySystem = inventory.GetComponent<InventorySystem>();
 
-        camera1Collider = camera1.GetComponent<BoxCollider2D>();
-        camera2Collider = camera2.GetComponent<BoxCollider2D>();
-        filmCanisterCollider = filmCanister.GetComponent<BoxCollider2D>();
-        cameraFilm1Collider = cameraFilm1.GetComponent<BoxCollider2D>();
-        cameraFilm2Collider = cameraFilm2.GetComponent<BoxCollider2D>();
-        blankPolaroid1Collider = blankPolaroid1.GetComponent<BoxCollider2D>();
-        blankPolaroid2Collider = blankPolaroid2.GetComponent<BoxCollider2D>();
+        newCardCollider = newCard.GetComponent<BoxCollider2D>();
+        chipCollider = chip.GetComponent<BoxCollider2D>();
+        keycardCollider = keycard.GetComponent<BoxCollider2D>();
 
-        toplineCollider = topline.GetComponent<PolygonCollider2D>();
-        bottomLineCollider = bottomLine.GetComponent<PolygonCollider2D>();
-        exPolaroid1Collider = exPolaroid1.GetComponent<BoxCollider2D>();
-        exPolaroid2Collider = exPolaroid2.GetComponent<BoxCollider2D>();
-        exPolaroid3Collider = exPolaroid3.GetComponent<BoxCollider2D>();
-        topShelfCollider = topShelf.GetComponent<PolygonCollider2D>();
-        bottomShelfCollider = bottomShelf.GetComponent<PolygonCollider2D>();
-        counterTopCollider = counterTop.GetComponent<PolygonCollider2D>();
+        keycardSlotCollider = keycardSlot.GetComponent<BoxCollider2D>();
+        chipSlotCollider = chipSlot.GetComponent<BoxCollider2D>();
+        newCardSlotCollider = newCardSlot.GetComponent<BoxCollider2D>();
+
+        keycardSprite = keycard.GetComponent<SpriteRenderer>();
+        chipSprite = chip.GetComponent<SpriteRenderer>();
+
+        newCardSprite = newCard.GetComponent<SpriteRenderer>();
+        newCardSprite.enabled = false;
 
         debug = logic.debug;
 
@@ -135,11 +130,20 @@ public class R1PhotoDevelopingScript : MonoBehaviour
 
     private void OnSpriteRendererEnabled()
     {
+        if (!pulledOut) {
+            PullFromInventory();
+        }
+
         foreach (SpriteRenderer child in parentSprite.GetComponentsInChildren<SpriteRenderer>())
         {
-            child.enabled = true;
+            if (!itemAdded && child.gameObject == newCard) {
+                child.enabled = false;
+            } else {
+                child.enabled = true;
+            }
         }
         parentSprite.enabled = true;
+
         numOpen ++;
         if (logic.debug){
             Debug.Log("Photo Developing Puzzle Enabled");
@@ -171,7 +175,7 @@ public class R1PhotoDevelopingScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (parentSprite.enabled)
+        if (parentSprite.enabled && pulledOut)
         {
             HandleMouse();
             CheckIfCorrect();
@@ -245,12 +249,13 @@ public class R1PhotoDevelopingScript : MonoBehaviour
     void CheckIfCorrect()
     {
         // Check if the sprites are in the correct positions & mouse is not dragging a sprite --> if so, load the next scene
-        if ((camera1Collider.bounds.Intersects(topShelfCollider.bounds) || camera1Collider.bounds.Intersects(bottomShelfCollider.bounds)) && (camera2Collider.bounds.Intersects(topShelfCollider.bounds) || camera2Collider.bounds.Intersects(bottomShelfCollider.bounds)) && filmCanisterCollider.bounds.Intersects(counterTopCollider.bounds) && cameraFilm1Collider.bounds.Intersects(counterTopCollider.bounds) && cameraFilm2Collider.bounds.Intersects(counterTopCollider.bounds) && (blankPolaroid1Collider.bounds.Intersects(toplineCollider.bounds) || blankPolaroid1Collider.bounds.Intersects(bottomLineCollider.bounds)) && (blankPolaroid2Collider.bounds.Intersects(toplineCollider.bounds) || blankPolaroid2Collider.bounds.Intersects(bottomLineCollider.bounds)))
+        Debug.Log($"Keycard Slot Collider Intersects with Keycard Collider: {keycardSlotCollider.bounds.Intersects(keycardCollider.bounds)}");
+        Debug.Log($"Chip Slot Collider Intersects with Chip Collider: {chipSlotCollider.bounds.Intersects(chipCollider.bounds)}");
+        if (keycardSlotCollider.bounds.Intersects(keycardCollider.bounds) && chipSlotCollider.bounds.Intersects(chipCollider.bounds))
         {
             timeTaken = Time.time - startTime;
-            LeavePuzzle();
-            sheets.addRoomData(1, 1, (int)timeTaken, numOpen);
-            OnSpriteRendererDisabled();
+            sheets.addRoomData(1, 2, (int)timeTaken, numOpen);
+            ActivateNewCard();
             puzzleComplete = true;
 
             if (debug)
@@ -263,4 +268,42 @@ public class R1PhotoDevelopingScript : MonoBehaviour
         }
     }
 
+    void ActivateNewCard() {
+        newCardSprite.enabled = true;
+        AddToInventory();
+        itemAdded = true;
+
+        chip.SetActive(false);
+        keycard.SetActive(false);
+    }
+
+    void AddToInventory() {
+        if (InventorySystem.current.Get(uncodedKeycard) == null){
+            InventorySystem.current.Add(uncodedKeycard);
+            Debug.Log($"Added {uncodedKeycard.name} to inventory...");
+        } else {
+            if (debug){
+                Debug.Log($"{uncodedKeycard.name} already in inventory...");
+            }
+        }
+    }
+
+    void PullFromInventory() {
+        if (InventorySystem.current.Get(chipItem) != null && InventorySystem.current.Get(cardItem) != null){
+            InventorySystem.current.Remove(chipItem);
+            chipSprite.enabled = true;
+            InventorySystem.current.Remove(cardItem);
+
+            keycardSprite.enabled = true;
+            pulledOut = true;
+
+            if (debug){ 
+                Debug.Log($"Removed {chipItem.name} and {cardItem.name} from inventory...");
+            }
+        } else {
+            if (debug){
+                Debug.Log($"{chipItem.name} and {cardItem.name} not in inventory...");
+            }
+        }
+    }
 }

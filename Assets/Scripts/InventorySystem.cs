@@ -26,10 +26,7 @@ public class InventorySystem : MonoBehaviour
     public InventoryItemData testItem;
 
     private void Update(){
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            Add(testItem);
-        }
+        DrawInventory();
     }
 
     private void Awake()
@@ -55,18 +52,48 @@ public class InventorySystem : MonoBehaviour
 
     public void DrawInventory()
     {
-        inventoryDockLayoutGroup.enabled = true;
+        if (inventoryDock.transform.childCount != 0 || inventory.Count != 0)
+        {
+            inventoryDockLayoutGroup.enabled = true;
+        } else {
+            inventoryDockLayoutGroup.enabled = false;
+            return;
+        }
+
         foreach (InventoryItem item in current.inventory)
         {
             if (!drawnInventory.Contains(item)) {
                 AddInventorySlot(item);
-            }
+            } 
         }
+
+        List<InventoryItem> itemsToRemove = new List<InventoryItem>();
+        foreach (InventoryItem item in drawnInventory)
+        {
+            if (!current.inventory.Contains(item))
+            {
+                Debug.Log(item.Data.name);
+                itemsToRemove.Add(item);
+                Debug.Log(current.inventory.Count);
+            } 
+        }
+        foreach (InventoryItem item in itemsToRemove)
+        {
+            Debug.Log(item.Data.name);
+            drawnInventory.Remove(item);
+            RemoveInventorySlot(item);
+        }
+
+        if (inventory.Count == 0)
+        {
+            inventoryDockLayoutGroup.enabled = false;
+        } 
     }
 
     public void AddInventorySlot(InventoryItem item)
     {
         GameObject obj = Instantiate(m_slotPrefab);
+        obj.name = item.Data.name;
         obj.transform.SetParent(transform, false);
         obj.transform.localScale = new Vector3(1f, 1f, 1f);
         obj.SetActive(true);
@@ -95,6 +122,16 @@ public class InventorySystem : MonoBehaviour
 
         obj.transform.SetParent(inventoryDock.transform, true);
         drawnInventory.Add(item);
+    }
+
+    public void RemoveInventorySlot(InventoryItem item)
+    {
+        Debug.Log(item.Data.name);
+        Transform itemTransform = inventoryDock.transform.Find(item.Data.name);
+        if (itemTransform != null)
+        {
+            Destroy(itemTransform.gameObject);
+        } 
     }
 
     public InventoryItem Get(InventoryItemData referenceData)
@@ -127,11 +164,15 @@ public class InventorySystem : MonoBehaviour
     {
         if (m_itemDictionary.TryGetValue(referenceData, out InventoryItem value))
         {
+            Debug.Log(value.Data.name);
             value.RemoveFromStack();
+            Debug.Log(value.StackSize);
 
             if (value.StackSize== 0)
             {
                 inventory.Remove(value);
+                Debug.Log(value.Data.name);
+                Debug.Log(inventory.Count);
                 m_itemDictionary.Remove(referenceData);
             }
         }

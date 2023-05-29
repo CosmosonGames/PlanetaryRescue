@@ -15,6 +15,9 @@ public class R1Table : MonoBehaviour
     public GameObject logicManager;
     private LogicManagerScript logic;
 
+    public GameObject UnlockedSafe;
+    private SpriteRenderer unlockedSafeSpriteRenderer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +25,7 @@ public class R1Table : MonoBehaviour
         spriteRenderer = puzzle.GetComponent<SpriteRenderer>();
         tablePuzzle = puzzle.GetComponent<R1TablePuzzleScript>();
         logic = logicManager.GetComponent<LogicManagerScript>();
+        unlockedSafeSpriteRenderer = UnlockedSafe.GetComponent<SpriteRenderer>();
 
 
         spriteRenderer.enabled = false;
@@ -37,7 +41,11 @@ public class R1Table : MonoBehaviour
 
         if (!spriteRenderer.enabled && !characterControl.puzzleEnabled && !tablePuzzle.puzzleComplete)
         {
-            spriteRenderer.enabled = true;
+            if (tablePuzzle.unlockComplete) {
+                unlockedSafeSpriteRenderer.enabled = true;
+            } else {
+                spriteRenderer.enabled = true;
+            }
         }
     }
 }

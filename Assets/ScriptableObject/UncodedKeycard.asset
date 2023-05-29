@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: UncodedKeycard
   m_EditorClassIdentifier: 
   id: uncodedkeycard
-  displayName: Empty Keycard
-  icon: {fileID: 21300000, guid: c82fc4aadcfa54400ba976e4d12e54ed, type: 3}
-  prefab: {fileID: 2654238772549703323, guid: 49cd6d311f11f4fbf9016c4bca25888b, type: 3}
+  displayName: Uncoded Keycard
+  icon: {fileID: 21300000, guid: bd626c9370b184d0cb2af5b13fbb26b2, type: 3}
+  prefab: {fileID: 3451460269672635211, guid: 1b69ad8dfa64848e9a019edbc98d3867, type: 3}

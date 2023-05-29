@@ -61,7 +61,7 @@ public class R1TablePuzzleScript : MonoBehaviour
     
     private int numOpen;
 
-    private bool unlockComplete = false;
+    public bool unlockComplete = false;
 
     [Header("Part 2")]
     public GameObject unlockObject;
