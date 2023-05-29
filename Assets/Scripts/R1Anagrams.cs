@@ -87,9 +87,11 @@ public class R1Anagrams : MonoBehaviour
     public GameObject inventory;
     private InventorySystem InventorySystem;
 
-    public InventoryItemData UncodedKeycard;
+    public InventoryItemData uncodedKeycardItem;
 
-    public InventoryItemData Keycard;
+    public InventoryItemData keycardItem;
+
+    private bool authorized = false;
 
     private IEnumerator CheckVisibility()
     {
@@ -151,12 +153,17 @@ public class R1Anagrams : MonoBehaviour
         if (logic.debug) {
             Debug.Log("completed loading animation");
         }
+        AddToInventory();
         loadingBarAnimation = false;
     }
 
     private void OnSpriteRendererEnabled()
     {
         if (!partOneComplete){ 
+            if (!authorized) {
+                PullFromInventory();
+                authorized = true;
+            }
             VisibilityAnagaram(true);
             numOpen++;
 
@@ -387,5 +394,28 @@ public class R1Anagrams : MonoBehaviour
         ComputerLoading.transform.position = player.transform.position;
 
         StartCoroutine(LoadingAnimation());
+    }
+
+    void PullFromInventory() {
+        if (InventorySystem.current.Get(uncodedKeycardItem) != null){
+            InventorySystem.current.Remove(uncodedKeycardItem);
+        } else {
+            if (logic.debug){
+                Debug.Log($"{uncodedKeycardItem} not in inventory...");
+            }
+        }
+    }
+
+    void AddToInventory() {
+        if (InventorySystem.current.Get(keycardItem) == null) {
+            InventorySystem.current.Add(keycardItem);
+            if (logic.debug) {
+                Debug.Log($"Added {keycardItem.name} to inventory.");
+            }
+        } else {
+            if (logic.debug){ 
+                Debug.Log($"{keycardItem.name} already in inventory...");
+            }
+        }
     }
 }

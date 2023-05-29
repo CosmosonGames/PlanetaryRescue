@@ -16,6 +16,8 @@ public class R1DevRoom : MonoBehaviour
     public GameObject logicObject;
     private LogicManagerScript logic;
 
+    public bool authorized = false;
+
     [Header("Inventory")]
     public GameObject inventory;
     public InventoryItemData chipItem;
@@ -35,15 +37,18 @@ public class R1DevRoom : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (InventorySystem.current.Get(chipItem) != null && InventorySystem.current.Get(cardItem) != null)
+        if (!spriteRenderer.enabled && InventorySystem.current.Get(chipItem) != null && InventorySystem.current.Get(cardItem) != null)
         {
             Debug.Log($"Sprite Enabled: {spriteRenderer.enabled}");
             Debug.Log($"Character Control Puzzle Enabled: {characterControl.puzzleEnabled}");
             if (!spriteRenderer.enabled && !characterControl.puzzleEnabled && !photoDeveloping.puzzleComplete)
             {
                 spriteRenderer.enabled = true;
-            } 
-        } else {
+                authorized = true;
+            }
+        } else if (spriteRenderer.enabled || authorized){
+            spriteRenderer.enabled = true;
+        } else{
             MissingItem();
         }
     }

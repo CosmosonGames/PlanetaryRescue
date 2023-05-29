@@ -158,6 +158,7 @@ public class R1PhotoDevelopingScript : MonoBehaviour
 
     private void OnSpriteRendererDisabled()
     {
+        newCardSprite.enabled = false;
         foreach (SpriteRenderer child in parentSprite.GetComponentsInChildren<SpriteRenderer>())
         {
             child.enabled = false;
@@ -243,15 +244,28 @@ public class R1PhotoDevelopingScript : MonoBehaviour
     void LeavePuzzle()
     {
         OnSpriteRendererDisabled();
-
+        if (itemAdded) {
+            keycard.SetActive(false);
+            chip.SetActive(false);
+            newCard.SetActive(false);
+        }
     }
 
     void CheckIfCorrect()
     {
+        float keycardMinX = -1.762f;
+        float keycardMaxX = -1.41f;
+        float keycardMaxY = 0.264f;
+        float keycardMinY = -0.064f;
+
+        float chipMinX = -1.109f;
+        float chipMaxX = -0.876f;
+        float chipMaxY = 0.312f;
+        float chipMinY = 0.094f;
+
         // Check if the sprites are in the correct positions & mouse is not dragging a sprite --> if so, load the next scene
-        Debug.Log($"Keycard Slot Collider Intersects with Keycard Collider: {keycardSlotCollider.bounds.Intersects(keycardCollider.bounds)}");
-        Debug.Log($"Chip Slot Collider Intersects with Chip Collider: {chipSlotCollider.bounds.Intersects(chipCollider.bounds)}");
-        if (keycardSlotCollider.bounds.Intersects(keycardCollider.bounds) && chipSlotCollider.bounds.Intersects(chipCollider.bounds))
+        Debug.Log(keycard.transform.localPosition);
+        if ((keycardCollider.bounds.Intersects(keycardSlotCollider.bounds) && chipCollider.bounds.Intersects(chipSlotCollider.bounds)) || (keycard.transform.localPosition.x >= keycardMinX && keycard.transform.localPosition.x <= keycardMaxX && keycard.transform.localPosition.y >= keycardMinY && keycard.transform.localPosition.y <= keycardMaxY && chip.transform.localPosition.x >= chipMinX && chip.transform.localPosition.x <= chipMaxX && chip.transform.localPosition.y >= chipMinY && chip.transform.localPosition.y <= chipMaxY))
         {
             timeTaken = Time.time - startTime;
             sheets.addRoomData(1, 2, (int)timeTaken, numOpen);
