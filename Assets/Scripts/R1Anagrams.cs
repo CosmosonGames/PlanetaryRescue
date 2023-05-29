@@ -76,12 +76,19 @@ public class R1Anagrams : MonoBehaviour
     public GameObject antiLoadingBar;
     private RectTransform antiLoadingBarTransform;
 
+    public GameObject loadingBar;
+
+    public GameObject completedKeycard;
+    private SpriteRenderer completedKeycardSprite;
+
     public TextMeshPro percentageText;
     public float loadingBarSpeed = 0.1f;
 
     private bool loadingBarAnimation = false;
     private bool partOneComplete = false; 
     private bool partTwoComplete = false;
+
+    public Sprite newComputerReplacement;
 
     [Header("Inventory")]
     public GameObject inventory;
@@ -123,6 +130,16 @@ public class R1Anagrams : MonoBehaviour
         }
     }
 
+    private IEnumerator PartTwoManager() {
+        yield return StartCoroutine(LoadingAnimation());
+        loadingBarAnimation = false;
+        antiLoadingBar.SetActive(false);
+        loadingBar.SetActive(false);
+        percentageText.gameObject.SetActive(false);
+        ComputerLoading.GetComponent<SpriteRenderer>().sprite = newComputerReplacement;
+        completedKeycard.SetActive(true);
+    }
+
     private IEnumerator LoadingAnimation() {
         loadingBarAnimation = true;
         float xPos = 0f;
@@ -154,7 +171,6 @@ public class R1Anagrams : MonoBehaviour
             Debug.Log("completed loading animation");
         }
         AddToInventory();
-        loadingBarAnimation = false;
     }
 
     private void OnSpriteRendererEnabled()
@@ -195,7 +211,11 @@ public class R1Anagrams : MonoBehaviour
         for (int i = 0; i < childCount; i++)
         {
             Transform child = ComputerLoading.transform.GetChild(i);
-            child.gameObject.SetActive(visibility);
+            if (child.gameObject == completedKeycard) {
+                child.gameObject.SetActive(false);
+            } else{ 
+                child.gameObject.SetActive(visibility);
+            }
         }
         ComputerLoading.SetActive(visibility);
 
@@ -237,6 +257,8 @@ public class R1Anagrams : MonoBehaviour
         slot2Collider = slot2.GetComponent<BoxCollider2D>();
         slot3Collider = slot3.GetComponent<BoxCollider2D>();
         slot4Collider = slot4.GetComponent<BoxCollider2D>();
+        completedKeycardSprite = completedKeycard.GetComponent<SpriteRenderer>();
+        completedKeycard.SetActive(false);
 
         antiLoadingBarTransform = antiLoadingBar.GetComponent<RectTransform>();
 
@@ -393,7 +415,7 @@ public class R1Anagrams : MonoBehaviour
 
         ComputerLoading.transform.position = player.transform.position;
 
-        StartCoroutine(LoadingAnimation());
+        StartCoroutine(PartTwoManager());
     }
 
     void PullFromInventory() {

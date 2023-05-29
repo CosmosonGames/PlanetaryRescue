@@ -8,11 +8,10 @@ public class FinishGame : MonoBehaviour
 {
     public InputField username;
     public SheetsManager sheets;
-    public LogicManagerScript logic;
+    public bool debug;
 
     private void Start()
     {
-        logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManagerScript>();
     }
 
     public void FinishButton()
@@ -22,7 +21,7 @@ public class FinishGame : MonoBehaviour
             string[] prevPlayers = PlayerPrefs.GetString("PreviousPlayers").Split(",");
             if (prevPlayers.Contains(username.text))
             {
-                if (logic.debug)
+                if (debug)
                 {
                     Debug.Log("Duplicate name detected!");
                 }
@@ -33,15 +32,25 @@ public class FinishGame : MonoBehaviour
             }
             else
             {
-                sheets.AddUserToLeaderboard(username.text, 123);
+                if (PlayerPrefs.HasKey("TotalTime")) {
+                    sheets.AddUserToLeaderboard(username.text, (int)PlayerPrefs.GetFloat("TotalTime"));
+                } else {
+                    sheets.AddUserToLeaderboard(username.text, 9999999);
+                }
             }
         }else
         {
-            if (logic.debug)
+            if (debug)
             {
                 Debug.Log("WARNING: Missing PreviousPlayers Key in PlayerPrefs! Ignoring and proceeding...");
             }
-            sheets.AddUserToLeaderboard(username.text, 123);
+            if (PlayerPrefs.HasKey("TotalTime")) {
+                    sheets.AddUserToLeaderboard(username.text, (int)PlayerPrefs.GetFloat("TotalTime"));
+            } else {
+                sheets.AddUserToLeaderboard(username.text, 9999999);
+            }
         }
+
+        username.enabled = false;
     }
 }

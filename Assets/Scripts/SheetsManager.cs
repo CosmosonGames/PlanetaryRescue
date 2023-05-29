@@ -25,9 +25,14 @@ public class SheetsManager : MonoBehaviour
 
     public LogicManagerScript logic;
 
+    public bool debug;
+
     public void Start()
     {
-        logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManagerScript>();
+        if (logic != null) {
+            logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManagerScript>();
+            debug = logic.debug;
+        }
 
         string fullPath = Application.dataPath + jsonPath;
 
@@ -103,7 +108,7 @@ public class SheetsManager : MonoBehaviour
                 lbString = $"{lbString}{item.Key},{item.Value.ToString()}|";
             }
 
-            if (logic.debug)
+            if (debug)
             {
                 Debug.Log(lbString);
                 Debug.Log(players);
@@ -118,7 +123,7 @@ public class SheetsManager : MonoBehaviour
         }
         PlayerPrefs.Save();
 
-        if (logic.debug)
+        if (debug)
         {
             var data = ReadEntries("rawLB!A:B");
 
@@ -137,7 +142,7 @@ public class SheetsManager : MonoBehaviour
     {
         var toAdd = new List<object>() {username, time};
         CreateEntry(toAdd, "rawLB!A:B");
-        if (logic.debug)
+        if (debug)
         {
             Debug.Log($"INFO: Succesfully added '{username}' with time of '{time.ToString()}' seconds to leaderboard!");
         }
@@ -149,7 +154,7 @@ public class SheetsManager : MonoBehaviour
         var toAdd = new List<object>() {DateTime.Now.ToString(), timeTaken.ToString(), numOpened.ToString()};
         CreateEntry(toAdd, range);
 
-        if (logic.debug)
+        if (debug)
         {
             Debug.Log($"INFO: Succesfully added time data for room {roomNum.ToString()} puzzle {puzzleNum.ToString()} with time of '{timeTaken.ToString()}'");
         }

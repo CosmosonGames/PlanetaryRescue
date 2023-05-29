@@ -366,7 +366,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c8900f42fe664ab4997b89d13262f4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  logic: {fileID: 1404487554}
+  logic: {fileID: 0}
+  debug: 1
 --- !u!4 &710618599
 Transform:
   m_ObjectHideFlags: 0
@@ -380,7 +381,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &986738782
 GameObject:
@@ -762,7 +763,7 @@ RectTransform:
   - {fileID: 1472938405}
   - {fileID: 311414691}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -814,57 +815,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logic: {fileID: 0}
---- !u!1 &1404487553
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1404487555}
-  - component: {fileID: 1404487554}
-  m_Layer: 0
-  m_Name: Logic
-  m_TagString: Logic
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1404487554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1404487553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2749a4ea30a114595adc4b43b1d98c6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  multiplayer: 1
-  debug: 1
-  timerText: {fileID: 0}
-  countDown: 0
-  currentTime: 0
-  hasLimit: 0
-  timerLimit: 0
---- !u!4 &1404487555
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1404487553}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1244.8282, y: 606.5124, z: -10.7334}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  debug: 0
 --- !u!1 &1444407574
 GameObject:
   m_ObjectHideFlags: 0
@@ -1158,7 +1109,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2031384622
 GameObject:
@@ -1205,5 +1156,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
