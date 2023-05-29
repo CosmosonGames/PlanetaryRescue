@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -24,7 +23,12 @@ public class SlowType : MonoBehaviour
         {
             currentText = fullText.Substring(0, i);
             textBox.text = currentText;
-            yield return new WaitForSeconds(delay);
+
+            if (" " == fullText.Substring(i)){
+                yield return new WaitForSeconds(0.1f * delay);
+            } else {
+                yield return new WaitForSeconds(delay);
+            }
         }
         isTyping = false;
     }
