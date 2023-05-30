@@ -73,6 +73,8 @@ public class R1PhotoDevelopingScript : MonoBehaviour
     public InventoryItemData chipItem;
     private bool itemAdded = false;
     private bool pulledOut = false;
+    
+    public bool puzzleActive = false;
 
     // Start is called before the first frame update
     void Start()
@@ -178,6 +180,7 @@ public class R1PhotoDevelopingScript : MonoBehaviour
     {
         if (parentSprite.enabled && pulledOut)
         {
+            puzzleActive = true;
             HandleMouse();
             CheckIfCorrect();
         }

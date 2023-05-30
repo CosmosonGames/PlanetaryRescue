@@ -33,6 +33,15 @@ public class ShootingPuzzle : MonoBehaviour
     public GameObject logicObject;
     private LogicManagerScript logic;
 
+    [Header("Sheets")]
+    public GameObject sheetsObject;
+    private SheetsManager sheets;
+
+    private float startTime;
+    private float numOpen;
+
+    public bool puzzleActive = false;
+
     void Start()
     {
         asteroidSpawnTimer = asteroidSpawnDelay;
@@ -40,17 +49,19 @@ public class ShootingPuzzle : MonoBehaviour
         characterControl = player.GetComponent<CharacterControl>();
         parkourScript = parent.GetComponent<ParkourScript>();
         logic = logicObject.GetComponent<LogicManagerScript>();
+        sheets = sheetsObject.GetComponent<SheetsManager>();
         ToggleSpriteAndChildren(false);
     }
 
     void Update()
     {
-        if (spriteRenderer.enabled) {
+        if (spriteRenderer.gameObject.activeInHierarchy) {
             if (!HandleMouse()) {
                 return;
             }
 
             ToggleSpriteAndChildren(true);
+            puzzleActive = true;
             // Spawn asteroids
             asteroidSpawnTimer -= Time.deltaTime;
             if (asteroidSpawnTimer <= 0f)
@@ -71,8 +82,10 @@ public class ShootingPuzzle : MonoBehaviour
 
             if (asteroidsHit/2 >= 15)
             {
-                ToggleSpriteAndChildren(false);
                 parkourScript.puzzleComplete = true;
+                int totalTime = (int)(logic.currentTime - startTime);
+                sheets.AddPuzzleData(2, 1, totalTime);
+                ToggleSpriteAndChildren(false);
                 
                 if (logic.debug) {
                     Debug.Log("Room 2, Puzzle 1 complete!");
@@ -116,6 +129,9 @@ public class ShootingPuzzle : MonoBehaviour
 
     void ToggleSpriteAndChildren(bool enabled)
     {
+        if (enabled && startTime == 0f) {
+            startTime = logic.currentTime;
+        }
         spriteRenderer.gameObject.SetActive(enabled);
         foreach (Transform child in transform)
         {

@@ -78,6 +78,8 @@ public class R1TablePuzzleScript : MonoBehaviour
     public InventoryItemData keyItem;
     public InventoryItemData cardItem;
 
+    public bool puzzleActive = false;
+
     private IEnumerator CheckVisibility()
     {
         while (!puzzleComplete)
@@ -98,6 +100,7 @@ public class R1TablePuzzleScript : MonoBehaviour
                 if (isVisible)
                 {
                     characterControl.puzzleEnabled = true;
+                    puzzleActive = true;
                     OnSpriteRendererEnabled();
                 }
                 else
@@ -114,6 +117,7 @@ public class R1TablePuzzleScript : MonoBehaviour
     private void OnSpriteRendererEnabled()
     {
         characterControl.puzzleEnabled = true;
+        puzzleActive = true;
         if (!unlockComplete) {
             LockPuzzleVisibility(true);
             UnlockPuzzleVisibility(false);
@@ -170,7 +174,7 @@ public class R1TablePuzzleScript : MonoBehaviour
         {
             Debug.Log("R1TablePuzzle sprites disabled");
         }
-
+        puzzleActive = false;
         characterControl.puzzleEnabled = false;
     }
 
@@ -373,6 +377,7 @@ public class R1TablePuzzleScript : MonoBehaviour
     void LeavePuzzle()
     {
         OnSpriteRendererDisabled();
+        puzzleActive = false;
     }
 
     private void AddToInventory(string Object)

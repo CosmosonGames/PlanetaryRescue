@@ -1,0 +1,11 @@
+"Those paintings look interesting", "I wonder why the paintings are colored that way", "Don't the object colors look similar to the painting colors?"
+
+"Try using your chip and keycard", "The chip looks like it fits somewhere in the keycard, but how can you fuse them together?", "The machine in this room looks useful for the chip and keycard you have."
+
+"There must be a password you can find around the room to input into the computer", "Perhaps an object that you can write on holds the password?", "Look at the easel"
+
+"The asteroids are a part of your combat training", "Dodging the asteroids doesn't seem to be successful", "Destroying the asteroids seems to be the only option to succeed"
+
+"It looks like a matching game", "The words look like they're names to the pictures of weapons.", "Try dragging and dropping the names of the weapons onto the pictures of weapons"
+
+"What can you only see when the sun is out?", "What is cast on the floor when the sun shines in your direction?", "What follows you everywhere you go?"
