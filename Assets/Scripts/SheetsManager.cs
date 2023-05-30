@@ -148,7 +148,7 @@ public class SheetsManager : MonoBehaviour
         }
     }
 
-    public void addRoomData(int roomNum, int puzzleNum, int timeTaken, int numOpened = -1)
+    public void AddPuzzleData(int roomNum, int puzzleNum, int timeTaken, int numOpened = -1)
     {
         string range = $"r{roomNum.ToString()}p{puzzleNum.ToString()}!A:B";
         var toAdd = new List<object>() {DateTime.Now.ToString(), timeTaken.ToString(), numOpened.ToString()};
@@ -157,6 +157,16 @@ public class SheetsManager : MonoBehaviour
         if (debug)
         {
             Debug.Log($"INFO: Succesfully added time data for room {roomNum.ToString()} puzzle {puzzleNum.ToString()} with time of '{timeTaken.ToString()}'");
+        }
+    }
+
+    public void AddRoomData(string roomName, float startTime, float endTime) {
+        string range = $"{roomName}!A:B";
+        var toAdd = new List<object>() {DateTime.Now.ToString(), startTime.ToString(), endTime.ToString(), (endTime - startTime).ToString()};
+        CreateEntry(toAdd, range);
+        
+        if (debug) {
+            Debug.Log($"INFO: Succesfully added time data for room {roomName} with start time of '{startTime.ToString()}' and end time of '{endTime.ToString()}'");
         }
     }
 }

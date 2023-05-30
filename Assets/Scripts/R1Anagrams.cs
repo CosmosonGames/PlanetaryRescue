@@ -392,7 +392,7 @@ public class R1Anagrams : MonoBehaviour
     private void CheckCompletion(){
         if (slot1Collider.bounds.Intersects(letterGCollider.bounds) && slot2Collider.bounds.Intersects(letterICollider.bounds) && slot3Collider.bounds.Intersects(letterOCollider.bounds) && slot4Collider.bounds.Intersects(letterNCollider.bounds) && selectedObject == null){
             timeTaken = Time.time - startTime;
-            sheets.addRoomData(1, 3, (int)timeTaken, numOpen);
+            sheets.AddPuzzleData(1, 3, (int)timeTaken, numOpen);
 
             VisibilityAnagaram(false);
             puzzleComplete = true;

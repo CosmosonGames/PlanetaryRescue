@@ -331,7 +331,7 @@ public class R1TablePuzzleScript : MonoBehaviour
             //CHECK MARK
 
             timeTaken = Time.time - startTime;
-            sheets.addRoomData(1, 1, (int)timeTaken, numOpen);
+            sheets.AddPuzzleData(1, 1, (int)timeTaken, numOpen);
             LockPuzzleVisibility(false);
             unlockComplete = true;
             OnSpriteRendererEnabled();
