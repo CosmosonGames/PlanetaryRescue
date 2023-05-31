@@ -156,6 +156,7 @@ public class R1TablePuzzleScript : MonoBehaviour
     }
 
     private void UnlockPuzzleVisibility(bool enable = false) {
+        characterControl.puzzleEnabled = enable;
         foreach (SpriteRenderer child in unlockSprite.GetComponentsInChildren<SpriteRenderer>())
         {
             child.enabled = enable;

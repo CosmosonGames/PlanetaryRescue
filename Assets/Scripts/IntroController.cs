@@ -44,6 +44,12 @@ public class IntroController : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }  
         SceneManager.LoadScene("MainScene");
+        slowType.WriteText("I've snuck you into the transporation room.");
+        while (slowType.isTyping){
+            yield return new WaitForSeconds(0.01f);
+        }
+        slowType.WriteText("Head to the administration room and get a keycard. You'll need it to get into the combat wing.");
+
     }
 
     private float randomBlinkSpeed(float blinkMS, float blinkDelta) {

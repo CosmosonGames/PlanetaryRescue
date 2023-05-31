@@ -15,11 +15,15 @@ public class C0R1Regulator : MonoBehaviour
     public GameObject logic;
     private LogicManagerScript logicManager;
 
+    public GameObject slowTypeObject;
+    private SlowType slowType;
+
     // Start is called before the first frame update
     void Start()
     {
         contactCollider = GetComponent<Collider2D>();
         logicManager = logic.GetComponent<LogicManagerScript>();
+        slowType = slowTypeObject.GetComponent<SlowType>();
 
         Vector2 center = contactCollider.bounds.center;
         Vector2 size = contactCollider.bounds.size;
@@ -46,6 +50,7 @@ public class C0R1Regulator : MonoBehaviour
             }
             StartCoroutine(TeleportPlayer(other.gameObject, targetPosition));
             canTeleport = false;
+            slowType.WriteText("This is the administration room. Assemble a keycard and code it.");
             StartCoroutine(TeleportCooldown());
         }
     }
