@@ -80,6 +80,8 @@ public class R1TablePuzzleScript : MonoBehaviour
 
     public bool puzzleActive = false;
 
+    public Collider2D hintsCollider;
+
     private IEnumerator CheckVisibility()
     {
         while (!puzzleComplete)
@@ -275,7 +277,7 @@ public class R1TablePuzzleScript : MonoBehaviour
             Collider2D[] colliders = Physics2D.OverlapPointAll(mousePosition);
 
             Collider2D backgroundCollider = gameObject.GetComponent<Collider2D>();
-            if (colliders.Contains(backgroundCollider))
+            if (colliders.Contains(backgroundCollider) || colliders.Contains(hintsCollider))
             {
                 foreach (Collider2D collider in colliders)
                 {

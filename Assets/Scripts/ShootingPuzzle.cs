@@ -40,7 +40,9 @@ public class ShootingPuzzle : MonoBehaviour
     private float startTime;
     private float numOpen;
 
-    public bool puzzleActive = false;
+    public bool puzzleComplete = false;
+
+    public Collider2D hintsCollider;
 
     void Start()
     {
@@ -61,7 +63,6 @@ public class ShootingPuzzle : MonoBehaviour
             }
 
             ToggleSpriteAndChildren(true);
-            puzzleActive = true;
             // Spawn asteroids
             asteroidSpawnTimer -= Time.deltaTime;
             if (asteroidSpawnTimer <= 0f)
@@ -86,6 +87,7 @@ public class ShootingPuzzle : MonoBehaviour
                 int totalTime = (int)(logic.currentTime - startTime);
                 sheets.AddPuzzleData(2, 1, totalTime);
                 ToggleSpriteAndChildren(false);
+                puzzleComplete = true;
                 
                 if (logic.debug) {
                     Debug.Log("Room 2, Puzzle 1 complete!");
@@ -147,7 +149,7 @@ public class ShootingPuzzle : MonoBehaviour
             Collider2D[] colliders = Physics2D.OverlapPointAll(mousePosition);
 
             Collider2D backgroundCollider = gameObject.GetComponent<Collider2D>();
-            if (!colliders.Contains(backgroundCollider))
+            if (colliders.Contains(backgroundCollider) || colliders.Contains(hintsCollider))
             {
                 ToggleSpriteAndChildren(false);
                 return false;

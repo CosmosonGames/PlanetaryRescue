@@ -100,6 +100,8 @@ public class R1Anagrams : MonoBehaviour
 
     private bool authorized = false;
 
+    public Collider2D hintsCollider;
+
     private IEnumerator CheckVisibility()
     {
         while (true)
@@ -327,7 +329,7 @@ public class R1Anagrams : MonoBehaviour
 
             Collider2D backgroundCollider = gameObject.GetComponent<Collider2D>();
             Collider2D computerLoadingCollider = ComputerLoading.GetComponent<Collider2D>();
-            if (colliders.Contains(backgroundCollider))
+            if (colliders.Contains(backgroundCollider) || colliders.Contains(hintsCollider))
             {
                 foreach (Collider2D collider in colliders)
                 {

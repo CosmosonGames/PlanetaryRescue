@@ -125,6 +125,8 @@
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/Benchmark01.cs" />
     <Compile Include="Assets/Scripts/WeaponsQuiz.cs" />
     <Compile Include="Assets/Scripts/HintsManager.cs" />
+    <Compile Include="Assets/Scripts/SendSurvey.cs" />
+    <Compile Include="Assets/OldSlowType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />

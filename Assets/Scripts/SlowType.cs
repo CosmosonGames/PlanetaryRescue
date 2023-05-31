@@ -32,21 +32,23 @@ public class SlowType : MonoBehaviour
                 } else {
                     yield return new WaitForSeconds(delay);
                 }
-                // Set the width of the RectTransform
-                backgroundTransform.sizeDelta = new Vector2(textBox.minWidth, backgroundTransform.sizeDelta.y);
             } else {
                 StopCoroutine(ShowText(currentRun, waitTime));
             }
         }
         yield return new WaitForSeconds(waitTime);
         isTyping = false;
+        backgroundTransform.gameObject.SetActive(false);
+        textBox.text = "";
     }
 
     // Function for writing out the text
     public void WriteText(string text, float waitTime = 0.0f)
     {
+        gameObject.SetActive(true);
         fullText = text;
         runNum ++;
+        backgroundTransform.gameObject.SetActive(true);
         StartCoroutine(ShowText(currentRun: runNum, waitTime: waitTime));
     }
 
@@ -54,6 +56,6 @@ public class SlowType : MonoBehaviour
         if (INITIATE && !isTyping){
             WriteText(fullText);
             INITIATE = false;
-        }
+        } 
     }
 }

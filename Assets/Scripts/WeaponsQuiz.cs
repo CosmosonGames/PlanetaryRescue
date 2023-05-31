@@ -47,6 +47,8 @@ public class WeaponsQuiz : MonoBehaviour
 
     public bool puzzleActive;
 
+    public Collider2D hintsCollider;
+
     private IEnumerator CheckVisibility()
     {
         while (!puzzleComplete)
@@ -147,7 +149,7 @@ public class WeaponsQuiz : MonoBehaviour
             Collider2D[] colliders = Physics2D.OverlapPointAll(mousePosition);
 
             Collider2D backgroundCollider = gameObject.GetComponent<Collider2D>();
-            if (colliders.Contains(backgroundCollider))
+            if (colliders.Contains(backgroundCollider) || colliders.Contains(hintsCollider))
             {
                 foreach (Collider2D collider in colliders)
                 {

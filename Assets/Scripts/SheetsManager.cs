@@ -169,4 +169,14 @@ public class SheetsManager : MonoBehaviour
             Debug.Log($"INFO: Succesfully added time data for room {roomName} with start time of '{startTime.ToString()}' and end time of '{endTime.ToString()}'");
         }
     }
+
+    public void AddSurveyData(string Q1, string Q2, string Q3) {
+        string range = $"survey!A:C";
+        var toAdd = new List<object>() {DateTime.Now.ToString(), Q1, Q2, Q3};
+        CreateEntry(toAdd, range);
+        
+        if (debug) {
+            Debug.Log($"INFO: Succesfully added survey data with Q1 of '{Q1}' and Q2 of '{Q2}' and Q3 of '{Q3}'");
+        }
+    }
 }

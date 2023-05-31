@@ -76,6 +76,8 @@ public class R1PhotoDevelopingScript : MonoBehaviour
     
     public bool puzzleActive = false;
 
+    public Collider2D hintsCollider;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -194,7 +196,7 @@ public class R1PhotoDevelopingScript : MonoBehaviour
             Collider2D[] colliders = Physics2D.OverlapPointAll(mousePosition);
 
             Collider2D backgroundCollider = gameObject.GetComponent<Collider2D>();
-            if (colliders.Contains(backgroundCollider))
+            if (colliders.Contains(backgroundCollider) || colliders.Contains(hintsCollider))
             {
                 foreach (Collider2D collider in colliders)
                 {

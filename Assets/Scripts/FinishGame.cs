@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class FinishGame : MonoBehaviour
 {
@@ -50,6 +51,9 @@ public class FinishGame : MonoBehaviour
                 sheets.AddUserToLeaderboard(username.text, 9999999);
             }
         }
+
+        // Load survey scene
+        SceneManager.LoadScene("Survey");
 
         username.enabled = false;
     }
