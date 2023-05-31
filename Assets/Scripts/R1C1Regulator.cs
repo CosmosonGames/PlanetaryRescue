@@ -21,12 +21,17 @@ public class R1C1Regulator : MonoBehaviour
     public GameObject logic;
     private LogicManagerScript logicManager;
 
+    [Header("Error Manager")]
+    public GameObject errorManager;
+    private ErrorManager errorManagerScript;
+
     // Start is called before the first frame update
     void Start()
     {
         contactCollider = GetComponent<Collider2D>();
         logicManager = logic.GetComponent<LogicManagerScript>();
         puzzle3Script = puzzle3.GetComponent<R1Anagrams>();
+        errorManagerScript = errorManager.GetComponent<ErrorManager>();
 
         Vector2 center = contactCollider.bounds.center;
         Vector2 size = contactCollider.bounds.size;
@@ -50,7 +55,7 @@ public class R1C1Regulator : MonoBehaviour
                 if (isAuthorized) {
                     targetPosition = new Vector3(leftX - 0.1f*width, other.gameObject.transform.position.y, other.gameObject.transform.position.z);
                 } else {
-                    
+                    errorManagerScript.ShowError(3);
                     return;
                 }
 

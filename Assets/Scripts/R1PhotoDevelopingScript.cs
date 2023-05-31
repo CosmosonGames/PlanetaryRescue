@@ -269,7 +269,6 @@ public class R1PhotoDevelopingScript : MonoBehaviour
         float chipMinY = 0.094f;
 
         // Check if the sprites are in the correct positions & mouse is not dragging a sprite --> if so, load the next scene
-        Debug.Log(keycard.transform.localPosition);
         if ((keycardCollider.bounds.Intersects(keycardSlotCollider.bounds) && chipCollider.bounds.Intersects(chipSlotCollider.bounds)) || (keycard.transform.localPosition.x >= keycardMinX && keycard.transform.localPosition.x <= keycardMaxX && keycard.transform.localPosition.y >= keycardMinY && keycard.transform.localPosition.y <= keycardMaxY && chip.transform.localPosition.x >= chipMinX && chip.transform.localPosition.x <= chipMaxX && chip.transform.localPosition.y >= chipMinY && chip.transform.localPosition.y <= chipMaxY) && selectedObject == null)
         {
             timeTaken = Time.time - startTime;

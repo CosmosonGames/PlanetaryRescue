@@ -23,6 +23,10 @@ public class R1DevRoom : MonoBehaviour
     public InventoryItemData chipItem;
     public InventoryItemData cardItem;
 
+    [Header("Error Manager")]
+    public GameObject errorManager;
+    private ErrorManager errorManagerScript;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +34,7 @@ public class R1DevRoom : MonoBehaviour
         spriteRenderer = puzzle.GetComponent<SpriteRenderer>();
         photoDeveloping = puzzle.GetComponent<R1PhotoDevelopingScript>();
         logic = logicObject.GetComponent<LogicManagerScript>();
+        errorManagerScript = errorManager.GetComponent<ErrorManager>();
  
         spriteRenderer.enabled = false;
         Debug.Log($"Sprite Enabled: {spriteRenderer.enabled}");
@@ -70,5 +75,6 @@ public class R1DevRoom : MonoBehaviour
                 Debug.Log($"Missing Item: {item}");
             }
         }   
+        errorManagerScript.ShowError(1);
     }
 }

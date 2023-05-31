@@ -4,50 +4,50 @@ using UnityEngine.EventSystems;
 
 public class ErrorManager : MonoBehaviour
 {
-    public Image errorImage;
-    public Sprite errorSprite1;
-    public Sprite errorSprite2;
-    public Sprite errorSprite3;
+    public SpriteRenderer errorImage;
+    public Sprite missingkeycardorchip1;
+    public Sprite missingkeycardwithembed2;
+    public Sprite missingvalid3;
+
+    public AudioSource audioSource;
+    public AudioClip soundEffect;
+
+    public void PlaySoundEffect()
+    {
+        audioSource.PlayOneShot(soundEffect);
+    }
 
     public void ShowError(int errorCode)
     {
         switch (errorCode)
         {
             case 1:
-                errorImage.sprite = errorSprite1;
+                errorImage.sprite = missingkeycardorchip1;
                 break;
             case 2:
-                errorImage.sprite = errorSprite2;
+                errorImage.sprite = missingkeycardwithembed2;
                 break;
             case 3:
-                errorImage.sprite = errorSprite3;
+                errorImage.sprite = missingvalid3;
                 break;
             default:
                 Debug.LogError("Invalid error code!");
-                break;
+                return;
         }
+        PlaySoundEffect();  
         errorImage.gameObject.SetActive(true);
-        AddHideErrorOnClick();
+
     }
 
     public void HideError()
     {
         errorImage.gameObject.SetActive(false);
-        RemoveHideErrorOnClick();
     }
 
-    private void AddHideErrorOnClick()
-    {
-        EventTrigger trigger = errorImage.gameObject.AddComponent<EventTrigger>();
-        EventTrigger.Entry entry = new EventTrigger.Entry();
-        entry.eventID = EventTriggerType.PointerClick;
-        entry.callback.AddListener((data) => { HideError(); });
-        trigger.triggers.Add(entry);
-    }
-
-    private void RemoveHideErrorOnClick()
-    {
-        EventTrigger trigger = errorImage.gameObject.GetComponent<EventTrigger>();
-        Destroy(trigger);
+    private void Update() {
+        if (errorImage.gameObject.activeSelf && Input.GetMouseButtonDown(0))
+        {
+            HideError();
+        }
     }
 }

@@ -151,10 +151,10 @@ public class ShootingPuzzle : MonoBehaviour
             Collider2D backgroundCollider = gameObject.GetComponent<Collider2D>();
             if (colliders.Contains(backgroundCollider) || colliders.Contains(hintsCollider))
             {
-                ToggleSpriteAndChildren(false);
-                return false;
-            } else {
+                ToggleSpriteAndChildren(true);
                 return true;
+            } else {
+                return false;
             }
         } else {
             return true;

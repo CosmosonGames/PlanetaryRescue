@@ -25,7 +25,7 @@ public class OldSlowType : MonoBehaviour
             textBox.text = currentText;
 
             if (" " == fullText.Substring(i)){
-                yield return new WaitForSeconds(0.1f * delay);
+                yield return new WaitForSeconds(0f);
             } else {
                 yield return new WaitForSeconds(delay);
             }

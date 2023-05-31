@@ -21,6 +21,12 @@ public class R1WordBox : MonoBehaviour
     private InventorySystem InventorySystem;
     public InventoryItemData embeddedCardItem;
 
+    [Header("Error Manager")]
+    public GameObject errorManager;
+    private ErrorManager errorManagerScript;
+
+    private bool isAuthorized = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +34,7 @@ public class R1WordBox : MonoBehaviour
         spriteRenderer = puzzle.GetComponent<SpriteRenderer>();
         anagrams = puzzle.GetComponent<R1Anagrams>();
         logic = logicObject.GetComponent<LogicManagerScript>();
+        errorManagerScript = errorManager.GetComponent<ErrorManager>();
         spriteRenderer.enabled = false;
     }
 
@@ -36,8 +43,9 @@ public class R1WordBox : MonoBehaviour
         if (logic.debug) {
             Debug.Log("Detected mouse up on word box");
         }
-        if (InventorySystem.current.Get(embeddedCardItem) != null)
+        if (InventorySystem.current.Get(embeddedCardItem) != null || isAuthorized)
         {
+            isAuthorized = true;
             if (logic.debug) {
                 Debug.Log($"Sprite Enabled: {spriteRenderer.enabled}");
                 Debug.Log($"Character Control Puzzle Enabled: {characterControl.puzzleEnabled}");
@@ -52,6 +60,7 @@ public class R1WordBox : MonoBehaviour
     }
 
     private void MissingItem(){
+        errorManagerScript.ShowError(2);
         if (logic.debug) {
             Debug.Log($"Missing Item: {embeddedCardItem.name}");
         }   

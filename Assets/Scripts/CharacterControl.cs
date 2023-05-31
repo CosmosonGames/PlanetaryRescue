@@ -11,6 +11,8 @@ public class CharacterControl : MonoBehaviour
     public LogicManagerScript logic;
     public bool puzzleEnabled = false;
 
+    public bool examineEnabled = false;
+
     // Start is called before the first frame update
     void Start()
     {

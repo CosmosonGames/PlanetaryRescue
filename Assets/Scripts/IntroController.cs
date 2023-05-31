@@ -23,16 +23,14 @@ public class IntroController : MonoBehaviour
     private float topDistance = 5.3978f;
 
     public GameObject slowTypeObject;
-    private SlowType slowType;
+    private OldSlowType slowType;
 
     private bool eyeInMotion = false;
 
     private IEnumerator GoToSleep() {
         yield return StartCoroutine(OpenEyes(randomBlinkSpeed(100, 0)));
-        yield return StartCoroutine(CloseEyes(randomBlinkSpeed(100, 0)));
-        yield return StartCoroutine(OpenEyes(randomBlinkSpeed(100, 0)));
-        yield return StartCoroutine(CloseEyes(randomBlinkSpeed(200, 0)));
-        yield return StartCoroutine(OpenEyes(randomBlinkSpeed(200, 0)));
+        yield return StartCoroutine(CloseEyes(randomBlinkSpeed(175, 0)));
+        yield return StartCoroutine(OpenEyes(randomBlinkSpeed(150, 0)));
         yield return StartCoroutine(CloseEyes(randomBlinkSpeed(300, 0)));
 
         yield return new WaitForSeconds(2f);
@@ -55,7 +53,7 @@ public class IntroController : MonoBehaviour
     } 
 
     void Start(){
-        slowType = slowTypeObject.GetComponent<SlowType>();
+        slowType = slowTypeObject.GetComponent<OldSlowType>();
 
         StartCoroutine(GoToSleep());
     }

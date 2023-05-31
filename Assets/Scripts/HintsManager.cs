@@ -57,7 +57,7 @@ public class HintsManager : MonoBehaviour
     }
 
     void Update() {
-        if (characterControl.puzzleEnabled) {
+        if (characterControl.puzzleEnabled && !characterControl.examineEnabled) {
             // Place hints button at the top right of the player's screen
             hintsButton.GetComponent<SpriteRenderer>().enabled = true;
             hintsButton.transform.position = new Vector3(character.transform.position.x + 77.7466f, character.transform.position.y + 71.6542f, character.transform.position.z);
@@ -67,7 +67,7 @@ public class HintsManager : MonoBehaviour
     }
 
     private void OnMouseUp() {
-        if (characterControl.puzzleEnabled) {
+        if (characterControl.puzzleEnabled && !characterControl.examineEnabled) {
             ShowHint();
         } 
     }
@@ -81,8 +81,15 @@ public class HintsManager : MonoBehaviour
         if (currentRoom >= 2) {
             currentRoom++;
             currentPuzzle = 0;
+            currentHint = 0;
         } else {
             currentPuzzle++;
+        }
+
+        if (currentHint >= 2) {
+            currentHint = 0;
+        } else {
+            currentHint++;  
         }
     }
 

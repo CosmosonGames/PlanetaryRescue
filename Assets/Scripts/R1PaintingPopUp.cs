@@ -56,10 +56,12 @@ public class R1PaintingPopUp : MonoBehaviour
                 if (isVisible)
                 {
                     characterControl.puzzleEnabled = true;
+                    characterControl.examineEnabled = true;
                     OnSpriteRendererEnabled();
                 }
                 else
                 {
+                    characterControl.examineEnabled = false;
                     OnSpriteRendererDisabled();
                 }
             }
@@ -83,6 +85,7 @@ public class R1PaintingPopUp : MonoBehaviour
     private void OnSpriteRendererDisabled()
     {
         characterControl.puzzleEnabled = false;
+        characterControl.examineEnabled = false;
 
         if (debug)
         {
