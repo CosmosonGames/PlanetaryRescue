@@ -33,12 +33,6 @@ public class R1Table : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (logic.debug){
-            Debug.Log("logged mouse up");
-            Debug.Log(characterControl.puzzleEnabled);
-            Debug.Log(spriteRenderer.enabled);
-        }
-
         if (!spriteRenderer.enabled && !characterControl.puzzleEnabled && !tablePuzzle.puzzleComplete)
         {
             if (tablePuzzle.unlockComplete) {
@@ -46,6 +40,7 @@ public class R1Table : MonoBehaviour
             } else {
                 spriteRenderer.enabled = true;
             }
+            Debug.Log("enter 49 bp at r1t");
         }
     }
 }

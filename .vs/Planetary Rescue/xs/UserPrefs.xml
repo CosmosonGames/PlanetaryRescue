@@ -1,12 +1,7 @@
 ﻿<Properties BuildWithMSBuildOnMono="True">
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/owensun/Downloads/CAMS/CSE/IDP/Planetary Rescue/Assets/Scripts/R1WordBox.cs" relfile="Assets/Scripts/R1WordBox.cs" line="39" column="9" />
-    </BreakpointStore>
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/R1WordBox.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/R1Table.cs">
     <Files>
-      <File FileName="Assets/Scripts/R1WordBox.cs" Line="39" Column="67" />
+      <File FileName="Assets/Scripts/R1Table.cs" Line="43" Column="45" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,7 +9,9 @@
           <Node name="Planetary Rescue" expanded="True">
             <Node name="Assembly-CSharp" expanded="True">
               <Node name="Assets" expanded="True">
-                <Node name="Scripts" expanded="True" />
+                <Node name="Scripts" expanded="True">
+                  <Node name="R1Table.cs" selected="True" />
+                </Node>
               </Node>
             </Node>
           </Node>
@@ -23,7 +20,12 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="115d8fca-b0e3-4bcc-a62c-2988f1052fed" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/owensun/Downloads/CAMS/CSE/IDP/Planetary Rescue/Assets/Scripts/R1Table.cs" relfile="Assets/Scripts/R1Table.cs" line="43" column="13" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="115d8fca-b0e3-4bcc-a62c-2988f1052fed" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>

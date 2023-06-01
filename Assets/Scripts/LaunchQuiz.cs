@@ -5,6 +5,7 @@ using UnityEngine;
 public class LaunchQuiz : MonoBehaviour
 {
     public GameObject quiz;
+    private WeaponsQuiz weaponsQuiz;
     private SpriteRenderer apSpriteRenderer;
 
     public GameObject player;
@@ -14,14 +15,14 @@ public class LaunchQuiz : MonoBehaviour
     public GameObject logicObject;
     private LogicManagerScript logic;
 
-    public bool puzzleComplete = false;
-
     // Start is called before the first frame update
     void Start()
     {
         characterControl = player.GetComponent<CharacterControl>();
         logic = logicObject.GetComponent<LogicManagerScript>();
         apSpriteRenderer = quiz.GetComponent<SpriteRenderer>();
+        weaponsQuiz = quiz.GetComponent<WeaponsQuiz>();
+
         foreach (Transform child in transform)
         {
             SpriteRenderer spriteRenderer = child.GetComponent<SpriteRenderer>();
@@ -32,7 +33,7 @@ public class LaunchQuiz : MonoBehaviour
     private void OnMouseUp()
     {
         Debug.Log("Clicked");
-        if (!puzzleComplete && (!apSpriteRenderer.gameObject.activeInHierarchy) && !characterControl.puzzleEnabled)
+        if (!weaponsQuiz.puzzleComplete && (!apSpriteRenderer.gameObject.activeInHierarchy) && !characterControl.puzzleEnabled)
         {
             EnablePuzzle();
         }

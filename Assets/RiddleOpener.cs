@@ -38,6 +38,7 @@ public class RiddleOpener : MonoBehaviour
 
     private void OnMouseUp()
     {
+        Debug.Log("hello from riddleopener");
         if (!authorized) {
             Authorization();
         }

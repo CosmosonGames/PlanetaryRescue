@@ -149,7 +149,7 @@ public class R1TablePuzzleScript : MonoBehaviour
         {
             child.enabled = enable;
             if (debug){ 
-                Debug.Log($"{child.name}: {child.enabled}");
+                //Debug.Log($"{child.name}: {child.enabled}");
             }
         }
         lockSprite.enabled = enable;

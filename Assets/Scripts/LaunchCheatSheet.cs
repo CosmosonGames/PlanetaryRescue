@@ -22,6 +22,7 @@ public class LaunchCheatSheet : MonoBehaviour
 
     private void OnMouseUp()
     {
+        Debug.Log("hello from riddleopener");
         characterControl = player.GetComponent<CharacterControl>();
         Debug.Log(characterControl);
         Debug.Log(characterControl.puzzleEnabled);
