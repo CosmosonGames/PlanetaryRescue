@@ -36,7 +36,7 @@ public class LaunchCheatSheet : MonoBehaviour
     }
 
     private void Update() {
-        if (cheatsheetSpriteRenderer && Input.GetMouseButtonDown(0)) {
+        if (cheatsheetSpriteRenderer.enabled && cheatsheetSpriteRenderer.gameObject.activeSelf && Input.GetMouseButtonDown(0)) {
             ToggleCheatSheet(false);
         }
     }

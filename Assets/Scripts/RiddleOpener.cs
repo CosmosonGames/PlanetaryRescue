@@ -32,7 +32,7 @@ public class RiddleOpener : MonoBehaviour
         shootingPuzzle = ShootingPuzzleObject.GetComponent<ShootingPuzzle>();
         weaponsQuiz = WeaponsQuizObject.GetComponent<WeaponsQuiz>();
  
-        spriteRenderer.enabled = false;
+        spriteRenderer.gameObject.SetActive(false);
         Debug.Log($"Sprite Enabled: {spriteRenderer.enabled}");
     }
 
@@ -42,7 +42,7 @@ public class RiddleOpener : MonoBehaviour
         if (!authorized) {
             Authorization();
         }
-        if (!spriteRenderer.enabled && authorized && !characterControl.puzzleEnabled)
+        if (!spriteRenderer.gameObject.activeSelf && authorized && !characterControl.puzzleEnabled)
         {
             TogglePuzzle(true);
         } 
@@ -57,7 +57,7 @@ public class RiddleOpener : MonoBehaviour
     }
 
     private void TogglePuzzle(bool enabled) {
-        spriteRenderer.enabled = enabled;
+        spriteRenderer.gameObject.SetActive(enabled);
         characterControl.puzzleEnabled = enabled;
 
         if (enabled) {

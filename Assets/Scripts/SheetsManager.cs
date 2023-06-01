@@ -179,4 +179,15 @@ public class SheetsManager : MonoBehaviour
             Debug.Log($"INFO: Succesfully added survey data with Q1 of '{Q1}' and Q2 of '{Q2}' and Q3 of '{Q3}'");
         }
     }
+
+    public void AddHintsData(int roomNum, int roomHints)
+    {
+        string range = $"r{roomNum.ToString()}hints!A:B"; 
+        var toAdd = new List<object>() {DateTime.Now.ToString(), roomHints.ToString()};
+        CreateEntry(toAdd, range);
+
+        if (debug) {
+            Debug.Log($"INFO: Succesfully added hints data for room {roomNum.ToString()} with '{roomHints.ToString()}' hints.");
+        }
+    }
 }

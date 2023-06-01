@@ -17,9 +17,7 @@ public class HintsManager : MonoBehaviour
     public GameObject r2p2;
     private WeaponsQuiz r2p2Script;
     public GameObject r2p3;
-    public GameObject r3p1;
-    public GameObject r3p2;
-    public GameObject r3p3;
+    private RiddleManager r2p3Script;
 
     public GameObject slowTypeObject;
     private SlowType slowType;
@@ -34,6 +32,18 @@ public class HintsManager : MonoBehaviour
 
     public GameObject logicObject;
     private LogicManagerScript logic;
+
+    private int r1Hints = 0;
+    private bool r1Sent = false;
+
+    private int r2Hints = 0;
+    private bool r2Sent = false;
+
+    private int r3Hints = 0;
+    private bool r3Sent = false;
+
+    public GameObject sheetsObject;
+    private SheetsManager sheets;
 
     Dictionary<string, List<string>> hints = new Dictionary<string, List<string>>()
     {{ "r0p0", new List<string> {"Those paintings look interesting", "I wonder why the paintings are colored that way", "Don't the object colors look similar to the painting colors?"}},
@@ -53,6 +63,7 @@ public class HintsManager : MonoBehaviour
         hintsButtonSprite = hintsButton.GetComponent<SpriteRenderer>();
         characterControl = character.GetComponent<CharacterControl>();
         logic = logicObject.GetComponent<LogicManagerScript>();
+        sheets = sheetsObject.GetComponent<SheetsManager>();
 
     }
 
@@ -75,6 +86,12 @@ public class HintsManager : MonoBehaviour
     private void ShowHint() {
         CheckCurrentPuzzle();
         string hint = hints["r" + currentRoom + "p" + currentPuzzle][currentHint];
+        if (currentRoom == 0) {
+            r1Hints++;
+        } else if (currentRoom == 1) {
+            r2Hints++;
+        }
+
         logic.currentTime += 180;
         slowType.WriteText(hint);
 
@@ -95,20 +112,30 @@ public class HintsManager : MonoBehaviour
 
     private void CheckCurrentPuzzle() {
         if (r1p1Script.puzzleComplete) {
-            currentRoom = 1;
-            currentPuzzle = 2;
-        } else if (r1p2Script.puzzleComplete) {
-            currentRoom = 1;
-            currentPuzzle = 3;
-        } else if (r1p3Script.puzzleComplete) {
-            currentRoom = 2;
+            currentRoom = 0;
             currentPuzzle = 1;
-        } else if (r2p1Script.puzzleComplete) {
-            currentRoom = 2;
+        } else if (r1p2Script.puzzleComplete) {
+            currentRoom = 0;
             currentPuzzle = 2;
+        } else if (r1p3Script.puzzleComplete) {
+            currentRoom = 1;
+            currentPuzzle = 0;
+
+            if (!r1Sent) {
+                sheets.AddHintsData(1, r1Hints);
+                r1Sent = true;
+            }
+        } else if (r2p1Script.puzzleComplete) {
+            currentRoom = 1;
+            currentPuzzle = 1;
         } else if (r2p2Script.puzzleComplete) {
-            currentRoom = 2;
-            currentPuzzle = 3;
-        } 
+            currentRoom = 1;
+            currentPuzzle = 2;
+        } else if (r2p3Script.puzzleComplete) {
+            if (!r2Sent) {
+                sheets.AddHintsData(2, r2Hints);
+                r2Sent = true;
+            }
+        }
     }
 }
