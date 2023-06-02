@@ -1,12 +1,11 @@
 ﻿<Properties StartupConfiguration="{66416E50-C618-57BB-54FE-73A18ED72D1F}|">
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="ccbfe5ed-77fb-4778-bdf1-80cbae936b6b" />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="ac03ab8d-955f-48fc-ba4a-88d1495f53aa" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/OldSlowType.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/SheetsManager.cs">
     <Files>
       <File FileName="Assets/Scripts/R1Painting.cs" Line="18" Column="40" IsPinned="True" />
       <File FileName="Assets/Scripts/R1TablePuzzleScript.cs" Line="143" Column="1" IsPinned="True" />
@@ -14,19 +13,21 @@
       <File FileName="Assets/Scripts/ShootingPuzzle.cs" />
       <File FileName="Assets/Scripts/SendSurvey.cs" />
       <File FileName="Assets/Scripts/SlowType.cs" />
-      <File FileName="Assets/OldSlowType.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/SheetsManager.cs" Line="169" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="PlanetaryRescue" expanded="True">
             <Node name="Assets" expanded="True">
-              <Node name="Scripts" expanded="True" />
-              <Node name="OldSlowType.cs" selected="True" />
+              <Node name="Scripts" expanded="True">
+                <Node name="SheetsManager.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
 </Properties>

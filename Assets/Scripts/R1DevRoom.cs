@@ -51,7 +51,7 @@ public class R1DevRoom : MonoBehaviour
                 spriteRenderer.enabled = true;
                 authorized = true;
             }
-        } else if (spriteRenderer.enabled || authorized){
+        } else if (spriteRenderer.enabled || authorized && !photoDeveloping.puzzleComplete){
             spriteRenderer.enabled = true;
         } else{
             MissingItem();

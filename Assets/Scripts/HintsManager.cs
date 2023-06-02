@@ -24,7 +24,6 @@ public class HintsManager : MonoBehaviour
 
     private int currentRoom = 0;
     private int currentPuzzle = 0;
-    private int currentHint = 0;
 
     public GameObject hintsButton;
 
@@ -38,9 +37,6 @@ public class HintsManager : MonoBehaviour
 
     private int r2Hints = 0;
     private bool r2Sent = false;
-
-    private int r3Hints = 0;
-    private bool r3Sent = false;
 
     public GameObject sheetsObject;
     private SheetsManager sheets;
@@ -61,6 +57,7 @@ public class HintsManager : MonoBehaviour
         r2p1Script = r2p1.GetComponent<ShootingPuzzle>();
         r2p2Script = r2p2.GetComponent<WeaponsQuiz>();
         hintsButtonSprite = hintsButton.GetComponent<SpriteRenderer>();
+        r2p3Script = r2p3.GetComponent<RiddleManager>();
         characterControl = character.GetComponent<CharacterControl>();
         logic = logicObject.GetComponent<LogicManagerScript>();
         sheets = sheetsObject.GetComponent<SheetsManager>();
@@ -85,38 +82,37 @@ public class HintsManager : MonoBehaviour
 
     private void ShowHint() {
         CheckCurrentPuzzle();
-        string hint = hints["r" + currentRoom + "p" + currentPuzzle][currentHint];
+        string hint = hints["r" + currentRoom + "p" + currentPuzzle][0];
+
+        // TOSS USED HINT
+        hints["r" + currentRoom + "p" + currentPuzzle].Remove(hint);
+        
+        // UPDATE STATS
         if (currentRoom == 0) {
             r1Hints++;
         } else if (currentRoom == 1) {
             r2Hints++;
         }
 
+        // INCREASE TIME
         logic.currentTime += 180;
+
+        // WRITE THE HINT OUT 
         slowType.WriteText(hint);
-
-        if (currentRoom >= 2) {
-            currentRoom++;
-            currentPuzzle = 0;
-            currentHint = 0;
-        } else {
-            currentPuzzle++;
-        }
-
-        if (currentHint >= 2) {
-            currentHint = 0;
-        } else {
-            currentHint++;  
-        }
     }
 
     private void CheckCurrentPuzzle() {
-        if (r1p1Script.puzzleComplete) {
-            currentRoom = 0;
-            currentPuzzle = 1;
-        } else if (r1p2Script.puzzleComplete) {
-            currentRoom = 0;
+        if (r2p3Script.puzzleComplete) {
+            if (!r2Sent) {
+                sheets.AddHintsData(2, r2Hints);
+                r2Sent = true;
+            }
+        } else if (r2p2Script.puzzleComplete) {
+            currentRoom = 1;
             currentPuzzle = 2;
+        } else if (r2p1Script.puzzleComplete) {
+            currentRoom = 1;
+            currentPuzzle = 1;
         } else if (r1p3Script.puzzleComplete) {
             currentRoom = 1;
             currentPuzzle = 0;
@@ -125,17 +121,12 @@ public class HintsManager : MonoBehaviour
                 sheets.AddHintsData(1, r1Hints);
                 r1Sent = true;
             }
-        } else if (r2p1Script.puzzleComplete) {
-            currentRoom = 1;
-            currentPuzzle = 1;
-        } else if (r2p2Script.puzzleComplete) {
-            currentRoom = 1;
+        } else if (r1p2Script.puzzleComplete) {
+            currentRoom = 0;
             currentPuzzle = 2;
-        } else if (r2p3Script.puzzleComplete) {
-            if (!r2Sent) {
-                sheets.AddHintsData(2, r2Hints);
-                r2Sent = true;
-            }
+        } else if (r1p1Script.puzzleComplete) {
+            currentRoom = 0;
+            currentPuzzle = 1;
         }
     }
 }

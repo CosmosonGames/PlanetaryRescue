@@ -78,8 +78,6 @@ public class R1TablePuzzleScript : MonoBehaviour
     public InventoryItemData keyItem;
     public InventoryItemData cardItem;
 
-    public bool puzzleActive = false;
-
     public Collider2D hintsCollider;
 
     private IEnumerator CheckVisibility()
@@ -102,7 +100,6 @@ public class R1TablePuzzleScript : MonoBehaviour
                 if (isVisible)
                 {
                     characterControl.puzzleEnabled = true;
-                    puzzleActive = true;
                     OnSpriteRendererEnabled();
                 }
                 else
@@ -119,7 +116,6 @@ public class R1TablePuzzleScript : MonoBehaviour
     private void OnSpriteRendererEnabled()
     {
         characterControl.puzzleEnabled = true;
-        puzzleActive = true;
         if (!unlockComplete) {
             LockPuzzleVisibility(true);
             UnlockPuzzleVisibility(false);
@@ -145,6 +141,7 @@ public class R1TablePuzzleScript : MonoBehaviour
     }
 
     private void LockPuzzleVisibility(bool enable = false){ 
+        characterControl.puzzleEnabled = enable;
         foreach (SpriteRenderer child in lockSprite.GetComponentsInChildren<SpriteRenderer>())
         {
             child.enabled = enable;
@@ -156,7 +153,6 @@ public class R1TablePuzzleScript : MonoBehaviour
     }
 
     private void UnlockPuzzleVisibility(bool enable = false) {
-        characterControl.puzzleEnabled = enable;
         foreach (SpriteRenderer child in unlockSprite.GetComponentsInChildren<SpriteRenderer>())
         {
             child.enabled = enable;
@@ -177,7 +173,6 @@ public class R1TablePuzzleScript : MonoBehaviour
         {
             Debug.Log("R1TablePuzzle sprites disabled");
         }
-        puzzleActive = false;
         characterControl.puzzleEnabled = false;
     }
 
@@ -380,7 +375,6 @@ public class R1TablePuzzleScript : MonoBehaviour
     void LeavePuzzle()
     {
         OnSpriteRendererDisabled();
-        puzzleActive = false;
     }
 
     private void AddToInventory(string Object)
