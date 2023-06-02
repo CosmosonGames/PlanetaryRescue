@@ -53,6 +53,10 @@ public class RiddleManager : MonoBehaviour
 
     public Collider2D hintsCollider;
 
+    [Header("Hints Manager")]
+    public GameObject hintsManagerObject;
+    private HintsManager hintsManager;
+
     private IEnumerator CheckVisibility()
     {
         while (!puzzleComplete)
@@ -126,6 +130,7 @@ public class RiddleManager : MonoBehaviour
         parentSprite = parentObject.GetComponent<SpriteRenderer>();
 
         characterControl = player.GetComponent<CharacterControl>();
+        hintsManager = hintsManagerObject.GetComponent<HintsManager>();
 
         moveableObjects.Add(letterA);
         moveableObjects.Add(letterD);
@@ -211,10 +216,13 @@ public class RiddleManager : MonoBehaviour
         if (letterS.bounds.Intersects(SSlot.bounds) && letterH.bounds.Intersects(HSlot.bounds) && letterA.bounds.Intersects(ASlot.bounds) && letterD.bounds.Intersects(DSlot.bounds) && letterO.bounds.Intersects(OSlot.bounds) && letterW.bounds.Intersects(WSlot.bounds) && selectedObject == null)
         {
             //CHECK MARK
+            hintsManager.CheckCurrentPuzzle();
+
             float totalTime = logic.currentTime - startTime;
             sheets.AddPuzzleData(2, 3, (int)totalTime, numOpen);
             PuzzleVisibility(false);
             puzzleComplete = true;
+            logic.EndRoomTime(2);
 
             if (debug)
             {

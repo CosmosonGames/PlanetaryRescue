@@ -3368,6 +3368,7 @@ MonoBehaviour:
   timeTaken: 0
   puzzleActive: 0
   hintsCollider: {fileID: 2012762916}
+  hintsManagerObject: {fileID: 2012762912}
 --- !u!61 &786205194
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14649,7 +14650,6 @@ MonoBehaviour:
   key: {fileID: 456526825}
   keyItem: {fileID: 11400000, guid: a896a8d7a0d5a4a0f9e6ed468a1f20c2, type: 2}
   cardItem: {fileID: 11400000, guid: 9b4bd0d8e56684696a4ad08447ba26b7, type: 2}
-  puzzleActive: 0
   hintsCollider: {fileID: 2012762916}
 --- !u!1 &2078054823
 GameObject:

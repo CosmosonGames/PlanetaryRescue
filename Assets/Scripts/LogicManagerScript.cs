@@ -177,6 +177,7 @@ public class LogicManagerScript : MonoBehaviour
                 roomTwoEndTime = currentTime;
                 roomTwoComplete = true;
                 sheets.AddRoomData("combat", roomTwoStartTime, roomTwoEndTime);
+                PlayerPrefs.SetFloat("TotalTime", currentTime);
                 break;
             case 3:
                 if (roomThreeEndTime != 0f) {

@@ -101,7 +101,7 @@ public class HintsManager : MonoBehaviour
         slowType.WriteText(hint);
     }
 
-    private void CheckCurrentPuzzle() {
+    public void CheckCurrentPuzzle() {
         if (r2p3Script.puzzleComplete) {
             if (!r2Sent) {
                 sheets.AddHintsData(2, r2Hints);
