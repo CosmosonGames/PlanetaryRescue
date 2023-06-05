@@ -207,8 +207,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1019012465}
-        m_TargetAssemblyTypeName: LogicManagerScript, Assembly-CSharp
+      - m_Target: {fileID: 1019012467}
+        m_TargetAssemblyTypeName: StartScreenManager, Assembly-CSharp
         m_MethodName: openLeaderboard
         m_Mode: 1
         m_Arguments:
@@ -554,7 +554,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1019012466}
-  - component: {fileID: 1019012465}
+  - component: {fileID: 1019012467}
   m_Layer: 0
   m_Name: Logic Manager
   m_TagString: Logic
@@ -562,20 +562,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1019012465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1019012464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2749a4ea30a114595adc4b43b1d98c6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  multiplayer: 1
-  debug: 1
 --- !u!4 &1019012466
 Transform:
   m_ObjectHideFlags: 0
@@ -591,6 +577,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1019012467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019012464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f84f579a4a7b64c2bb546d9ffe732daf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  multiplayer: 1
+  debug: 1
 --- !u!1 &1327143961
 GameObject:
   m_ObjectHideFlags: 0
@@ -875,7 +875,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c8900f42fe664ab4997b89d13262f4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  logic: {fileID: 1019012465}
+  logic: {fileID: 0}
+  debug: 0
 --- !u!1 &1683621788
 GameObject:
   m_ObjectHideFlags: 0
@@ -1112,8 +1113,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1019012465}
-        m_TargetAssemblyTypeName: LogicManagerScript, Assembly-CSharp
+      - m_Target: {fileID: 1019012467}
+        m_TargetAssemblyTypeName: StartScreenManager, Assembly-CSharp
         m_MethodName: startGame
         m_Mode: 1
         m_Arguments:
